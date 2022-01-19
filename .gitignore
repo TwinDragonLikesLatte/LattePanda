@@ -1,0 +1,7 @@
+MANIFEST.MF
+
+#Eclipse Patch
+.classpath
+.project
+.settings/
+/build/
