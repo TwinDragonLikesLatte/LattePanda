@@ -5,3 +5,11 @@ MANIFEST.MF
 .project
 .settings/
 /build/
+
+#IntelliJ
+*.iml
+.idea
+/out/
+
+#Mac
+.DS_Store
