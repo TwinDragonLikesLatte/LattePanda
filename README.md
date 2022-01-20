@@ -51,6 +51,7 @@ public static Connection open() {
 4. `Main.java`를 실행하여 연결 결과를 확인합니다.<br/>
 ![image](https://user-images.githubusercontent.com/42857790/150262743-657a7f69-1e31-4c47-ae1c-e0a3502637c7.png)
 
+5. `DBUtil.java` 파일을 `assume unchanged` 처리합니다. (changes에 뜨지 않게 됩니다.)
 <br/>
 <br/>
 
