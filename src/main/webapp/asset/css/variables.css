@@ -1,0 +1,17 @@
+:root {
+    --purple_one: #161031;
+    --purple_two: #231C48;
+    --purple_three: #351E72;
+    --purple_four: #62569F;
+    --red: #FF7D7D;
+
+    --black_main: #191A20;
+    --black_sub1: #3F4150;
+    --black_sub2: #8C8D96;
+
+    --contents_background: #f5f5f5;
+    --white: #FFFFFF;
+
+    --border: 1px solid #BEBEBE;
+    --radius: 4px;
+}
