@@ -1,0 +1,70 @@
+.nav-sub {
+    width: 220px;
+    height: 100%;
+    background-color: var(--purple_two);
+    color: var(--white);
+}
+
+.nav-sub>.menu-title {
+    padding: 30px 20px;
+    font-size: 24px;
+}
+
+.sub-menu > ul {
+    max-height: 0;
+    transition: 1s;
+    overflow: hidden;
+}
+
+.sub-menu > a.here + ul {
+    max-height: 250px;
+}
+
+.sub-menu>a {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 13px;
+    border-left: 7px solid var(--purple_two);
+    color: var(--white);
+}
+
+.sub-menu a.here,
+.sub-menu a:hover {
+    border-color: var(--white);
+    font-weight: 700;
+}
+
+.sub-menu>ul {
+    width: 100%;
+    background-color: var(--purple_one);
+}
+
+
+.sub-menu>ul>li {
+    display: flex;
+    align-items: center;
+    width: 220px;
+    padding: 7px 0 7px 40px;
+}
+
+.sub-menu li>a {
+    color: var(--white);
+}
+
+
+.sub-menu li:first-child {
+    padding-top: 10px;
+}
+
+.sub-menu li:last-child {
+    padding-bottom: 10px;
+}
+
+.sub-menu li>a:hover,
+.sub-menu li>a.here,
+.sub-menu li>a.sel{
+    border-color: var(--white);
+    font-weight: 900;
+    color: var(--red);
+}

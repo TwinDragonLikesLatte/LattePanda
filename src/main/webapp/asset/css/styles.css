@@ -1,0 +1,79 @@
+/* import css lib */
+@import "lib/reset.css";
+@import "lib/bootstrap.css";
+@import "lib/jquery-ui.css";
+
+/* import css files  */
+@import "variables.css";
+@import "header.css";
+@import "sub-nav.css";
+
+
+
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;700&display=swap');
+
+
+
+/* btn */
+
+.btn {
+    font-size: 14px;
+    font-weight: 700;
+    border: var(--border);
+    border-radius: var(--radius);
+}
+
+.btn:hover {
+    border: var(--border);
+}
+
+.btn-primary {
+    background-color: var(--purple_three);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--purple_four);
+    color: var(--white);
+}
+
+.btn-danger {
+    background-color: var(--white);
+    color: var(--red);
+}
+
+.btn-danger:hover {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.btn-default {
+    color: var(--black_sub1);
+}
+
+.btn-default:hover {
+    color: var(--black_sub1);
+}
+
+
+* {
+    font-family: 'Roboto', 'Noto Sans KR', -apple-system, "Apple SD Gothic Neo", sans-serif;
+    font-weight: 400;
+}
+
+strong {
+    color: var(--purple_three);
+}
+
+
+main {
+    display: flex;
+    height: calc(100vh - 50px);
+
+}
+
+.content {
+    width: calc(100% - 220px);
+    padding: 30px;
+}
