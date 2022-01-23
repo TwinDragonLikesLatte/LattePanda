@@ -164,4 +164,107 @@ public class DashBoardDAO {
 		return null;
 	}
 
+	public ArrayList<AreaMonSellProdDTO> areamonsellprod() {
+		try {
+
+			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE ='10101' AND ORDER_DATE BETWEEN TO_DATE('20211101','YYYYMMDD') AND TO_DATE('20211201','YYYYMMDD') GROUP BY (NAME_KR)";
+			ArrayList<AreaMonSellProdDTO> areamonsellprod = new ArrayList<AreaMonSellProdDTO>();
+			rs = stat.executeQuery(sql);
+
+			while (rs.next()) {
+				AreaMonSellProdDTO dto = new AreaMonSellProdDTO();
+
+				dto.setName(rs.getString("name"));
+				dto.setSum(rs.getString("sum"));
+
+				areamonsellprod.add(dto);
+			}
+
+			return areamonsellprod;
+
+		} catch (Exception e) {
+			System.out.println("DashBoardDAO.areamonsellprod()");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public String areatotal() {
+		try {
+
+			String sql = "SELECT SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE SEQ_STORE ='10101' AND ORDER_DATE = TO_DATE('20211101','YYYYMMDD')";
+//			나중에 당일 판매량을 확인하고 싶다면 CURRNET_DATE로 변경해서 사용하기
+//			지역장에서 선택한 값에 따라 바뀌게 만들기
+			rs = stat.executeQuery(sql);
+
+			rs.next();
+
+			String total = rs.getString("TOTAL");
+
+			return total;
+
+		} catch (Exception e) {
+			System.out.println("DashBoardDAO.areatotal()");
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public ArrayList<AreaMontlyTotalDTO> areamontotal() {
+		try {
+
+			String sql = "SELECT * FROM VWMONTHLYTOTAL WHERE SEQ_STORE='10101' ORDER BY START_ORDER";
+//			지역장에서 선택한 값에 따라 바뀌게 만들기
+			ArrayList<AreaMontlyTotalDTO> areamontotal = new ArrayList<AreaMontlyTotalDTO>();
+
+			rs = stat.executeQuery(sql);
+
+			while (rs.next()) {
+				AreaMontlyTotalDTO dto = new AreaMontlyTotalDTO();
+
+				dto.setSeq_store(rs.getString("seq_store"));
+				dto.setStart_order(rs.getString("start_order"));
+				dto.setMontotal(rs.getInt("montotal"));
+
+				areamontotal.add(dto);
+			}
+
+			return areamontotal;
+
+		} catch (Exception e) {
+			System.out.println("DashBoardDAO.list()");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public ArrayList<AreaStockRemainDTO> areastockremain() {
+		try {
+
+			String sql = "SELECT SEQ_STORE, NAME, QUANTITY, REGDATE FROM VWSTOCKREMAIN WHERE SEQ_STORE='10101' AND REGDATE = '2022-01-25' ORDER BY QUANTITY DESC";
+//			지역장에서 선택한 값에 따라 바뀌게 만들기
+			ArrayList<AreaStockRemainDTO> areastockremain = new ArrayList<AreaStockRemainDTO>();
+			rs = stat.executeQuery(sql);
+
+			while (rs.next()) {
+				AreaStockRemainDTO dto = new AreaStockRemainDTO();
+
+				dto.setSeq_store(rs.getString("seq_store"));
+				dto.setName(rs.getString("name"));
+				dto.setQuantity(rs.getString("quantity"));
+				dto.setRegdate(rs.getString("regdate"));
+
+				areastockremain.add(dto);
+			}
+
+			return areastockremain;
+
+		} catch (Exception e) {
+			System.out.println("DashBoardDAO.areastockremain()");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

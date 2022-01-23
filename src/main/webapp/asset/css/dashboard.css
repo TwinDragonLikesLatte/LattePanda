@@ -44,8 +44,8 @@
 	width: inherit;
 	height: 250px;
 	padding: 15px 20px;
-
 }
+
 
 .content_chart > p {
 	font-weight: 700;
@@ -60,11 +60,6 @@
 	width: 500px;
 }
 
-/* .daily_sales > td {
-	padding-top: 15px;
-	padding-left: 15px;
-	border: 1px dashed black;
-} */
 
 /* 공지사항 */
 .daily_sales > tbody > tr > td:nth-child(2) {
@@ -107,4 +102,19 @@
 }
 
 
+.highcharts-figure3 {
+    width: 500px;
+}
 
+#graph2 {
+	height: 350px;
+    /* fill: var(--contents_background); */
+}
+
+form {
+	float: right;
+}
+
+#container2 {
+    height: 160px;
+}
