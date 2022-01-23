@@ -1,0 +1,93 @@
+
+.content_container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 425px 425px;
+	gap: 20px 15px;
+}
+
+.content_gird:nth-child(4) {
+	grid-column: 1 / 3;
+	grid-row: 2 / 3;
+}
+
+.content_gird {
+	border: 1px solid var(--black_sub2);
+}
+
+.content_header {
+	width: inherit;
+	height: 50px;
+	padding: 15px 20px;
+	background-color: #9988DD;
+	font-weight: 700;
+	
+	border: 1px dashed black;
+}
+
+/* 당일판매액 */
+
+.content_font {
+	width: inherit;
+	height: 120px;
+	text-align: center;
+	border: 1px dashed black;
+}
+.content_font > p {
+	margin: 10px;
+	font-size: 20px;
+}
+
+.content_chart {
+	width: inherit;
+	height: 250px;
+	padding: 15px 20px;
+	border: 1px dashed black;
+}
+
+.content_chart > p {
+	font-weight: 700;
+}
+
+.content_chart > p > small {
+	float: right;
+	font-weight: 400;
+}
+
+.daily_sales{
+	width: 500px;
+	height: 370px;
+	
+	border: 1px dashed black;
+}
+
+.daily_sales > td {
+	padding-top: 15px;
+	padding-left: 15px;
+	border: 1px dashed black;
+}
+
+.schedule {
+	width: inherit;
+	height: 370px;
+	border: 1px dashed black;
+}
+
+.remain_product {
+	width: 500px;
+	height: 370px;
+	border: 1px dashed black;
+}
+
+
+/* 차트 */
+.highcharts-figure,
+.highcharts-data-table table {
+    width: 450px;
+}
+
+#container {
+    height: 200px;
+}
+
+
