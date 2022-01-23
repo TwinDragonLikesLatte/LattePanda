@@ -2,8 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>title</title>
+    <title>주문관리: 진행중</title>
     <%@ include file="/WEB-INF/inc/asset.jsp" %>
+	<style>
+		table {
+			float: left;
+			margin: 0;			
+		}
+	</style>
 </head>
 <body>
 
@@ -14,14 +20,27 @@
         <%@ include file="/WEB-INF/inc/sub-nav_order.jsp" %>
         <div class="content">
 
-            컨텐츠 코드 작성<br><br>
-
-            <div>
-                버튼예제<br>
-                <input type="button" class="btn btn-primary" value="등록하기">
-                <input type="button" class="btn btn-danger" value="취소하기">
-                <input type="button" class="btn btn-default" value="목록보기">
-            </div>
+           	<c:forEach items="${list}" var="dto">
+	            <table class="table table-bordered" style="width: 304px; height: 220px">
+	            	<tr>
+	            		<th>주문번호</th>
+	            	</tr>
+	            	<tr>
+						<td>${dto.start_order}</td>
+					</tr>
+					<tr>
+						<td>
+						${dto.name_kr} ${dto.size_name}<br>
+						${dto.name_kr} ${dto.size_name} <!--?????  -->
+						</td>
+					</tr>	
+					<tr>
+						<td>총 주문 금액 ${dto.total}원</td>
+					</tr>	
+	            </table>
+      		</c:forEach>
+            <div class="pagebar">${pagebar}</div>
+            
 
         </div>
     </main>
