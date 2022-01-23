@@ -18,16 +18,19 @@ public class DashBoard extends HttpServlet {
 
     	DashBoardDAO dao = new DashBoardDAO();
     	
+    	//[점장] 당일 판매액
     	String total = dao.total();
-    	
-    	
-    	
+    	//[점장] 월간 판매액
+    	ArrayList<MontlyTotalDTO> list = dao.list();
+    	//[점장] 당일 상품별 판매량
+    	ArrayList<DailySellProdDTO> prod = dao.prod();
     	
     	
     	
     	
     	req.setAttribute("total", total);
-    	
+    	req.setAttribute("list", list);
+    	req.setAttribute("prod", prod);
     	
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/home/dashboard.jsp");
         dispatcher.forward(req, resp);

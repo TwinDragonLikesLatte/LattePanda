@@ -26,10 +26,10 @@
 				<div class="content_gird">
 					<div class="content_header">당일 총 판매액</div>
 					
-					<div class="content_font"><p>당일 판매액</p><p>${total}<p></div>
+					<div class="content_font"><p>당일 판매액</p><p class="total">${total} 원<p></div>
 					<!-- 당일 판매액이니 현재 DAO 에 있는 sql 쿼리 내 DATE 관련 줄을 CURRENT_DATE로 바꾸면 되지 않을까 -->
 					
-					<div class="content_chart"><p>월간 총 판매액<small>단위(만원)</small></p>
+					<div class="content_chart"><p>월간 총 판매액<small>단위(원)</small></p>
 						<figure class="highcharts-figure">
 						    <div id="container"></div>
 						</figure>
@@ -37,29 +37,15 @@
 				</div>
 				<div class="content_gird">
 					<div class="content_header">당일 상품별 총 판매량</div>
-					<div class="content_graph"></div>
+					<div class="content_graph">
+						<figure class="highcharts-figure2">
+    					<div id="graph"></div>
+						</figure>
+					</div>
 				</div>
 				<div class="content_gird">
 					<div class="content_header">공지사항</div>
-					<table class="daily_sales">
-						<tr>
-							<td>공지사항</td>
-						</tr>
-						<tr>
-							<td>공지사항</td>
-						</tr>
-						<tr>
-							<td>공지사항</td>
-						</tr>
-						<tr>
-							<td>공지사항</td>
-						</tr>
-						<tr>
-							<td>공지사항</td>
-						</tr>
-						<tr>
-							<td>공지사항</td>
-						</tr>
+					<table class="table table-bordered daily_sales">
 						<tr>
 							<td>공지사항</td>
 						</tr>
@@ -67,55 +53,22 @@
 				</div>
 				<div class="content_gird">
 					<div class="content_header">근무 스케줄</div>
-					<div class="schedule"></div>
+					<div class="schedule">
+				<c:forEach items="${prod}" var="dto">
+					{
+						name: '${dto.name_kr}',
+				        y: ${dto.sum}
+				    },
+	        	</c:forEach>
+					</div>
 				</div>
 				<div class="content_gird">
 					<div class="content_header">재고 상황</div>
-					<table class="remain_product">
+					<table class="table table-bordered remain_product">
 						<tr>
 							<td>번호</td>
 							<td>재고명</td>
 							<td>재고 수량</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
 						</tr>
 					</table>
 				</div>      
@@ -242,18 +195,9 @@
 
 	    xAxis: {
 	        categories: [
-	            'Jan',
-	            'Feb',
-	            'Mar',
-	            'Apr',
-	            'May',
-	            'Jun',
-	            'Jul',
-	            'Aug',
-	            'Sep',
-	            'Oct',
-	            'Nov',
-	            'Dec'
+	 		<c:forEach items="${list}" var="dto">
+	            '${dto.start_order}',
+	        </c:forEach>
 	        ],
 	        
 	    },
@@ -265,7 +209,72 @@
 	    },
 	    series: [{
 	        name: '월 매출',
-	        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+	        data: [
+	        	<c:forEach items="${list}" var="dto">
+	        	${dto.montotal}, 
+	        	</c:forEach>
+	        	]
+	    }]
+	});
+	
+	Highcharts.chart('graph', {
+	    chart: {
+	        plotBackgroundColor: null,
+	        plotBorderWidth: null,
+	        plotShadow: false,
+	        type: 'pie'
+	    },
+	    title: {
+	        text: ''
+	    },
+	    tooltip: {
+	        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	    },
+	    accessibility: {
+	        point: {
+	            valueSuffix: '%'
+	        }
+	    },
+	    plotOptions: {
+	        pie: {
+	            allowPointSelect: true,
+	            cursor: 'pointer',
+	            dataLabels: {
+	                enabled: false
+	            },
+	            showInLegend: true
+	        }
+	    },
+	    series: [{
+	        name: '판매량',
+	        colorByPoint: true,
+	        data: [
+	        	
+	        	<c:forEach items="${prod}" var="dto">
+				{
+					name: '${dto.name_kr}',
+			        y: ${dto.sum}
+			    },
+        		</c:forEach>
+	            //sliced: true,
+	            //selected: true
+	            
+	        ]/* , {
+	            name: 'Internet Explorer',
+	            y: 11.84
+	        }, {
+	            name: 'Firefox',
+	            y: 10.85
+	        }, {
+	            name: 'Edge',
+	            y: 4.67
+	        }, {
+	            name: 'Safari',
+	            y: 4.18
+	        }, {
+	            name: 'Other',
+	            y: 7.05
+	        }] */
 	    }]
 	});
 </script>

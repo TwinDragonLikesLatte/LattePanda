@@ -31,18 +31,22 @@
 	width: inherit;
 	height: 120px;
 	text-align: center;
-	border: 1px dashed black;
+
 }
 .content_font > p {
-	margin: 10px;
+	margin: 30px;
 	font-size: 20px;
+}
+
+.total {
+	font-weight: 700px
 }
 
 .content_chart {
 	width: inherit;
 	height: 250px;
 	padding: 15px 20px;
-	border: 1px dashed black;
+
 }
 
 .content_chart > p {
@@ -56,16 +60,15 @@
 
 .daily_sales{
 	width: 500px;
-	height: 370px;
 	
 	border: 1px dashed black;
 }
 
-.daily_sales > td {
+/* .daily_sales > td {
 	padding-top: 15px;
 	padding-left: 15px;
 	border: 1px dashed black;
-}
+} */
 
 .schedule {
 	width: inherit;
@@ -75,19 +78,28 @@
 
 .remain_product {
 	width: 500px;
-	height: 370px;
 	border: 1px dashed black;
 }
 
 
 /* 차트 */
-.highcharts-figure,
-.highcharts-data-table table {
+.highcharts-figure {
     width: 450px;
 }
 
 #container {
-    height: 200px;
+    height: 160px;
 }
+
+/* 그래프 */
+.highcharts-figure2 {
+    width: 500px;
+}
+
+#graph {
+	height: 350px;
+    /* fill: var(--contents_background); */
+}
+
 
 
