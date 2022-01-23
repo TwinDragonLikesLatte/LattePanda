@@ -1,0 +1,77 @@
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu-table {
+    height: 65%;
+    overflow: auto;
+    background-color: #C4C4C4;
+}
+
+.table th,
+.table td{
+    text-align: center;
+}
+
+.table th {
+    position: sticky;
+    top : -1px;
+    background-color: #E5E5E5;
+}
+
+.table td {
+    background-color: var(--white);
+}
+
+.table tbody input {
+    font-size: 12px;
+    height: 22px;
+    padding-top: 1px;
+    padding-bottom: 0px;
+    font-weight: 400;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    height: 185px;
+    margin : 15px 0px;
+}
+
+.form-control h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin : 15px 0px;
+}
+
+.form-control > div {
+    margin-bottom: 15px;
+}
+
+.form-control div > span:first-child {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 4px;
+}
+
+.form-control input[type="checkbox"] + span {
+    margin-right: 12px;
+}
+
+.form-control div:last-child {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-btn {
+    display: flex;
+    justify-content: right;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
