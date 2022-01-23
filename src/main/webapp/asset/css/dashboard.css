@@ -21,8 +21,6 @@
 	padding: 15px 20px;
 	background-color: #9988DD;
 	font-weight: 700;
-	
-	border: 1px dashed black;
 }
 
 /* 당일판매액 */
@@ -60,8 +58,6 @@
 
 .daily_sales{
 	width: 500px;
-	
-	border: 1px dashed black;
 }
 
 /* .daily_sales > td {
@@ -69,6 +65,15 @@
 	padding-left: 15px;
 	border: 1px dashed black;
 } */
+
+/* 공지사항 */
+.daily_sales > tbody > tr > td:nth-child(2) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 300px;
+	height: 37px;
+}
 
 .schedule {
 	width: inherit;

@@ -13,7 +13,7 @@
     <main>
         <%@ include file="/WEB-INF/inc/sub-nav_home.jsp" %>
         <div class="content"> 
-
+<!-- 점장화면 -->
             <c:if test="${empty id}">
 
             <!-- <div>
@@ -46,37 +46,40 @@
 				<div class="content_gird">
 					<div class="content_header">공지사항</div>
 					<table class="table table-bordered daily_sales">
-						<tr>
-							<td>공지사항</td>
-						</tr>
+						<c:forEach items="${notice}" var="dto" end="9">
+							<tr>
+								<td>${dto.title}</td>
+								<td>${dto.content}</td>
+							</tr>
+						</c:forEach>
 					</table>
 				</div>
 				<div class="content_gird">
 					<div class="content_header">근무 스케줄</div>
 					<div class="schedule">
-				<c:forEach items="${prod}" var="dto">
-					{
-						name: '${dto.name_kr}',
-				        y: ${dto.sum}
-				    },
-	        	</c:forEach>
+
 					</div>
 				</div>
 				<div class="content_gird">
 					<div class="content_header">재고 상황</div>
 					<table class="table table-bordered remain_product">
 						<tr>
-							<td>번호</td>
 							<td>재고명</td>
 							<td>재고 수량</td>
 						</tr>
+						<c:forEach items="${ stockremain }" var="dto" end="9">
+							<tr>
+								<td>${dto.name }</td>
+								<td>${dto.quantity }</td>
+							</tr>
+						</c:forEach>
 					</table>
 				</div>      
 				<div class="content_gird"></div>   	
             </div>
             
             </c:if>
-            
+<!-- 지역장화면 -->
             <c:if test="${not empty id}">
 
             <!-- <div>
@@ -101,24 +104,6 @@
 						<tr>
 							<td>공지사항</td>
 						</tr>
-						<tr>
-							<td>공지사항</td>
-						</tr>
-						<tr>
-							<td>공지사항</td>
-						</tr>
-						<tr>
-							<td>공지사항</td>
-						</tr>
-						<tr>
-							<td>공지사항</td>
-						</tr>
-						<tr>
-							<td>공지사항</td>
-						</tr>
-						<tr>
-							<td>공지사항</td>
-						</tr>
 					</table>
 				</div>
 				<div class="content_gird">
@@ -132,46 +117,6 @@
 							<td>번호</td>
 							<td>재고명</td>
 							<td>재고 수량</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
 						</tr>
 					</table>
 				</div>      

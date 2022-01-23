@@ -24,13 +24,18 @@ public class DashBoard extends HttpServlet {
     	ArrayList<MontlyTotalDTO> list = dao.list();
     	//[점장] 당일 상품별 판매량
     	ArrayList<DailySellProdDTO> prod = dao.prod();
-    	
+    	//[점장] 공지사항
+    	ArrayList<NoticeDTO> notice = dao.notice();
+    	//[점장] 재고상황 
+    	ArrayList<StockRemainDTO> stockremain = dao.stockremain();
     	
     	
     	
     	req.setAttribute("total", total);
     	req.setAttribute("list", list);
     	req.setAttribute("prod", prod);
+    	req.setAttribute("notice", notice);
+    	req.setAttribute("stockremain", stockremain);
     	
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/home/dashboard.jsp");
         dispatcher.forward(req, resp);
