@@ -19,7 +19,7 @@
 
 					<!-- <div>
                 버튼예제<br>
-                <input type="button" class="btn btn-primary" value="등록하기">
+                <input type="submit" class="btn btn-primary" value="등록하기">
                 <input type="button" class="btn btn-danger" value="취소하기">
                 <input type="button" class="btn btn-default" value="목록보기">
             </div> -->
@@ -88,22 +88,17 @@
 				<!-- 지역장화면 -->
 				<c:if test="${empty id}">
 
-					<!-- <div>
-                버튼예제<br>
-                <input type="button" class="btn btn-primary" value="등록하기">
-                <input type="button" class="btn btn-danger" value="취소하기">
-                <input type="button" class="btn btn-default" value="목록보기">
-            </div> -->
 					<div class="content_container">
 						<div class="content_gird">
 							<div class="content_header">
 								지역내 지점별 월간 판매 현황
-								<form method="POST" action="/jsp/ex04ok.jsp">
+								<form method="GET" action="/jsp/ex04ok.jsp">
 									<select name="sel1">
 										<option value="f1">강남대로점</option>
 										<option value="f2">교대점</option>
 										<option value="f3">신사점</option>
 									</select>
+									<input type="submit" class="btn btn-primary" value="등록하기">
 								</form>
 							</div>
 							<div class="content_graph">
@@ -140,15 +135,11 @@
 							</table>
 						</div>
 						<div class="content_gird">
-							<div class="content_header">근무 스케줄</div>
-							<div class="schedule">
-								<c:forEach items="${areamonsellprod}" var="dto">
-								{
-									name: '${dto.name}',
-			       					 y: ${dto.sum}
-			   					 },
-        						</c:forEach>
-
+							<div class="content_header">전지점 상품별 일일 판매량</div>
+							<div class="area_prod">
+								<figure class="highcharts-figure">
+									<div id="container3"></div>
+								</figure>
 							</div>
 						</div>
 						<div class="content_gird">
@@ -180,7 +171,8 @@
 	<c:if test="${not empty id}">
 	Highcharts.chart('container', {
 	    chart: {
-	        type: 'column'
+	        type: 'column',
+	        backgroundColor: '#f5f5f5'
 	    },
 	    title: {
 	        text: ''
@@ -215,7 +207,8 @@
 	        plotBackgroundColor: null,
 	        plotBorderWidth: null,
 	        plotShadow: false,
-	        type: 'pie'
+	        type: 'pie',
+	        backgroundColor: '#f5f5f5'
 	    },
 	    title: {
 	        text: ''
@@ -251,23 +244,6 @@
         		</c:forEach>
 	            //sliced: true,
 	            //selected: true
-	            
-	        ]/* , {
-	            name: 'Internet Explorer',
-	            y: 11.84
-	        }, {
-	            name: 'Firefox',
-	            y: 10.85
-	        }, {
-	            name: 'Edge',
-	            y: 4.67
-	        }, {
-	            name: 'Safari',
-	            y: 4.18
-	        }, {
-	            name: 'Other',
-	            y: 7.05
-	        }] */
 	    }]
 	});
 	</c:if>
@@ -281,7 +257,8 @@
 	        plotBackgroundColor: null,
 	        plotBorderWidth: null,
 	        plotShadow: false,
-	        type: 'pie'
+	        type: 'pie',
+	        backgroundColor: '#f5f5f5'
 	    },
 	    title: {
 	        text: ''
@@ -325,7 +302,8 @@
 	
 	Highcharts.chart('container2', {
 	    chart: {
-	        type: 'column'
+	        type: 'column',
+	        backgroundColor: '#f5f5f5'
 	    },
 	    title: {
 	        text: ''
@@ -352,6 +330,61 @@
 	        	${dto.montotal}, 
 	        	</c:forEach>
 	        	]
+	    }]
+	});
+	
+	Highcharts.chart('container3', {
+	    chart: {
+	        type: 'column',
+	        backgroundColor: '#f5f5f5'
+	    },
+	    title: {
+	        text: ''
+	    },
+	    subtitle: {
+	        text: ''
+	    },
+	    xAxis: {
+	        type: 'category',
+	        labels: {
+	            rotation: -45,
+	            style: {
+	                fontSize: '13px',
+	                fontFamily: 'Verdana, sans-serif'
+	            }
+	        }
+	    },
+	    yAxis: {
+	        min: 0,
+	        title: {
+	            text: ''
+	        }
+	    },
+	    legend: {
+	        enabled: false
+	    },
+	    tooltip: {
+	        pointFormat: ''
+	    },
+	    series: [{
+	        name: '',
+	        data: [
+	        	<c:forEach items="${areaprod}" var="dto">
+					['${dto.name}',${dto.sum}],
+        		</c:forEach>
+	        ],
+	        dataLabels: {
+	            enabled: false,
+	            rotation: -90,
+	            color: '#FFFFFF',
+	            align: 'right',
+	            format: '{point.y:.1f}', // one decimal
+	            y: 10, // 10 pixels down from the top
+	            style: {
+	                fontSize: '13px',
+	                fontFamily: 'Verdana, sans-serif'
+	            }
+	        }
 	    }]
 	});
 	
