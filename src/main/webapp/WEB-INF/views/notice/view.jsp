@@ -21,20 +21,42 @@
             <table class="table table-bordered">
 				<tr>
 					<th>글번호</th>
-					<th>부서</th>
-					<th>제목</th>
-					<th>날짜</th>
-				</tr>
-				<tr>
 					<td>${dto.seq_notice}</td>
-					<td>${dto.name}</td>
-					<td>a${dto.title}</td>
-					<td>${dto.regdate}</td>
 				</tr>
 				<tr>
-				 	<td style="height:300px;vertical-align:middle;" colspan="4">내용입니다. ${dto.content}</td>
+					<th>부서</th>
+					<td>${dto.name}</td>
+				</tr>	
+					<th>제목</th>
+					<td>a${dto.title}</td>
+				</tr>
+				<tr>
+					<th>날짜</th>
+					<td>${dto.regdate}</td>
+				</tr>						
+				<tr>
+					<th>내용</th>
+				 	<td style="height:300px;vertical-align:middle;">${dto.content}</td>
 				</tr>
 			</table>
+			
+			<div class="btns">
+			
+				<input type="button" value="돌아가기"
+					class="btn btn-default"
+					onclick="location.href='/notice/board.do?column=${column}&word=${word}&page=${page}';">
+				
+				<input type="button" value="수정하기"
+					class="btn btn-primary"
+					onclick="location.href='/notice/edit.do?seq=${dto.seq_notice}';">
+				<input type="button" value="삭제하기"
+					class="btn btn-primary"
+					onclick="location.href='/notice/del.do?seq=${dto.seq_notice}';">
+			</div>
+			
+			
+			
+			
         </div>
     </main>
 

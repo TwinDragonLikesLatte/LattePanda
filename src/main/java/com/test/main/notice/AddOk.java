@@ -24,7 +24,6 @@ public class AddOk extends HttpServlet {
 		BoardDAO dao = new BoardDAO();
 		BoardDTO dto = new BoardDTO();
 		
-		HttpSession session = req.getSession();
 		
 //		dto.setId(session.getAttribute("id").toString());
 //		dto.setSubject(subject);

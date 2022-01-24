@@ -30,7 +30,7 @@
 					</tr>
 					<tr>
 						<td>
-						${dto.name_kr} ${dto.size_name}<br>
+						${dto.name_kr} ${dto.size_name} ${dto.count}<br>
 						${dto.name_kr} ${dto.size_name} <!--?????  -->
 						</td>
 					</tr>	

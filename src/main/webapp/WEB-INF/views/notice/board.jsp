@@ -3,7 +3,59 @@
 <html>
 <head>
     <title>공지사항</title>
+    
+    <style>
+    	
+    	#list {
+    		position: relative;
+    		left : 200px;
+    		top : 50px;
+    		
+    	}
+    	
+    	#list tr:nth-child(1) {
+    		text-align : center;
+    		color : var(--white);
+    	}
+    	
+    	.search {
+    		padding: 5px;
+    		width : 800px;
+    		border : 2px solid #BEBEBE;
+    		position: relative;
+    		left : 250px;
+    		top : 35px;
+    		margin: 0px;
+    	}
+    	
+    	.pagebar {
+    		position : relative;
+    		left: 580px;
+    		top : 50px;
+    		width : 500px;
+    	}
+    	
+    	#btnwrite { /* 안됨.. */
+    		width: 100px;
+    		positon: relative;
+    		left: 800px;
+    		margin: 0px;
+    		
+    	}
+    	
+    	.searchdate {
+    		float : left;
+    		margin-right: 40px;
+    	}
+    	
+    	.searchdate > input { height: 30px; widht: 140px; }
+    	
+    	.form-control {
+    		margin-right : 20px;
+    	}
+    </style>
     <%@ include file="/WEB-INF/inc/asset.jsp" %>
+
 </head>
 <body>
 
@@ -17,7 +69,12 @@
         
         <div class="search">
 				<form method="GET" action="/notice/board.do">
-				<table style="width:500px;margin:20px auto;">
+				
+				<div class="searchdate" >
+					<input type="date" name="startdate"> - 
+					<input type="date" name="enddate">
+				</div>
+				<table>
 					<tr>
 						<td>
 							<select name="column" class="form-control">
@@ -42,8 +99,8 @@
 			<div style="text-align:center;margin:10px;color:#777;">'${map.word}'(으)로 검색한 ${list.size()}개의 게시물이 있습니다.</div>
 		</c:if>
 
-           <table class="table table-bordered list">
-           		<tr>
+           <table class="table table-bordered list" style="width: 1140px;" id="list">
+           		<tr bgcolor="#504B71">
            			<th>번호</th>
            			<th>제목</th>
            			<th>작성부서</th>
@@ -65,15 +122,14 @@
 				</tr>
 				</c:if>
            </table>
-           <div class="btns">
+           <div class="btns" id="btnwrite">
 			
 				<input type="button" value="글쓰기"
 					class="btn btn-primary"
 					onclick="location.href='/notice/add.do';">
            <div class="pagebar">${pagebar}</div>
            
-            
-
+           </div>
         </div>
     </main>
 

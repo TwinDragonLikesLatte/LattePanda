@@ -40,7 +40,7 @@ public class ListDAO {
 			
 			String where = "";
 			
-			if (map.get("searchmode").equals("y")) { //밑에 쿼리에 where절 치환 생각해주면됨 아직 안함
+			if (map.get("searchmode").equals("y")) {
 				where = String.format("where %s like '%%%s%%'"
 								, map.get("column")
 								, map.get("word").replace("'", "''"));
@@ -111,6 +111,7 @@ public class ListDAO {
 					+ "    to_char(o.start_order, 'yyyy-mm-dd hh24:mi:ss') as start_order ,\r\n"
 					+ "    m.name_kr,\r\n"
 					+ "    s.size_name,\r\n"
+					+ "    od.count,\r\n"
 					+ "    p.selling_price * od.count as total,\r\n"
 					+ "    s.name\r\n"
 					+ "        from tblorder o\r\n"
@@ -126,13 +127,10 @@ public class ListDAO {
 					+ "                                                on s.seq_size = rm.seq_size\r\n"
 					+ "                                                    inner join tblStore s\r\n"
 					+ "                                                        on s.seq_store = o.seq_store\r\n"
+					+ "--                                                    where o.end_order is null and od.refund = 'N' and o.seq_store = 10101\r\n"
 					+ "                                                    where o.start_order <= current_date and o.end_order < current_date and od.refund = 'N' and o.seq_store = 10101\r\n"
 					+ "                                                        order by start_order desc) a where rownum between 1 and 15";
-			
-			
-//			String sqlmenu = "select seq_order, name_kr from tblorderdetail od inner join tblproduct p on p.seq_product = od.seq_product \r\n"
-//					+ "inner join tblRegMenu rm on rm.seq_category = p.seq_category inner join tblMenu m on m.seq_menu = rm.seq_menu;";
-			
+					
 			
 			
 			rs = stat.executeQuery(sql);
@@ -149,6 +147,7 @@ public class ListDAO {
 				dto.setName_kr(rs.getString("name_kr"));
 				dto.setSize_name(rs.getString("size_name"));
 				dto.setTotal(rs.getString("total"));
+				dto.setCount(rs.getString("count"));
 				
 				list.add(dto);
 			}
@@ -163,10 +162,6 @@ public class ListDAO {
 	
 	
 	
-	
-	
-
-
 	//AllList 서블릿 주문개수
 	public int getTotalCount(HashMap<String, String> map) {
 		
@@ -181,7 +176,7 @@ public class ListDAO {
 			}
 			
 			
-			String sql = "select count(*) as cnt from tblorderdetail";
+			String sql = "select count(*) as cnt from tblorderdetail" + where;
 			
 			rs = stat.executeQuery(sql);
 			

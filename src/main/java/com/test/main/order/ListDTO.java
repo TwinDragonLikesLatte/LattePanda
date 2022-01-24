@@ -14,11 +14,20 @@ public class ListDTO {
 	public String rnum; 		//주문번호 순서
 	
 	public String detail;
+	public String count;
 	
 	
 	
 	
 
+
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
 
 	public String getDetail() {
 		return detail;

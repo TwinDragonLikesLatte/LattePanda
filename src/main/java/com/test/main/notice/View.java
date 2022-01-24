@@ -33,16 +33,17 @@ public class View extends HttpServlet {
 		
 		
 		BoardDAO dao = new BoardDAO();
+		
 		BoardDTO dto = dao.get(seq);
 		
-//		
-//		//제목과 내용에 들어있는 태그를 비활성화
+		
+		//제목과 내용에 들어있는 태그를 비활성화
 //		dto.setTitle(dto.getTitle().replace("<", "&lt;").replace(">", "&gt;"));
 //		dto.setContent(dto.getContent().replace("<", "&lt;").replace(">", "&gt;"));
 //				
 //		//개행 문자 처리
 //		dto.setContent(dto.getContent().replace("\r\n", "<br>"));
-//		
+		
 		
 		req.setAttribute("dto", dto);
 		req.setAttribute("column", column);

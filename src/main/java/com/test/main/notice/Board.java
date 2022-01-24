@@ -23,6 +23,10 @@ public class Board extends HttpServlet {
 		String column = req.getParameter("column");
 		String word = req.getParameter("word");
 		String searchmode = "n";
+//		String searchdate = "n";
+//		
+//		String startdate = req.getParameter("startdate");
+//		String enddate = req.getParameter("enddate");
 		
 		
 		if ((column == null && word == null) 
@@ -31,18 +35,33 @@ public class Board extends HttpServlet {
 		} else {
 			searchmode = "y";
 		}
+		
+		
+//		if (startdate == null && enddate == null)	{
+//			searchdate = "n";
+//		} else if (startdate == null && enddate != null) {
+//			searchdate = "n";
+//		} else if (startdate != null && enddate != null) {
+//			searchdate = "y";
+//		} else {
+//			searchdate = "n";
+//		}
     	
 		//DTO > HashMap
 		HashMap<String,String> map = new HashMap<String,String>();
 		map.put("column", column);
 		map.put("word", word);
 		map.put("searchmode", searchmode);
-    	
+		
+//		map.put("startdate", startdate);
+//		map.put("enddate", enddate);
+		
+		
     	
     	//페이징
 		int nowPage = 0;		//현재 페이지 번호
 		int totalCount = 0;
-		int pageSize = 15;		//한페이지당 출력할 게시물 수
+		int pageSize = 10;		//한페이지당 출력할 게시물 수
 		int totalPage = 0;
 		int begin = 0;			//where 시작 위치
 		int end = 0;			//where 끝 위치
@@ -70,7 +89,6 @@ public class Board extends HttpServlet {
     	
     	
     	Calendar now = Calendar.getInstance();
-    	
 		String strNow = String.format("%tF", now); //"2022-01-13"
 		
 		for (BoardDTO dto : list) {

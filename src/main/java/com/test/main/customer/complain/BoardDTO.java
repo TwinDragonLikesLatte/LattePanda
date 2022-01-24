@@ -1,34 +1,28 @@
-package com.test.main.notice;
+package com.test.main.customer.complain;
 
 public class BoardDTO {
 	
-	public String seq_notice;
-	public String seq_department;
-	public String title;
-	public String regdate;
-	public String content;
+	private String seq_complain;
+	private String title;
+	private String regdate;
+	private String content;
+	private String name;
 	
-	public String name; //부서명
 	
 
+	
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public String getSeq_notice() {
-		return seq_notice;
+	public String getSeq_complain() {
+		return seq_complain;
 	}
-	public void setSeq_notice(String seq_notice) {
-		this.seq_notice = seq_notice;
-	}
-	public String getSeq_department() {
-		return seq_department;
-	}
-	public void setSeq_department(String seq_department) {
-		this.seq_department = seq_department;
+	public void setSeq_complain(String seq_complain) {
+		this.seq_complain = seq_complain;
 	}
 	public String getTitle() {
 		return title;
@@ -48,8 +42,7 @@ public class BoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
+
 	
 	
 	

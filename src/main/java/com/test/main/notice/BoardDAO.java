@@ -41,7 +41,7 @@ public class BoardDAO {
 		try {
 
 
-			String sql = "insert into tblNotice values(seqNotice.nextVal, 310101, ?, default, ?)";
+			String sql = "insert into tblNotice (seq_notice, seq_department, title, regdate, content) values(seqNotice.nextVal, 310101, ?, default, ?)";
 			pstat = conn.prepareStatement(sql);
 			
 			pstat.setString(1, dto.getTitle());
@@ -69,11 +69,18 @@ public class BoardDAO {
 				where = String.format("where %s like '%%%s%%'"
 								, map.get("column")
 								, map.get("word").replace("'", "''"));
-			
 			}
+			
+			
+//			if (map.get("searchdate").equals("y")) {
+//				where = String.format("where regdate between %s and %s like '%%%s%%'"
+//								, map.get("startdate")
+//								, map.get("enddate"));
+//			
+//			}
 		
 			
-			String sql = String.format("select * from (select rownum as rnum, a.* from (select * from vwnotice order by seq_notice desc)a ) where rnum between %s and %s %s order by seq_notice desc", map.get("begin"), map.get("end"), where);
+			String sql = String.format("select * from (select rownum as rnum, a.* from (select * from vwnotice %s order by seq_notice desc)a ) where rnum between %s and %s order by seq_notice desc", where, map.get("begin"), map.get("end"));
 			
 			rs = stat.executeQuery(sql);
 
@@ -100,35 +107,7 @@ public class BoardDAO {
 	}
 	
 	
-	//Board 서블릿 게시물 개수
-	public int getTotalCount(HashMap<String, String> map) {
-		
-		try {
-
-			String where = "";
-			
-			if (map.get("searchmode").equals("y")) {
-				where = String.format("where %s like '%%%s%%'"
-								, map.get("column")
-								, map.get("word").replace("'", "''"));
-			}
-			
-			String sql = "select count(*) as cnt from tblNotice";
-			
-			rs = stat.executeQuery(sql);
-			
-			if (rs.next()) {
-				return rs.getInt("cnt");
-			}
-			
-		} catch (Exception e) {
-			System.out.println("BoardDAO.getTotalCount()");
-			e.printStackTrace();
-		}
-		
-		return 0;
-		
-	}
+	
 	
 	
 	//view 서블릿 -> 글 레코드
@@ -136,15 +115,15 @@ public class BoardDAO {
 		
 		try {
 
-			String sql = "select n.seq_notice, d.name, n.title, n.regdate, n.content from tblNotice n inner join tblDepartment d on n.seq_department = d.seq_department where seq_Notice = ?";
+			String sql = "select n.seq_notice, d.name, n.title, n.regdate, n.content from tblNotice n inner join tblDepartment d on n.seq_department = d.seq_department where seq_notice = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			
 			pstat.setString(1, seq);
-			
 			rs = pstat.executeQuery();
 			
 			if (rs.next()) {
+				
 				BoardDTO dto = new BoardDTO();
 				
 				dto.setSeq_notice(rs.getString("seq_notice"));
@@ -152,6 +131,7 @@ public class BoardDAO {
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
 				dto.setRegdate(rs.getString("regdate"));
+				
 				return dto;
 			}
 
@@ -168,11 +148,10 @@ public class BoardDAO {
 
 		try {
 
-			String sql = "update tblNotice set title= ? , contnet= ?";
+			String sql = "update tblNotice set title= ?, contnet= ?";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getTitle());
 			pstat.setString(2, dto.getContent());
-			pstat.setString(3, dto.getSeq_notice());
 			
 			return pstat.executeUpdate();
 
@@ -203,6 +182,42 @@ public class BoardDAO {
 		
 		return 0;
 	}
+	
+	
+	
+	//Board 서블릿 게시물 개수
+	public int getTotalCount(HashMap<String, String> map) {
+		
+		try {
+
+			String where = "";
+			
+			if (map.get("searchmode").equals("y")) {
+				where = String.format("where %s like '%%%s%%'"
+								, map.get("column")
+								, map.get("word").replace("'", "''"));
+			}
+			
+			String sql = "select count(*) as cnt from tblNotice" + where;
+			
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("BoardDAO.getTotalCount()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
+
+
+	
+	
 	
 }
 
