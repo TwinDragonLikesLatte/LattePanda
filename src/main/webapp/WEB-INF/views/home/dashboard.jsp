@@ -124,14 +124,14 @@
 							</div>
 						</div>
 						<div class="content_gird">
-							<div class="content_header">공지사항</div>
+							<div class="content_header">전지역 매출 현황</div>
 							<table class="table table-bordered daily_sales">
-								<c:forEach items="${notice}" var="dto" end="9">
+								<%-- <c:forEach items="${notice}" var="dto" end="9">
 									<tr>
 										<td>${dto.title}</td>
 										<td>${dto.content}</td>
 									</tr>
-								</c:forEach>
+								</c:forEach> --%>
 							</table>
 						</div>
 						<div class="content_gird">
@@ -143,16 +143,12 @@
 							</div>
 						</div>
 						<div class="content_gird">
-							<div class="content_header">재고 상황</div>
-							<table class="table table-bordered area_remain_product">
-								<tr>
-									<td>재고명</td>
-									<td>재고 수량</td>
-								</tr>
-								<c:forEach items="${ areastockremain }" var="dto" end="8">
+							<div class="content_header">공지사항</div>
+							<table class="table table-bordered daily_sales">
+								<c:forEach items="${notice}" var="dto" end="9">
 									<tr>
-										<td>${dto.name }</td>
-										<td>${dto.quantity }</td>
+										<td>${dto.title}</td>
+										<td>${dto.content}</td>
 									</tr>
 								</c:forEach>
 							</table>
@@ -286,7 +282,7 @@
 	        colorByPoint: true,
 	        data: [
 	        	
-	        	<c:forEach items="${areamonsellprod}" var="dto">
+	        	<c:forEach items="${areaprod}" var="dto">
 				{
 					name: '${dto.name}',
 			        y: ${dto.sum}
@@ -369,7 +365,7 @@
 	    series: [{
 	        name: '',
 	        data: [
-	        	<c:forEach items="${areaprod}" var="dto">
+	        	<c:forEach items="${areamonsellprod}" var="dto">
 					['${dto.name}',${dto.sum}],
         		</c:forEach>
 	        ],

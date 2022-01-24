@@ -33,16 +33,16 @@ public class DashBoard extends HttpServlet {
     	ArrayList<StockRemainDTO> stockremain = dao.stockremain();
     	
     	
-    	//[지역장] 지역내 지점 매출 현황 (상품별 판매량) 
-    	ArrayList<AreaMonSellProdDTO> areamonsellprod = dao.areamonsellprod();
+    	//[지역장] 지역내 지점 일일 매출 현황 (상품별 판매량) 
+    	ArrayList<AreaDailySellProdDTO> areaprod = dao.areaprod();
     	//[지역장] 지점별 당일 판매액
     	String areatotal = dao.areatotal();
     	//[지역장] 지점별 월간 총 판매액 
     	ArrayList<AreaMontlyTotalDTO> areamontotal = dao.areamontotal();
-    	//[지역장] 재고상황 
-    	ArrayList<AreaStockRemainDTO> areastockremain = dao.areastockremain();
-    	//[지역장] 전매장 일일 상품별 판매량
-    	ArrayList<AreaDailySellProdDTO> areaprod = dao.areaprod();
+    	//[지역장] 전지역 매출 현황
+
+    	//[지역장] 전지점 월간 상품별 판매량
+    	ArrayList<AreaMonSellProdDTO> areamonsellprod = dao.areamonsellprod();
     	
     	
     	req.setAttribute("total", total);

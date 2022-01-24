@@ -167,7 +167,7 @@ public class DashBoardDAO {
 	public ArrayList<AreaMonSellProdDTO> areamonsellprod() {
 		try {
 
-			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE ='10101' AND ORDER_DATE BETWEEN TO_DATE('20211101','YYYYMMDD') AND TO_DATE('20211201','YYYYMMDD') GROUP BY (NAME_KR)";
+			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE ORDER_DATE BETWEEN TO_DATE('20211101','YYYYMMDD') AND TO_DATE('20211201','YYYYMMDD') GROUP BY (NAME_KR)";
 			ArrayList<AreaMonSellProdDTO> areamonsellprod = new ArrayList<AreaMonSellProdDTO>();
 			rs = stat.executeQuery(sql);
 
@@ -239,40 +239,13 @@ public class DashBoardDAO {
 		return null;
 	}
 
-	public ArrayList<AreaStockRemainDTO> areastockremain() {
-		try {
-
-			String sql = "SELECT SEQ_STORE, NAME, QUANTITY, REGDATE FROM VWSTOCKREMAIN WHERE SEQ_STORE='10101' AND REGDATE = '2022-01-25' ORDER BY QUANTITY DESC";
-//			지역장에서 선택한 값에 따라 바뀌게 만들기
-			ArrayList<AreaStockRemainDTO> areastockremain = new ArrayList<AreaStockRemainDTO>();
-			rs = stat.executeQuery(sql);
-
-			while (rs.next()) {
-				AreaStockRemainDTO dto = new AreaStockRemainDTO();
-
-				dto.setSeq_store(rs.getString("seq_store"));
-				dto.setName(rs.getString("name"));
-				dto.setQuantity(rs.getString("quantity"));
-				dto.setRegdate(rs.getString("regdate"));
-
-				areastockremain.add(dto);
-			}
-
-			return areastockremain;
-
-		} catch (Exception e) {
-			System.out.println("DashBoardDAO.areastockremain()");
-			e.printStackTrace();
-		}
-		return null;
-	}
 
 	public ArrayList<AreaDailySellProdDTO> areaprod() {
 		
 		try {
-			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE ORDER_DATE = TO_DATE('20211101','YYYYMMDD') GROUP BY (NAME_KR)";
+			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE='10101' AND ORDER_DATE = TO_DATE('20211101','YYYYMMDD') GROUP BY (NAME_KR)";
 			//날짜 세션에서 받고 
-			//전매장이기에 버튼 입력값과는 상관이 없다.
+			//
 			
 			ArrayList<AreaDailySellProdDTO> areaprod = new ArrayList<AreaDailySellProdDTO>();
 			rs = stat.executeQuery(sql);
