@@ -9,6 +9,10 @@
     background-color: #C4C4C4;
 }
 
+.product-table {
+    height : 60%;
+}
+
 .table th,
 .table td{
     text-align: center;
@@ -35,7 +39,7 @@
 .form-control {
     display: flex;
     flex-direction: column;
-    height: 185px;
+    height: auto;
     margin : 15px 0px;
 }
 
@@ -51,13 +55,26 @@
 
 .form-control div > span:first-child {
     display: inline-block;
-    width: 100px;
+    width: 120px;
     font-weight: bold;
 }
 
 input[type="radio"],
 input[type="checkbox"] {
     margin-right: 4px;
+}
+input[type="date"] + span {
+    font-size: 16px;
+    display: inline-block;
+    margin: 0px 7px;
+}
+
+input[type="date"] {
+    height: 70%;
+}
+
+.form-control div:nth-child(5) {
+    margin-bottom: 5px;
 }
 
 .form-control input[type="checkbox"] + span {
@@ -74,4 +91,10 @@ input[type="checkbox"] {
     justify-content: right;
     margin-right: 15px;
     margin-bottom: 15px;
+}
+
+
+/* product list */
+.product-filter-box {
+    height: 265px;
 }
