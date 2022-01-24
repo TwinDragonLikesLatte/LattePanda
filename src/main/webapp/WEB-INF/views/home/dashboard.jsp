@@ -56,7 +56,7 @@
 							<table class="table table-bordered daily_sales">
 								<c:forEach items="${notice}" var="dto" end="9">
 									<tr>
-										<td>${dto.title}</td>
+										<td><a href="/notice/board.do?${dto.seq_notice}">${dto.title}</a></td>
 										<td>${dto.content}</td>
 									</tr>
 								</c:forEach>
@@ -143,7 +143,7 @@
 							<table class="table table-bordered daily_sales">
 								<c:forEach items="${notice}" var="dto" end="9">
 									<tr>
-										<td>${dto.title}</td>
+										<td><a href="/notice/board.do?${dto.seq_notice}">${dto.title}</a></td>
 										<td>${dto.content}</td>
 									</tr>
 								</c:forEach>
