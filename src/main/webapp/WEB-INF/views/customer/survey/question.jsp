@@ -23,7 +23,7 @@
             border: 1px solid rgba(255, 255, 255, 0.18);
         }
         #modal .modal-window {
-            background: rgba( 69, 139, 197, 0.70 );
+            background: rgba( 53, 30, 114, 0.70 );
             box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
             backdrop-filter: blur( 13.5px );
             -webkit-backdrop-filter: blur( 13.5px );
@@ -59,7 +59,11 @@
             padding: 0px 10px;
             text-shadow: 1px 1px 2px gray;
             color: white;
-            margin-right: 0;
+            
+        }
+        
+        #check {
+        	color : black;
         }
         
        
@@ -83,6 +87,7 @@
     <div id="modal" class="modal-overlay">
         <div class="modal-window">
             <div class="title">
+            	<br>
                 <h2>LattePanda 만족도 조사</h2>
             </div>
             <div class="close-area">X</div>
@@ -92,27 +97,45 @@
                 <p>단, 주문번호당 1회의 참여만 가능합니다.</p>
                 
                 
-               	<input type="text" class="ordercheck" name="ordercheck">
-                <input type="button" class ="btn btn-primary"    onclick="location.href='/customer/survey/questionok.do'" value="확인">
+                <form method="POST" action="/customer/survey/questionok.do">
+               	<input type="text" id = "check" name="check">
+                <input type="submit" class ="btn btn-primary" id="btncheck" value="확인">
+            	</form>
+            	
             </div>
         </div>
     </div>
            
+
+
+
+
+
+
 
         </div>
     </main>
 
 </div>
 
+	<script>
+		
+	$("#btncheck").click(function() {
+	    var order = $("#check").val();
+	    if(order == ""){
+	        alert("주문번호를 입력해주세요");
+	    }else{
+	        idCheckFunc(order);
+	    }    
+	})
 
-<script>
 
-
+	//x버튼
     const closeBtn = modal.querySelector(".close-area")
         closeBtn.addEventListener("click", e => {
             modal.style.display = "none"
         })
-</script>
+	</script>
 
 </body>
 </html>

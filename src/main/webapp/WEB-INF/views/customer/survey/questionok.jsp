@@ -22,7 +22,16 @@
 </div>
 
 <script>
+<c:if test="${result == 0}">
+//성공
+location.href = '/customer/survey/question.do';
+</c:if>
 
+<c:if test="${result == 1}">
+//실패
+alert('failed');
+history.back();
+</c:if>
 </script>
 
 </body>

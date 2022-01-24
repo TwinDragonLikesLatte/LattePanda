@@ -83,7 +83,6 @@ public class BoardDAO {
 
 				BoardDTO dto = new BoardDTO();
 				
-				
 				dto.setSeq_complain(rs.getString("seq_complain"));
 				dto.setTitle(rs.getString("title"));
 				dto.setRegdate(rs.getString("regdate"));

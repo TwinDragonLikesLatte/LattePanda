@@ -31,6 +31,30 @@ public class QuestionDAO {
 		}
 	
 	}
+
+	public int check(QuestionDTO dto) {
+		
+		
+		try {
+			String sql = "select seq_order from tblsurvey";
+			
+			rs = stat.executeQuery(sql);
+
+			ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
+			
+			pstat = conn.prepareStatement(sql);
+
+			//dto.setSeq_order(rs.getString("count"));
+			
+		} catch (Exception e) {
+			System.out.println("QuestionDAO.check()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	
 	
 	
 

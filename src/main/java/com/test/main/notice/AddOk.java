@@ -18,7 +18,7 @@ public class AddOk extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 		
-		String subject = req.getParameter("title");
+		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		
 		BoardDAO dao = new BoardDAO();

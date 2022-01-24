@@ -21,7 +21,7 @@ public class DBUtil {
     public static Connection open() {
 
         Connection conn = null;
-        String url = "jdbc:oracle:thin:@db202201141741_medium?TNS_ADMIN=/Users/jinn/Oracle/teampl/network/admin";
+        String url = "jdbc:oracle:thin:@db202201141741_medium?TNS_ADMIN=D:/class/server/Wallet_DB202201141741";
         String path = url.split("TNS_ADMIN=")[1] + "/login.txt";
 
         try {
@@ -45,7 +45,7 @@ public class DBUtil {
             conn = DriverManager.getConnection(url, id, pw);
 
             setTimeZone(conn); //오라클 클라우드 시간 설정
-            printTimeZone(conn); //timezone 변경 테스트
+            //printTimeZone(conn); //timezone 변경 테스트
 
             return conn;
 

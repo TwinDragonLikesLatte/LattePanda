@@ -93,7 +93,7 @@
 					</tr>
 				</table>
 				</form>
-			</div>	
+		</div>	
         
         <c:if test="${map.searchmode == 'y'}">
 			<div style="text-align:center;margin:10px;color:#777;">'${map.word}'(으)로 검색한 ${list.size()}개의 게시물이 있습니다.</div>

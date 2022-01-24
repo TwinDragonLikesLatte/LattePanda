@@ -97,6 +97,9 @@ public class BoardDAO {
 				
 				list.add(dto);
 			}
+			
+			//conn.close();//**
+			
 			return list;
 			
 		} catch (Exception e) {
@@ -112,7 +115,6 @@ public class BoardDAO {
 	
 	//view 서블릿 -> 글 레코드
 	public BoardDTO get(String seq) {
-		
 		try {
 
 			String sql = "select n.seq_notice, d.name, n.title, n.regdate, n.content from tblNotice n inner join tblDepartment d on n.seq_department = d.seq_department where seq_notice = ?";
@@ -125,12 +127,13 @@ public class BoardDAO {
 			if (rs.next()) {
 				
 				BoardDTO dto = new BoardDTO();
-				
 				dto.setSeq_notice(rs.getString("seq_notice"));
 				dto.setName(rs.getString("name"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
 				dto.setRegdate(rs.getString("regdate"));
+				
+				
 				
 				return dto;
 			}
@@ -153,6 +156,8 @@ public class BoardDAO {
 			pstat.setString(1, dto.getTitle());
 			pstat.setString(2, dto.getContent());
 			
+			conn.close();//**
+			
 			return pstat.executeUpdate();
 
 		} catch (Exception e) {
@@ -172,6 +177,8 @@ public class BoardDAO {
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);
+			
+			conn.close();//**
 			
 			return pstat.executeUpdate();
 
@@ -206,12 +213,17 @@ public class BoardDAO {
 				return rs.getInt("cnt");
 			}
 			
+			
+			
+			
 		} catch (Exception e) {
 			System.out.println("BoardDAO.getTotalCount()");
 			e.printStackTrace();
 		}
 		
 		return 0;
+		
+	
 		
 	}
 

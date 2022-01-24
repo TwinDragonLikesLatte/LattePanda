@@ -27,8 +27,7 @@ public class View extends HttpServlet {
 		}
 		
 		
-		
-		String seq = req.getParameter("seq_notice");
+		String seq = req.getParameter("seq");
 		String page = req.getParameter("page");
 		
 		

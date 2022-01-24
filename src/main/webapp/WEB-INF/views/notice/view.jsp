@@ -28,7 +28,7 @@
 					<td>${dto.name}</td>
 				</tr>	
 					<th>제목</th>
-					<td>a${dto.title}</td>
+					<td>${dto.title}</td>
 				</tr>
 				<tr>
 					<th>날짜</th>

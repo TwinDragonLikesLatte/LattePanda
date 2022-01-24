@@ -12,20 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 public class QuestionOk extends HttpServlet { 
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.setCharacterEncoding("UTF-8");
-		
-		String ordercheck = req.getParameter("ordercheck");
+
+		String count = req.getParameter("count");
+
 		
 		QuestionDAO dao = new QuestionDAO();
 		QuestionDTO dto = new QuestionDTO();
 		
 		
-//		int result = dao.check(dto); 
+		int result = dao.check(dto); //1 중복, 0 중복아님
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/customer/survey/questionok.jsp");
 		dispatcher.forward(req, resp);
-	}
 
+	}
 }
