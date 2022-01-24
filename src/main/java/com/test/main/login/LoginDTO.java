@@ -20,6 +20,17 @@ public class LoginDTO {
     private int loginFail; //실패할 경우 +1, 5가 되면 lock
     private int findFail; //실패할 경우 +1, 5가 되면 lock
 
+    //비밀번호 찾기
+    private String ssn;
+
+    public String getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+
     public String getSeqEmployee() {
         return seqEmployee;
     }
