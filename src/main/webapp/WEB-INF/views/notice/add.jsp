@@ -3,6 +3,10 @@
 <html>
 <head>
     <title>글쓰기</title>
+    <style>
+    	
+    
+    </style>
     <%@ include file="/WEB-INF/inc/asset.jsp" %>
 </head>
 <body>
@@ -15,14 +19,13 @@
         <div class="content">
 
             <form method="POST" action="/notice/addok.do">
-			<table class="table table-bordered add">
+			<table class="table" style="width: 900px;" >
 				<tr>
 					<th>제목</th>
 					<td><input type="text" name="subject" class="form-control" required></td>
 				</tr>
 				<tr>
-					<th>내용</th>
-					<td><textarea name="content" class="form-control" required></textarea></td>
+					<td colspan="2"><textarea name="content" class="form-control" required style="height: 600px;"></textarea></td>
 				</tr>
 			</table>
 			

@@ -47,7 +47,6 @@ public class BoardDAO {
 			pstat.setString(1, dto.getTitle());
 			pstat.setString(2, dto.getContent());
 			
-			
 			return pstat.executeUpdate();
 			
 			
@@ -59,6 +58,8 @@ public class BoardDAO {
 		return 0;
 	}
 	
+	
+	
 	public ArrayList<BoardDTO> list(HashMap<String, String> map) {
 		
 		try {
@@ -68,16 +69,12 @@ public class BoardDAO {
 			if (map.get("searchmode").equals("y")) {
 				where = String.format("where %s like '%%%s%%'"
 								, map.get("column")
-								, map.get("word").replace("'", "''"));
+								, map.get("word").replace("'", "''")
+								, map.get("name")); //수정
 			}
 			
 			
-//			if (map.get("searchdate").equals("y")) {
-//				where = String.format("where regdate between %s and %s like '%%%s%%'"
-//								, map.get("startdate")
-//								, map.get("enddate"));
-//			
-//			}
+
 		
 			
 			String sql = String.format("select * from (select rownum as rnum, a.* from (select * from vwnotice %s order by seq_notice desc)a ) where rnum between %s and %s order by seq_notice desc", where, map.get("begin"), map.get("end"));

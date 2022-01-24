@@ -24,7 +24,7 @@
 <script>
 	<c:if test="${result == 1}">
 	//성공
-	location.href = '/notice/boar.do';
+	location.href = '/notice/board.do';
 	</c:if>
 	
 	<c:if test="${result == 0}">

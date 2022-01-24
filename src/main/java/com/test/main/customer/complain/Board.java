@@ -22,15 +22,19 @@ public class Board extends HttpServlet {
 
 		String column = req.getParameter("column");
 		String word = req.getParameter("word");
+		String name = req.getParameter("name");
+		
 		String searchmode = "n";
 		
 		
-		if ((column == null && word == null) 
-				|| (column.equals("") && word.equals(""))) {
+		if ((column == null && word == null && name == null ) 
+				|| (column.equals("") && word.equals("") && name.equals(""))) {
 			searchmode = "n";
 		} else {
 			searchmode = "y";
 		}
+
+
 		
     	
 		//DTO > HashMap

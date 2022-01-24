@@ -7,6 +7,10 @@
  		.content table {
  			width: 1000px;
  		}
+ 		
+ 		.content table > tr:nth-child(1) {
+ 			background-color : gold;
+ 		}
  	
  	
  	</style>
@@ -19,24 +23,15 @@
         <%@ include file="/WEB-INF/inc/sub-nav_notice.jsp" %>
         <div class="content">
             <table class="table table-bordered">
+				
 				<tr>
-					<th>글번호</th>
 					<td>${dto.seq_notice}</td>
-				</tr>
-				<tr>
-					<th>부서</th>
 					<td>${dto.name}</td>
-				</tr>	
-					<th>제목</th>
 					<td>${dto.title}</td>
-				</tr>
-				<tr>
-					<th>날짜</th>
 					<td>${dto.regdate}</td>
-				</tr>						
+				</tr>	
 				<tr>
-					<th>내용</th>
-				 	<td style="height:300px;vertical-align:middle;">${dto.content}</td>
+				 	<td colspan="4" style="height:300px;vertical-align:middle;">${dto.content}</td>
 				</tr>
 			</table>
 			

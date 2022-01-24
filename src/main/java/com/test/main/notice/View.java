@@ -17,6 +17,8 @@ public class View extends HttpServlet {
 
 		String column = req.getParameter("column");
 		String word = req.getParameter("word");
+		String date = req.getParameter("date");
+		
 		String searchmode = "n";
 		
 		if ((column == null && word == null) 

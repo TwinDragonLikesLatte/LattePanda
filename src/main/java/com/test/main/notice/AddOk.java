@@ -26,9 +26,11 @@ public class AddOk extends HttpServlet {
 		
 		
 //		dto.setId(session.getAttribute("id").toString());
-//		dto.setSubject(subject);
-//		dto.setContent(content);
+		dto.setTitle(title);
+		dto.setContent(content);
 //		dto.setUserip(req.getRemoteAddr());
+		
+		
 		
 		int result = dao.add(dto); //1, 0
 		
