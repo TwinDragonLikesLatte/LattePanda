@@ -111,8 +111,17 @@
     /* fill: var(--contents_background); */
 }
 
+.content_header {
+	position: relative;
+	top:0;
+	left:0;
+}
+
 form {
 	float: right;
+	position: absolute; 
+	top: 8px;
+	right: 10px;
 }
 
 #container2 {
