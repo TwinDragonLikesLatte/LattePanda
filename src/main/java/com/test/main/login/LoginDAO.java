@@ -24,6 +24,16 @@ public class LoginDAO {
         }
     }
 
+    public void closeConn() {
+
+        try {
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("LoginDAO.closeConn()");
+            e.printStackTrace();
+        }
+    }
+
     public LoginDTO login(String id) {
 
         try {
@@ -101,5 +111,103 @@ public class LoginDAO {
             System.out.println("LoginDAO.addLoginFail()");
             e.printStackTrace();
         }
+    }
+
+    public String findById(String id) {
+
+        try {
+
+            String sql = "SELECT * FROM tblEmployee WHERE seq_employee = ?";
+
+            pstat = conn.prepareStatement(sql);
+            pstat.setString(1, id);
+
+            ResultSet rs = pstat.executeQuery();
+
+            if (rs.next()) {
+                pstat.close();
+                return id;
+            }
+
+        } catch (Exception e) {
+            System.out.println("LoginDAO.searchId()");
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public String findByPersonal(LoginDTO dto) {
+
+        try {
+
+            String sql = "SELECT * FROM tblEmployee WHERE seq_employee = ? AND name = ? AND ssn LIKE ?";
+
+            pstat = conn.prepareStatement(sql);
+            pstat.setString(1, dto.getSeqEmployee());
+            pstat.setString(2, dto.getName());
+            pstat.setString(3, "%-" + dto.getSsn());
+
+            ResultSet rs = pstat.executeQuery();
+
+            if (rs.next()) {
+                pstat.close();
+                return dto.getSeqEmployee();
+            }
+
+        } catch (Exception e) {
+            System.out.println("LoginDAO.findByPersonal()");
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public boolean isPwSame(LoginDTO dto) {
+
+        try {
+
+            String sql = "SELECT * FROM tblEmployee WHERE seq_employee = ? AND password = ?";
+
+            pstat = conn.prepareStatement(sql);
+            pstat.setString(1, dto.getSeqEmployee());
+            pstat.setString(2, dto.getPassword());
+
+            ResultSet rs = pstat.executeQuery();
+
+            if (rs.next()) {
+                pstat.close();
+                return true;
+            }
+
+        } catch (Exception e) {
+            System.out.println("LoginDAO.isPwSame()");
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public int changePw(LoginDTO dto) {
+
+        try {
+
+            String sql = "UPDATE tblEmployee SET password = ? WHERE seq_employee = ?";
+
+            pstat = conn.prepareStatement(sql);
+            pstat.setString(1, dto.getPassword());
+            pstat.setString(2, dto.getSeqEmployee());
+
+            int result = pstat.executeUpdate();
+
+            pstat.close();
+            return result;
+
+        } catch (Exception e) {
+            System.out.println("LoginDAO.changePw()");
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 }
