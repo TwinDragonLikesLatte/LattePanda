@@ -41,6 +41,9 @@ public class DashBoard extends HttpServlet {
     	ArrayList<AreaMontlyTotalDTO> areamontotal = dao.areamontotal();
     	//[지역장] 재고상황 
     	ArrayList<AreaStockRemainDTO> areastockremain = dao.areastockremain();
+    	//[지역장] 전매장 일일 상품별 판매량
+    	ArrayList<AreaDailySellProdDTO> areaprod = dao.areaprod();
+    	
     	
     	req.setAttribute("total", total);
     	req.setAttribute("list", list);
@@ -51,6 +54,7 @@ public class DashBoard extends HttpServlet {
     	req.setAttribute("areatotal", areatotal);
     	req.setAttribute("areamontotal", areamontotal);
     	req.setAttribute("areastockremain", areastockremain);
+    	req.setAttribute("areaprod", areaprod);
     	
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/home/dashboard.jsp");
         dispatcher.forward(req, resp);

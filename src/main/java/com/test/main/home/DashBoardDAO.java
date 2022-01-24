@@ -267,4 +267,31 @@ public class DashBoardDAO {
 		return null;
 	}
 
+	public ArrayList<AreaDailySellProdDTO> areaprod() {
+		
+		try {
+			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE ORDER_DATE = TO_DATE('20211101','YYYYMMDD') GROUP BY (NAME_KR)";
+			//날짜 세션에서 받고 
+			//전매장이기에 버튼 입력값과는 상관이 없다.
+			
+			ArrayList<AreaDailySellProdDTO> areaprod = new ArrayList<AreaDailySellProdDTO>();
+			rs = stat.executeQuery(sql);
+
+			while (rs.next()) {
+				AreaDailySellProdDTO dto = new AreaDailySellProdDTO();
+
+				dto.setName(rs.getString("name"));
+				dto.setSum(rs.getString("sum"));
+
+				areaprod.add(dto);
+			}
+			return areaprod;
+
+		} catch (Exception e) {
+			System.out.println("DashBoardDAO.areaprod()");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }
