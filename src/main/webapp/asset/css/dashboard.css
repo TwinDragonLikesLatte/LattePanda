@@ -123,3 +123,8 @@ form {
 	width: 1000px;
     height: 360px;
 }
+
+#graph3 {
+	height: 350px;
+    /* fill: var(--contents_background); */
+}

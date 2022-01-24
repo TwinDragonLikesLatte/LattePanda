@@ -97,8 +97,7 @@
 										<option value="f1">강남대로점</option>
 										<option value="f2">교대점</option>
 										<option value="f3">신사점</option>
-									</select>
-									<input type="submit" class="btn btn-primary" value="등록하기">
+									</select> <input type="submit" class="btn btn-primary" value="등록하기">
 								</form>
 							</div>
 							<div class="content_graph">
@@ -125,14 +124,11 @@
 						</div>
 						<div class="content_gird">
 							<div class="content_header">전지역 매출 현황</div>
-							<table class="table table-bordered daily_sales">
-								<%-- <c:forEach items="${notice}" var="dto" end="9">
-									<tr>
-										<td>${dto.title}</td>
-										<td>${dto.content}</td>
-									</tr>
-								</c:forEach> --%>
-							</table>
+ 								<div class="content_graph">
+									<figure class="highcharts-figure4">
+										<div id="graph3"></div>
+									</figure>
+								</div>
 						</div>
 						<div class="content_gird">
 							<div class="content_header">전지점 상품별 일일 판매량</div>
@@ -232,12 +228,7 @@
 	        colorByPoint: true,
 	        data: [
 	        	
-	        	<c:forEach items="${prod}" var="dto">
-				{
-					name: '${dto.name_kr}',
-			        y: ${dto.sum}
-			    },
-        		</c:forEach>
+	        	 
 	            //sliced: true,
 	            //selected: true
 	    }]
@@ -381,6 +372,53 @@
 	                fontFamily: 'Verdana, sans-serif'
 	            }
 	        }
+	    }]
+	});
+	
+	Highcharts.chart('graph3', {
+	    chart: {
+	        plotBackgroundColor: null,
+	        plotBorderWidth: null,
+	        plotShadow: false,
+	        type: 'pie',
+	        backgroundColor: '#f5f5f5'
+	    },
+	    title: {
+	        text: ''
+	    },
+	    tooltip: {
+	        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	    },
+	    accessibility: {
+	        point: {
+	            valueSuffix: '%'
+	        }
+	    },
+	    plotOptions: {
+	        pie: {
+	            allowPointSelect: true,
+	            cursor: 'pointer',
+	            dataLabels: {
+	                enabled: false
+	            },
+	            showInLegend: true
+	        }
+	    },
+	    series: [{
+	        name: '판매량',
+	        colorByPoint: true,
+	        data: [
+	        	
+	        	<c:forEach items="${areaalltotal}" var="dto">
+				{
+					name: '${dto.seq_store}',
+			        y: ${dto.total}
+			    },
+        		</c:forEach>
+	            //sliced: true,
+	            //selected: true
+	            
+	        ]
 	    }]
 	});
 	

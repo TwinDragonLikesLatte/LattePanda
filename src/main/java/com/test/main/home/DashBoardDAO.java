@@ -267,4 +267,32 @@ public class DashBoardDAO {
 		return null;
 	}
 
+	public ArrayList<AreaDalyAllTotalDTO> areaalltotal() {
+		
+		try {
+			String sql = "SELECT SEQ_STORE,SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE ORDER_DATE = TO_DATE('20211101','YYYYMMDD') GROUP BY (SEQ_STORE)";
+			//날짜 세션에서 받고 
+			//
+			
+			ArrayList<AreaDalyAllTotalDTO> areaalltotal = new ArrayList<AreaDalyAllTotalDTO>();
+			rs = stat.executeQuery(sql);
+
+			while (rs.next()) {
+				AreaDalyAllTotalDTO dto = new AreaDalyAllTotalDTO();
+
+				dto.setSeq_store(rs.getString("seq_store"));
+				dto.setTotal(rs.getString("total"));
+
+				areaalltotal.add(dto);
+			}
+			return areaalltotal;
+
+		} catch (Exception e) {
+			System.out.println("DashBoardDAO.areaalltotal()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 }
