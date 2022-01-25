@@ -86,6 +86,7 @@ public class RegMenuDAO {
                 list.add(dto);
             }
 
+            conn.close();
             return list;
 
         } catch (Exception e) {
