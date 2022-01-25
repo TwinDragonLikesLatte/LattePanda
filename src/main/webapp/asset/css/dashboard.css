@@ -21,6 +21,7 @@
 	padding: 15px 20px;
 	background-color: #9988DD;
 	font-weight: 700;
+	color: var(--black_sub1);
 }
 
 /* 당일판매액 */
@@ -29,15 +30,17 @@
 	width: inherit;
 	height: 120px;
 	text-align: center;
+	color: var(--black_sub1);
 
 }
 .content_font > p {
 	margin: 30px;
 	font-size: 20px;
+	font-weight: 700px;
 }
 
 .total {
-	font-weight: 700px
+	font-weight: 700px;
 }
 
 .content_chart {
@@ -62,12 +65,22 @@
 
 
 /* 공지사항 */
+.dashboard_notice {
+	width: inherit;
+	height: 370px;
+	overflow: hidden;
+}
+
 .daily_sales > tbody > tr > td:nth-child(2) {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	max-width: 300px;
-	height: 37px;
+	height: 38px;
+}
+
+.daily_sales > tbody > tr > td {
+	color: var(--black_sub1);
 }
 
 .schedule {
@@ -81,8 +94,25 @@
 	border: 1px dashed black;
 }
 
+.dash_notice_title {
+	color: #3F4150;
+	font-weight: 700;
+}
 
-/* 차트 */
+/* 재고상황 */
+.dashboard_remain_product {
+	width: inherit;
+	height: 370px;
+	overflow: hidden;
+}
+
+.reamin_product > tbody > tr > td {
+	color: var(--black_sub1);
+}
+
+
+
+/*  월간 총 판매액 차트 */
 .highcharts-figure {
     width: 450px;
 }
@@ -98,7 +128,7 @@
 
 #graph {
 	height: 350px;
-    /* fill: var(--contents_background); */
+
 }
 
 
@@ -117,7 +147,7 @@
 	left:0;
 }
 
-form {
+.dashboard-select {
 	float: right;
 	position: absolute; 
 	top: 8px;
@@ -137,3 +167,5 @@ form {
 	height: 350px;
     /* fill: var(--contents_background); */
 }
+
+

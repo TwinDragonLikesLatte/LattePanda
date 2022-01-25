@@ -4,6 +4,7 @@ package com.test.main.home;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ public class DashBoardDAO {
 
 			conn = DBUtil.open();
 			stat = conn.createStatement();
+
 
 		} catch (Exception e) {
 			System.out.println("DailyTotalDAO.DailyTotalDAO()");
@@ -43,7 +45,6 @@ public class DashBoardDAO {
 			String total = rs.getString("TOTAL");
 
 			return total;
-
 		} catch (Exception e) {
 			System.out.println("DashBoardDAO.total()");
 			e.printStackTrace();
@@ -71,7 +72,6 @@ public class DashBoardDAO {
 
 				list.add(dto);
 			}
-
 			return list;
 
 		} catch (Exception e) {
@@ -126,7 +126,8 @@ public class DashBoardDAO {
 
 				notice.add(dto);
 			}
-
+//			conn.close();
+//			stat.close();
 			return notice;
 
 		} catch (Exception e) {
@@ -154,7 +155,8 @@ public class DashBoardDAO {
 
 				stockremain.add(dto);
 			}
-
+//			conn.close();
+//			stat.close();
 			return stockremain;
 
 		} catch (Exception e) {
@@ -179,7 +181,8 @@ public class DashBoardDAO {
 
 				areamonsellprod.add(dto);
 			}
-
+//			conn.close();
+//			stat.close();
 			return areamonsellprod;
 
 		} catch (Exception e) {
@@ -199,9 +202,9 @@ public class DashBoardDAO {
 
 			rs.next();
 
-			String total = rs.getString("TOTAL");
-
-			return total;
+			String areatotal = rs.getString("TOTAL");
+//			conn.close();
+			return areatotal;
 
 		} catch (Exception e) {
 			System.out.println("DashBoardDAO.areatotal()");
@@ -229,7 +232,8 @@ public class DashBoardDAO {
 
 				areamontotal.add(dto);
 			}
-
+//			conn.close();
+//			stat.close();
 			return areamontotal;
 
 		} catch (Exception e) {
@@ -247,6 +251,7 @@ public class DashBoardDAO {
 			//날짜 세션에서 받고 
 			//
 			
+			
 			ArrayList<AreaDailySellProdDTO> areaprod = new ArrayList<AreaDailySellProdDTO>();
 			rs = stat.executeQuery(sql);
 
@@ -258,6 +263,8 @@ public class DashBoardDAO {
 
 				areaprod.add(dto);
 			}
+//			conn.close();
+//			stat.close();
 			return areaprod;
 
 		} catch (Exception e) {
@@ -285,6 +292,8 @@ public class DashBoardDAO {
 
 				areaalltotal.add(dto);
 			}
+//			conn.close();
+//			stat.close();
 			return areaalltotal;
 
 		} catch (Exception e) {
@@ -294,5 +303,50 @@ public class DashBoardDAO {
 		
 		return null;
 	}
+	
+	
+	public ArrayList<StaffScheduleDTO> staffschedule() {
+		
+		try {
+			String sql = "SELECT * FROM VWSTAFFSCHEDULE WHERE TO_DATE(START_TIME,'YY-MM-DD') = '20211101' AND SEQ_STORE ='10101'";
+			//날짜 세션에서 받고 
+			//지점 입력버튼으로 받고
+			
+			ArrayList<StaffScheduleDTO> staffschedule = new ArrayList<StaffScheduleDTO>();
+			rs = stat.executeQuery(sql);
+
+			while (rs.next()) {
+				StaffScheduleDTO dto = new StaffScheduleDTO();
+
+				dto.setSeq_store(rs.getString("seq_store"));
+				dto.setName(rs.getString("name"));
+				dto.setStart_time(rs.getString("start_time"));
+				dto.setHourfrom(rs.getString("hourfrom"));
+
+				staffschedule.add(dto);
+			}
+
+			return staffschedule;
+
+		} catch (Exception e) {
+			System.out.println("DashBoardDAO.staffschedule()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	
+	public void close() {
+		try {
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("DashBoardDAO.close()");
+			e.printStackTrace();
+		}
+	}
+
 
 }
+
+
