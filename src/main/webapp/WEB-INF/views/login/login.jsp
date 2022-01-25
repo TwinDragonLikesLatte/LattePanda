@@ -90,13 +90,10 @@
             }
         });
 
-
-
         $(function() {
             if (getCookie('id') != null) {
                 $('input[name=id]').val(getCookie('id'));
-                $('input[name=saveid]').prop('checked', true);
-                $('input[name=saveid]').prop('checked', true);
+                $('input[name=save_id]').prop('checked', true);
                 $('.glyphicon-ok-circle').addClass('glyphicon-ok-sign').removeClass('glyphicon-ok-circle');
             }
         });
