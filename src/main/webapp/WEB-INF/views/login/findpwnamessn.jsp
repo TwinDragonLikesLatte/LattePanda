@@ -23,9 +23,9 @@
         <%--        </c:if>--%>
         <form method="POST" action="/findpassword.do" autocomplete="off">
             <input type="text" name="name" placeholder="이름">
-            <span class="errorname"></span>
+            <span class="error-name"></span>
             <input type="password" name="ssn" placeholder="주민번호 뒷자리" maxlength="7">
-            <span class="errorssn"></span>
+            <span class="error-ssn"></span>
             <div class="btns">
                 <input type="button" name="btn-prev" value="이전으로" class="btn btn-default">
                 <input type="submit" name="btn-next" value="다음으로" class="btn btn-primary">
@@ -74,26 +74,26 @@
         $('form').submit(function() {
 
             if ($('input[name=name]').val() == '') {
-                $('.errorname').text('이름을 입력해주세요.')
+                $('.error-name').text('이름을 입력해주세요.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
 
                 return false;
 
             } else {
-                $('.errorname').css('display', 'none');
+                $('.error-name').css('display', 'none');
             }
 
             if ($('input[name=ssn]').val() == '') {
 
-                $('.errorssn').text('주민번호 뒷자리를 입력해주세요.')
+                $('.error-ssn').text('주민번호 뒷자리를 입력해주세요.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
 
                 return false;
 
             } else {
-                $('.errorssn').css('display', 'none');
+                $('.error-ssn').css('display', 'none');
             }
 
             return true;

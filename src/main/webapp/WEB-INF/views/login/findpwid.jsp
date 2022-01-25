@@ -23,7 +23,7 @@
         <%--        </c:if>--%>
         <form method="POST" action="/findpassword.do" autocomplete="off">
             <input type="text" name="id" placeholder="아이디">
-            <span class="errorid"></span>
+            <span class="error-id"></span>
             <div class="btns">
                 <input type="button" name="btn-prev" value="이전으로" class="btn btn-default">
                 <input type="submit" name="btn-next" value="다음으로" class="btn btn-primary">
@@ -47,7 +47,7 @@
             let error = '';
 
             if ($('input[name=id]').val() == '') {
-                $('.errorid').text('아이디를 입력해주세요.')
+                $('.error-id').text('아이디를 입력해주세요.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
 

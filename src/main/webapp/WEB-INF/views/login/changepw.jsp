@@ -23,9 +23,9 @@
         <%--        </c:if>--%>
         <form method="POST" action="/changepassword.do" autocomplete="off">
             <input type="password" name="pw" placeholder="새 비밀번호" maxlength="16">
-            <span class="errorpw"></span>
+            <span class="error-pw"></span>
             <input type="password" name="pwok" placeholder="새 비밀번호 확인" maxlength="16">
-            <span class="errorpwok"></span>
+            <span class="error-pwok"></span>
             <div class="btns">
                 <input type="submit" name="btn-next" value="비밀번호 변경" class="btn btn-primary">
             </div>
@@ -47,18 +47,18 @@
         $('form').submit(function() {
 
             if ($('input[name=pw]').val() == '') {
-                $('.errorpw').text('비밀번호를 입력해주세요.')
+                $('.error-pw').text('비밀번호를 입력해주세요.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
-                $('.errorpwok').css('display', 'none');
+                $('.error-pwok').css('display', 'none');
 
                 return false;
 
             } else if ($('input[name=pw]').val().length < 8) {
-                $('.errorpw').text('비밀번호는 8자 이상이어야 합니다.')
+                $('.error-pw').text('비밀번호는 8자 이상이어야 합니다.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
-                $('.errorpwok').css('display', 'none');
+                $('.error-pwok').css('display', 'none');
 
                 return false;
 
@@ -68,7 +68,7 @@
 
             if ($('input[name=pwok]').val() == '') {
 
-                $('.errorpwok').text('비밀번호 확인을 입력해주세요.')
+                $('.error-pwok').text('비밀번호 확인을 입력해주세요.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
 
@@ -76,14 +76,14 @@
 
             } else if ($('input[name=pwok]').val() != $('input[name=pw]').val()) {
 
-                $('.errorpwok').text('비밀번호가 일치하지 않습니다.')
+                $('.error-pwok').text('비밀번호가 일치하지 않습니다.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
 
                 return false;
 
             } else {
-                $('.errorpwok').css('display', 'none');
+                $('.error-pwok').css('display', 'none');
             }
 
             return true;

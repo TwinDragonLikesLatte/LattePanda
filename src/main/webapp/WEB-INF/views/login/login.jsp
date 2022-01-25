@@ -34,7 +34,7 @@
             </div>
             <div class="option-box">
                 <label>
-                    <input type="checkbox" name="saveid">
+                    <input type="checkbox" name="save_id">
                     <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
                     <span>아이디 저장</span>
                 </label>
