@@ -86,12 +86,10 @@
 .schedule {
 	width: inherit;
 	height: 370px;
-	border: 1px dashed black;
 }
 
 .remain_product {
 	width: 500px;
-	border: 1px dashed black;
 }
 
 .dash_notice_title {
@@ -109,6 +107,8 @@
 .reamin_product > tbody > tr > td {
 	color: var(--black_sub1);
 }
+
+/* 월간판매액 */
 
 
 
@@ -152,6 +152,11 @@
 	position: absolute; 
 	top: 8px;
 	right: 10px;
+}
+
+.dashboard_button {
+	height: 30px;
+	border-radius: 4px;
 }
 
 #container2 {
