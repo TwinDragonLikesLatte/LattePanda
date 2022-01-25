@@ -18,7 +18,7 @@
             <h1 class="title">판매제품조회</h1>
 
             <%-- 상단 필터 --%>
-            <form method="GET" action="/menu/product/list.do" class="form-control product-filter-box">
+            <form method="GET" action="/menu/product/list.do" class="form-control product-filter-box" id="menu-filter">
                 <h2>분류 보기</h2>
 
                 <div>
@@ -54,7 +54,7 @@
                 <div>
                     <div>
                         <span>메뉴명</span>
-                        <input type="text" name="search">
+                        <input type="text" name="search" class="form-control">
                     </div>
 
                     <input type="submit" class="btn btn-primary" value="검색하기">

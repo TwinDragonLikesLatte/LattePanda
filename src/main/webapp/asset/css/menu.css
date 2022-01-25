@@ -16,6 +16,7 @@
 .table th,
 .table td{
     text-align: center;
+    vertical-align: middle;
 }
 
 .table th {
@@ -28,7 +29,7 @@
     background-color: var(--white);
 }
 
-.table tbody input {
+.menu-table tbody input[type="button"] {
     font-size: 12px;
     height: 22px;
     padding-top: 1px;
@@ -36,27 +37,33 @@
     font-weight: 400;
 }
 
-.form-control {
+
+#menu-filter {
     display: flex;
     flex-direction: column;
     height: auto;
     margin : 15px 0px;
 }
 
-.form-control h2 {
+#menu-filter h2 {
     font-size: 20px;
     font-weight: bold;
     margin : 15px 0px;
 }
 
-.form-control > div {
+#menu-filter > div {
     margin-bottom: 15px;
 }
 
-.form-control div > span:first-child {
+#menu-filter div > span:first-child {
+/*#menu-filter div > div > span:first-child{*/
     display: inline-block;
     width: 120px;
     font-weight: bold;
+}
+
+#menu-filter div > div span:first-child {
+    width : 190px;
 }
 
 input[type="radio"],
@@ -69,11 +76,11 @@ input[type="date"] + span {
     margin: 0px 7px;
 }
 
-input[type="date"] {
-    height: 70%;
+#menu-filter input[type="date"] {
+    margin-bottom: 15px;
 }
 
-.form-control div:nth-child(5) {
+#menu-filter div:nth-child(5) {
     margin-bottom: 5px;
 }
 
@@ -81,7 +88,11 @@ input[type="date"] {
     margin-right: 12px;
 }
 
-.form-control div:last-child {
+#menu-filter div:last-child div {
+    display: flex;
+}
+
+#menu-filter div:last-child {
     display: flex;
     justify-content: space-between;
 }
@@ -98,3 +109,45 @@ input[type="date"] {
 .product-filter-box {
     height: 265px;
 }
+
+
+/* menu add */
+.btns {
+    text-align: right;
+}
+
+.plus-btn {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 15px;
+    margin-right: 5px;
+
+}
+
+.plus-btn > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color : var(--black_sub2);
+    background-color: var(--white);
+    font-weight: 400;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid var(--black_sub2);
+    padding-left: 1px;
+    padding-bottom: 1px;
+    cursor: pointer;
+}
+
+.plus-btn > span:hover{
+    background-color: #E5E5E5;
+}
+
+.menu-add-table {
+    height: 80%;
+    margin-bottom: 15px;
+}
+
+
+

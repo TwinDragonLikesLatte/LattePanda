@@ -18,7 +18,7 @@
             <h1 class="title">메뉴 조회</h1>
 
             <%-- 상단 필터 --%>
-            <form method="GET" action="/menu/basic/list.do" class="form-control">
+            <form method="GET" action="/menu/basic/list.do" class="form-control" id="menu-filter">
                 <h2>분류 보기</h2>
 
                 <div>
@@ -41,7 +41,7 @@
                 <div>
                     <div>
                         <span>메뉴명</span>
-                        <input type="text" name="search">
+                        <input type="text" name="search" class="form-control">
                     </div>
 
                     <input type="submit" class="btn btn-primary" value="검색하기">
@@ -58,18 +58,18 @@
             <div class="menu-table">
             <table class="table table-hover table-bordered">
                 <thead>
-                <tr>
-                    <th>상위 카테고리</th>
-                    <th>하위 카테고리</th>
-                    <th>메뉴코드</th>
-                    <th>메뉴명</th>
-                    <th>메뉴명(영문)</th>
-                    <th>Regular</th>
-                    <th>Large</th>
-                    <th>1-Size</th>
-                    <th>수정</th>
-                    <th>제품조회</th>
-                </tr>
+                    <tr>
+                        <th>상위 카테고리</th>
+                        <th>하위 카테고리</th>
+                        <th>메뉴코드</th>
+                        <th>메뉴명</th>
+                        <th>메뉴명(영문)</th>
+                        <th>Regular</th>
+                        <th>Large</th>
+                        <th>1-Size</th>
+                        <th>수정</th>
+                        <th>제품조회</th>
+                    </tr>
                 </thead>
                 <tbody class="table-hover">
                 <c:forEach items="${list}" var="dto">
