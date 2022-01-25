@@ -33,7 +33,7 @@ public class ListDAO {
 	
 	}
 	
-	
+	//vwallist 만들기
 	public ArrayList<ListDTO> listall(HashMap<String, String> map) {
 		
 		try {
@@ -48,29 +48,10 @@ public class ListDAO {
 			}
 			
 			
-			String sql = "select rownum, a.* from (select\r\n"
-					+ "    rownum as rnum,\r\n"
-					+ "    od.seq_order_detail as detail,\r\n"
-					+ "    to_char(o.start_order, 'yyyy-mm-dd hh24:mi:ss') as start_order,\r\n"
-					+ "    to_char(o.start_order, 'yyyy-mm-dd hh24:mi:ss') as end_order,\r\n"
-					+ "    m.name_kr,\r\n"
-					+ "    s.size_name,\r\n"
-					+ "    p.selling_price * od.count as total\r\n"
-					+ "        from tblorder o\r\n"
-					+ "            inner join tblorderdetail od \r\n"
-					+ "                on o.seq_order = od.seq_order\r\n"
-					+ "                    inner join tblproduct p\r\n"
-					+ "                        on p.seq_product = od.seq_product\r\n"
-					+ "                            inner join tblRegMenu rm\r\n"
-					+ "                                on rm.seq_category = p.seq_category\r\n"
-					+ "                                    inner join tblMenu m\r\n"
-					+ "                                        on m.seq_menu = rm.seq_menu\r\n"
-					+ "                                            inner join tblSize s\r\n"
-					+ "                                                on s.seq_size = rm.seq_size\r\n"
-					+ "                                                    inner join tblStore s\r\n"
-					+ "                                                        on s.seq_store = o.seq_store\r\n"
-					+ "                                                            where o.seq_store = 10101\r\n"
-					+ "                                                                order by start_order desc) a where rnum < 100";
+			
+			String sql = String.format("select * from ( select rownum as rnum, a.* from (select * from vwalllist %s order by start_order desc) a) where rnum between %s and %s", where, map.get("begin"), map.get("end"));
+
+		
 			
 		rs = stat.executeQuery(sql);
 		
@@ -85,6 +66,8 @@ public class ListDAO {
 			dto.setTotal(rs.getString("total"));
 			dto.setStart_order(rs.getString("start_order"));
 			dto.setEnd_order(rs.getString("end_order"));
+			dto.setCount(rs.getString("count"));
+			dto.setRefund(rs.getString("refund"));
 			
 			
 			listall.add(dto);
@@ -99,7 +82,7 @@ public class ListDAO {
 	}
 	
 	
-	
+	//vwalllist 추가하기
 	public ArrayList<ListDTO> list() {
 		
 		try {
@@ -142,7 +125,6 @@ public class ListDAO {
 			while (rs.next()) {
 				ListDTO dto = new ListDTO();
 				
-//				dto.setRownum(rs.getString("rownum"));
 				dto.setStart_order(rs.getString("start_order"));
 				dto.setName_kr(rs.getString("name_kr"));
 				dto.setSize_name(rs.getString("size_name"));
@@ -176,7 +158,7 @@ public class ListDAO {
 			}
 			
 			
-			String sql = "select count(*) as cnt from tblorderdetail" + where;
+			String sql = "select count (*) as cnt from tblorderdetail" + where;
 			
 			rs = stat.executeQuery(sql);
 			
@@ -187,6 +169,32 @@ public class ListDAO {
 		} catch (Exception e) {
 			System.out.println("ListDAO().getTotalCount()");
 			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
+	
+	
+
+	
+	
+
+	
+	
+	// 버튼 클릭 주문 추가
+	public int add() {
+		
+		try {
+			
+			String sql = "insert into tblorder values (seqOrder.nextVal, 10101, default, null)";
+			
+			return pstat.executeUpdate();
+			
+			
+
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		
 		return 0;

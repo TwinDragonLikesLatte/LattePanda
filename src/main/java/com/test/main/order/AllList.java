@@ -24,7 +24,7 @@ public class AllList extends HttpServlet {
     	
     	//호출
 		String column = req.getParameter("column");
-		String word = req.getParameter("word");
+		String word = req.getParameter("new");
 		String searchmode = "n";
 		
 		

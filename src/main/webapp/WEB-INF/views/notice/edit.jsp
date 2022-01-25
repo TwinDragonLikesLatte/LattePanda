@@ -14,7 +14,7 @@
         <%@ include file="/WEB-INF/inc/sub-nav_notice.jsp" %>
         <div class="content">
 
-		<form method="POST" action="/code/board/editok.do">
+		<form method="POST" action="/notice/editok.do">
 			<table class="table table-bordered add">
 				<tr>
 					<th>제목</th>

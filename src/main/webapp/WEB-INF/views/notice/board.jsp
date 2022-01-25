@@ -1,7 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
 <html>
 <head>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
     <title>공지사항</title>
     
     <style>
@@ -53,12 +57,26 @@
     	.form-control {
     		margin-right : 20px;
     	}
+    	
+    	
+   	.pagebar .pagination > .active > a {
+    	background-color: var(--purple_three);
+    	color: var(--white);
+    }
+    
+    .pagebar .pagination > li > a {
+    	color: var(--black_main);
+    }
+    
     </style>
+
     <%@ include file="/WEB-INF/inc/asset.jsp" %>
+ 
 
 </head>
 <body>
-
+  
+    </script>
 <div class="container">
     <%@ include file="/WEB-INF/inc/header.jsp" %>
 
@@ -70,9 +88,9 @@
         <div class="search">
 				<form method="GET" action="/notice/board.do">
 				
-				<div class="searchdate" >
-					<input type="date" name="startdate"> - 
-					<input type="date" name="enddate">
+				<div name ="calendar" class="searchdate" >
+					<input type="date" name="startDate" value="regdate"> - 
+					<input type="date" name="enddate" value="regdate">
 				</div>
 				<table>
 					<tr>
@@ -96,7 +114,7 @@
 		</div>	
         
         <c:if test="${map.searchmode == 'y'}">
-			<div style="text-align:center;margin:10px;color:#777;">'${map.word}'(으)로 검색한 ${list.size()}개의 게시물이 있습니다.</div>
+			<div style="text-align:center;margin:10px;color:#777;">'${map.word}${map.name}'(으)로 검색한 ${list.size()}개의 게시물이 있습니다.</div>
 		</c:if>
 
            <table class="table table-bordered list" style="width: 1140px;" id="list">

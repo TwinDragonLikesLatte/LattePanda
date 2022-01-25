@@ -32,19 +32,19 @@ public class QuestionDAO {
 	
 	}
 
-	public int check(QuestionDTO dto) {
+	public int check(String id) {
 		
 		
 		try {
-			String sql = "select seq_order from tblsurvey";
+			String sql = "select count(*) as cnt from tblsurvey where seq_order = ?";
 			
 			rs = stat.executeQuery(sql);
-
-			ArrayList<QuestionDTO> list = new ArrayList<QuestionDTO>();
+			pstat.setString(1, id);
+			rs = pstat.executeQuery();
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
 			
-			pstat = conn.prepareStatement(sql);
-
-			//dto.setSeq_order(rs.getString("count"));
 			
 		} catch (Exception e) {
 			System.out.println("QuestionDAO.check()");

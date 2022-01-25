@@ -11,8 +11,13 @@
     <%@ include file="/WEB-INF/inc/header.jsp" %>
 
     <main>
-        <%@ include file="/WEB-INF/inc/sub-nav_notice.jsp" %>
+        <%@ include file="/WEB-INF/inc/sub-nav_template.jsp" %> <!-- 본인 파트 서브내비로 바꾸세요. -->
         <div class="content">
+
+		
+		
+
+
 
 
         </div>
@@ -21,16 +26,16 @@
 </div>
 
 <script>
-	<c:if test="${result == 1}">
-	//성공
-	location.href = '/notice/board.do?seq=${seq}';
-	</c:if>
-	
-	<c:if test="${result == 0}">
-	//실패
-	alert('failed');
-	history.back();
-	</c:if>
+<c:if test="${result == 1}">
+//성공
+location.href = '/order/allist.do';
+</c:if>
+
+<c:if test="${result == 0}">
+//실패
+alert('failed');
+history.back();
+</c:if>
 </script>
 
 </body>

@@ -9,17 +9,27 @@ public class ListDTO {
 	
 	public String name_kr;		//메뉴명
 	public String size_name;	//제품 사이즈
-	public String total;			//총결제가
+	public String total;		//총결제가
 	public String name; 		//지점명
 	public String rnum; 		//주문번호 순서
 	
 	public String detail;
 	public String count;
 	
+	public String refund; 		//환불
+	
 	
 	
 	
 
+
+	public String getRefund() {
+		return refund;
+	}
+
+	public void setRefund(String refund) {
+		this.refund = refund;
+	}
 
 	public String getCount() {
 		return count;

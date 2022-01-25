@@ -65,14 +65,21 @@ public class BoardDAO {
 		try {
 			
 			String where = "";
-			
+			//내용 검색
 			if (map.get("searchmode").equals("y")) {
 				where = String.format("where %s like '%%%s%%'"
 								, map.get("column")
 								, map.get("word").replace("'", "''")
-								, map.get("name")); //수정
+								, map.get("name"));
 			}
 			
+//			//기간 검색
+//			if (map.get("searchdate").equals("y")) {
+//				where = String.format("where %s between '%%%s%%' and '%%%s%%'"
+//						, map.get("date")
+//						, map.get("startdate")
+//						, map.get("enddate"));
+//			}
 			
 
 		
@@ -148,12 +155,12 @@ public class BoardDAO {
 
 		try {
 
-			String sql = "update tblNotice set title= ?, contnet= ?";
+			String sql = "update tblNotice set title= ?, content= ? where seq_notice=?";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getTitle());
 			pstat.setString(2, dto.getContent());
-			
-			conn.close();//**
+			pstat.setString(3, dto.getSeq_notice());
+//			conn.close();//**
 			
 			return pstat.executeUpdate();
 
@@ -199,7 +206,8 @@ public class BoardDAO {
 			if (map.get("searchmode").equals("y")) {
 				where = String.format("where %s like '%%%s%%'"
 								, map.get("column")
-								, map.get("word").replace("'", "''"));
+								, map.get("word").replace("'", "''")
+								, map.get("name"));
 			}
 			
 			String sql = "select count(*) as cnt from tblNotice" + where;
@@ -220,10 +228,12 @@ public class BoardDAO {
 		
 		return 0;
 		
-	
 		
 	}
 
+	
+	//주문추가
+	
 
 	
 	

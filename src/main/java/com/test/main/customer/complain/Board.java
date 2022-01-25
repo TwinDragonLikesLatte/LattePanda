@@ -20,12 +20,12 @@ public class Board extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+    	//내용관련 검색
 		String column = req.getParameter("column");
 		String word = req.getParameter("word");
 		String name = req.getParameter("name");
 		
 		String searchmode = "n";
-		
 		
 		if ((column == null && word == null && name == null ) 
 				|| (column.equals("") && word.equals("") && name.equals(""))) {
@@ -33,10 +33,27 @@ public class Board extends HttpServlet {
 		} else {
 			searchmode = "y";
 		}
-
-
 		
-    	
+		
+		//기간검색
+		String date = req.getParameter("date");
+		String startdate = req.getParameter("startdate");
+		String enddate = req.getParameter("enddate");
+		
+		String searchdate = "n";
+		
+		
+		
+		if (date == null && startdate == null && enddate == null && column == null) {
+			searchdate = "n";
+		} else if (date != null && startdate != null && enddate != null) {
+			searchdate = "y";
+		} else {
+			searchdate = "n";
+		}
+		
+			
+    		
 		//DTO > HashMap
 		HashMap<String,String> map = new HashMap<String,String>();
 		map.put("column", column);
@@ -98,7 +115,7 @@ public class Board extends HttpServlet {
 		totalPage = (int)Math.ceil((double)totalCount / pageSize);
 		
 		String pagebar = "";
-
+		
 		
 		loop = 1; //루프변수(while)
 		n = ((nowPage - 1) / blockSize) * blockSize + 1; //페이지 번호
