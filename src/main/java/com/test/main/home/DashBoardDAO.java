@@ -192,10 +192,10 @@ public class DashBoardDAO {
 		return null;
 	}
 
-	public String areatotal() {
+	public String areatotal(String store) {
 		try {
 
-			String sql = "SELECT SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE SEQ_STORE ='10101' AND ORDER_DATE = TO_DATE('20211101','YYYYMMDD')";
+			String sql = "SELECT SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE SEQ_STORE ="+store+" AND ORDER_DATE = TO_DATE('20211101','YYYYMMDD')";
 //			나중에 당일 판매량을 확인하고 싶다면 CURRNET_DATE로 변경해서 사용하기
 //			지역장에서 선택한 값에 따라 바뀌게 만들기
 			rs = stat.executeQuery(sql);
@@ -214,10 +214,10 @@ public class DashBoardDAO {
 		return null;
 	}
 
-	public ArrayList<AreaMontlyTotalDTO> areamontotal() {
+	public ArrayList<AreaMontlyTotalDTO> areamontotal(String store) {
 		try {
 
-			String sql = "SELECT * FROM VWMONTHLYTOTAL WHERE SEQ_STORE='10101' ORDER BY START_ORDER";
+			String sql = "SELECT * FROM VWMONTHLYTOTAL WHERE SEQ_STORE="+store+" ORDER BY START_ORDER";
 //			지역장에서 선택한 값에 따라 바뀌게 만들기
 			ArrayList<AreaMontlyTotalDTO> areamontotal = new ArrayList<AreaMontlyTotalDTO>();
 
@@ -244,10 +244,10 @@ public class DashBoardDAO {
 	}
 
 
-	public ArrayList<AreaDailySellProdDTO> areaprod() {
+	public ArrayList<AreaDailySellProdDTO> areaprod(String store) {
 		
 		try {
-			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE='10101' AND ORDER_DATE = TO_DATE('20211101','YYYYMMDD') GROUP BY (NAME_KR)";
+			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE="+store+" AND ORDER_DATE = TO_DATE('20211101','YYYYMMDD') GROUP BY (NAME_KR)";
 			//날짜 세션에서 받고 
 			//
 			

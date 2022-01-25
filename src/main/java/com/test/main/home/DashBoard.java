@@ -18,19 +18,20 @@ public class DashBoard extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	resp.setCharacterEncoding("UTF-8");
-//    	
-//    	String store = req.getParameter("store");
-//    	System.out.println(store);
     	
+    	String store = req.getParameter("store");
+    	System.out.println(store);
 
     	DashBoardDAO dao = new DashBoardDAO();
     	
-    	//로그인 20160006 손윤희
-    	String loginNum = "20160006";
+    	//로그인 손윤희
+    	String seq_department = "310101";
     	
     	
+    	int department = Integer.parseInt(seq_department);
     	
-    	if (loginNum == "20160006") {
+    	
+    	if (department > 300000) {
     	
     	//[점장] 당일 판매액
     	String total = dao.total();
@@ -54,15 +55,12 @@ public class DashBoard extends HttpServlet {
     	
     	else {
     	
-    	//id , 부서명, 직책명, 부서번호, 직책번호
-    	// 강남대로점 310101 
-    	//
     	//[지역장] 지역내 지점 일일 매출 현황 (상품별 판매량) 
-    	ArrayList<AreaDailySellProdDTO> areaprod = dao.areaprod();
+    	ArrayList<AreaDailySellProdDTO> areaprod = dao.areaprod(store);
     	//[지역장] 지점별 당일 판매액
-    	String areatotal = dao.areatotal();
+    	String areatotal = dao.areatotal(store);
     	//[지역장] 지점별 월간 총 판매액 
-    	ArrayList<AreaMontlyTotalDTO> areamontotal = dao.areamontotal();
+    	ArrayList<AreaMontlyTotalDTO> areamontotal = dao.areamontotal(store);
     	//[지역장] 전지역 매출 현황
     	ArrayList<AreaDalyAllTotalDTO> areaalltotal = dao.areaalltotal();
     	//[지역장] 전지점 월간 상품별 판매량
@@ -81,7 +79,11 @@ public class DashBoard extends HttpServlet {
     	ArrayList<NoticeDTO> notice = dao.notice();
     	req.setAttribute("notice", notice);
     	
+    	
     	dao.close();
+    	
+    	req.setAttribute("seq_department", seq_department);
+    	req.setAttribute("store", store);
     	
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/home/dashboard.jsp");
         dispatcher.forward(req, resp);

@@ -7,16 +7,17 @@
 <%@ include file="/WEB-INF/inc/asset.jsp"%>
 </head>
 <body>
-
+	<%
+	Object department = request.getAttribute("seq_department");
+	%>
 	<div class="container">
 		<%@ include file="/WEB-INF/inc/header.jsp"%>
-
 		<main>
 			<%@ include file="/WEB-INF/inc/sub-nav_home.jsp"%>
 			<div class="content">
 				<!-- 점장화면 -->
-				<c:if test="${empty id}">
-
+				<c:if test="${ seq_department > 300000}">
+				<%-- <c:if test="${empty id}"> --%>
 					<!-- <div>
                 버튼예제<br>
                 <input type="submit" class="btn btn-primary" value="등록하기">
@@ -181,15 +182,16 @@
 
 				</c:if>
 				<!-- 지역장화면 -->
-				<c:if test="${not empty id}">
+				<c:if test="${seq_department < 300000}">
+				<%-- <c:if test="${not empty id}"> --%>
 
 					<div class="content_container">
 						<div class="content_gird">
 							<div class="content_header">
 								지역내 지점별 월간 판매 현황
-								<form method="POST" action="/home/dashboard.do"
+								<form method="GET" action="/home/dashboard.do"
 									class="dashboard-select">
-									<select name="store">
+									<select name="store" class="dashboard_button">
 										<option value="10101">강남대로점</option>
 										<option value="10102">대치점</option>
 										<option value="10103">선릉점</option>
@@ -236,16 +238,17 @@
 						</div>
 						<div class="content_gird">
 							<div class="content_header">공지사항</div>
-							<table class="table table-bordered daily_sales">
-								<c:forEach items="${notice}" var="dto" end="9">
-									<tr>
-										<td><a href="/notice/board.do?${dto.seq_notice}">${dto.title}</a></td>
-										<td>${dto.content}</td>
-									</tr>
-								</c:forEach>
-							</table>
+							<div class="dashboard_notice">
+								<table class="table table-bordered daily_sales">
+									<c:forEach items="${notice}" var="dto" end="9">
+										<tr>
+											<td><a class="dash_notice_title" href="/notice/board.do?${dto.seq_notice}">${dto.title}</a></td>
+											<td>${dto.content}</td>
+										</tr>
+									</c:forEach>
+								</table>
+							</div>
 						</div>
-						<div class="content_gird"></div>
 					</div>
 
 				</c:if>
@@ -258,7 +261,7 @@
 	    colors: ['#62569F', '#4E387E', '#614051', '#5E5A80', '#6A287E', '#7D1B7E', '#A74AC7',
 	'#B048B5', '#6C2DC7', '#842DCE', '#8D38C9', '#7A5DC7', '#7F38EC', '#8E35EF', '#893BFF', '#8467D7', '#A23BEC', '#B041FF', '#C45AEC', '#9172EC']
 	});
-	<c:if test="${empty id}">
+	<c:if test="${ seq_department > 300000}">
 		Highcharts.chart('container', {
 		    chart: {
 		        type: 'column',
@@ -333,13 +336,11 @@
 		       ]
 		    }]
 		});
-		
-	</c:if>
+		</c:if>
 	
 	
-	
+		<c:if test="${ seq_department < 300000}">
 	/* 지역장 */
-	<c:if test="${not empty id}">
 	Highcharts.chart('graph2', {
 	    chart: {
 	        plotBackgroundColor: null,
@@ -522,8 +523,8 @@
 	        ]
 	    }]
 	});
-	
 	</c:if>
+	
 </script>
 
 </body>
