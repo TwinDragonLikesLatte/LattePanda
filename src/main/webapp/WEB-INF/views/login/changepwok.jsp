@@ -28,6 +28,26 @@
             <span class="enquiry">전산팀 문의</span>
             <input type="hidden" name=id value="${id}">
         </form>
+
+        <div class="modal modal-enquiry" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">전산팀 문의</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>전산팀 문의번호 : 02-1234-5678<br><br>※ 아이디는 직원번호입니다.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <script>
@@ -68,8 +88,6 @@
         $('.enquiry').on({
             click: function() {
                 $('.modal').modal().css('display', 'flex');
-                $('.modal').find('.modal-title').text('전산팀 문의');
-                $('.modal').find('.modal-body').append('<p>전산팀 문의번호 : 02-1234-5678<br><br>※ 아이디는 직원번호입니다.</p>');
             }
         });
 
