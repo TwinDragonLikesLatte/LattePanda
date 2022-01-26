@@ -6,18 +6,17 @@
         재고관리
     </div>
     <ul>
-        <li class="sub-menu"><a href="/stock/list.do" class="">재고조회</a>
+        <li class="sub-menu"><a href="/stock/list/list.do" class="">재고정보</a>
             <ul>
-                <li><a href="">서브서브메뉴1</a></li>
-                <li><a href="">서브서브메뉴2</a></li>
-                <li><a href="">서브서브메뉴3</a></li>
+                <li><a href="/stock/list/list.do">재고정보조회</a></li>
+                <li><a href="/stock/list/edit.do">재고정보입력</a></li>
             </ul>
         </li>
         <li class="sub-menu"><a href="/stock/orderlist.do" class="">재고발주</a>
             <ul>
-                <li><a href="">서브서브메뉴1</a></li>
-                <li><a href="">서브서브메뉴2</a></li>
-                <li><a href="">서브서브메뉴3</a></li>
+                <li><a href="">발주정보조회</a></li>
+                <li><a href="">발주정보입력</a></li>
+                <li><a href="">발주확인서출력</a></li>
             </ul>
         </li>
     </ul>
