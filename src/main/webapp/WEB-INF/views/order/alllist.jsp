@@ -110,6 +110,7 @@
    				<tr style="background-color : #504B71; color : var(--white);" >
    					<th style="text-align: center;">주문번호</th>
    					<th style="text-align: center;">메뉴명</th>
+   					<th style="text-align: center;">사이즈</th>
    					<th style="text-align: center;">총결제가</th>
    					<th style="text-align: center;">주문시간</th>
    					<th style="text-align: center;">완료시간</th>
@@ -120,7 +121,8 @@
       				<c:if test="${ dto.end_order == null }">
       				<tr style="background-color: #C6DDC7;">
       					<td style="width: 100px; text-align: center;">${dto.detail}</td>
-      					<td style="width: 300px;">${dto.name_kr}</td>
+      					<td style="width: 200px;">${dto.name_kr}</td>
+      					<td style="width: 100px;">${dto.seq_size}</td>
       					<td style="width: 300px; text-align: right;">${dto.total}원</td>
       					<td style="text-align: center;">${dto.start_order}</td>
       					<td style="text-align: center;">${dto.end_order}</td>
@@ -132,7 +134,8 @@
       				<c:if test="${ dto.end_order != null }">
       				<tr >
       					<td style="width: 100px; text-align: center;">${dto.detail}</td>
-      					<td style="width: 300px;">${dto.name_kr}</td>
+      					<td style="width: 200px;">${dto.name_kr}</td>
+      					<td style="width: 100px;">${dto.seq_size}</td>
       					<td style="width: 300px; text-align: right;">${dto.total}원</td>
       					<td style="text-align: center;">${dto.start_order}</td>
       					<td style="text-align: center;">${dto.end_order}</td>

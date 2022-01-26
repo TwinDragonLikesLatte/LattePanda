@@ -8,7 +8,7 @@ public class ListDTO {
 	public String end_order;
 	
 	public String name_kr;		//메뉴명
-	public String size_name;	//제품 사이즈
+	public String seq_size;	//제품 사이즈
 	public String total;		//총결제가
 	public String name; 		//지점명
 	public String rnum; 		//주문번호 순서
@@ -23,6 +23,14 @@ public class ListDTO {
 	
 	
 	
+
+	public String getSeq_size() {
+		return seq_size;
+	}
+
+	public void setSeq_size(String seq_size) {
+		this.seq_size = seq_size;
+	}
 
 	public String getSeq_product() {
 		return seq_product;
@@ -72,13 +80,6 @@ public class ListDTO {
 		this.name_kr = name_kr;
 	}
 
-	public String getSize_name() {
-		return size_name;
-	}
-
-	public void setSize_name(String size_name) {
-		this.size_name = size_name;
-	}
 
 	public String getRnum() {
 		return rnum;

@@ -71,6 +71,7 @@ public class ListDAO {
 			dto.setEnd_order(rs.getString("end_order"));
 			dto.setCount(rs.getString("count"));
 			dto.setRefund(rs.getString("refund"));
+			dto.setSeq_size(rs.getString("seq_size"));
 			
 			
 			listall.add(dto);
