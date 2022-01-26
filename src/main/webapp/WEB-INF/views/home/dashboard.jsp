@@ -3,6 +3,10 @@
 <%
 	if (request.getAttribute("seq_position").equals("6")) {
 		response.sendRedirect("/notice/board.do");	
+	} else if (request.getAttribute("seq_position").equals("5")) {
+		response.sendRedirect("/notice/board.do");	
+	} else if (request.getAttribute("seq_position").equals("9")) {
+		response.sendRedirect("/notice/board.do");	
 	}
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
