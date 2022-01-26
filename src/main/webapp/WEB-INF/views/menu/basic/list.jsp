@@ -86,8 +86,8 @@
                             <input type="button" class="btn btn-default" value="수정"
                                 onclick="location.href='/menu/basic/edit.do';">
                         </td>
-                        <td><input type="button" class="btn btn-default" value="제품보기"
-                                   onclick="location.href='/menu/basic/detail.do';"></td>
+                        <td><input type="button" class="btn btn-default detail-btn" value="제품보기"
+                                   onclick="location.href='/menu/basic/detail.do?seqmenu=${dto.seqMenu}';"></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -131,6 +131,13 @@
     <c:if test="${filter.all == 'on'}">
         $('input:radio').prop('checked', true);
     </c:if>
+
+
+/*    $('.detail-btn').click(()=>{
+        let temp = event.srcElement;
+        alert($(temp).attr('name'));
+
+    });*/
 
 
 </script>

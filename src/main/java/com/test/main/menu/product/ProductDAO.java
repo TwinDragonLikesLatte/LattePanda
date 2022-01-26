@@ -63,7 +63,7 @@ public class ProductDAO {
             if (filter.get("filterMode").equals("n"))
                 where = "";
 
-            // 필터 적용시
+                // 필터 적용시
             else if (filter.get("filterMode").equals("y")) {
 
                 ArrayList<String> whereList = new ArrayList<String>();
@@ -88,9 +88,9 @@ public class ProductDAO {
                     LocalDate today = LocalDate.now();
                     int isToday = filter.get("endDate").toString().compareTo(today.toString());
 
-                    if(isToday < 0)
+                    if (isToday < 0)
                         whereList.add(String.format("sale_start_date >= '%s' and sale_end_date <= '%s'"
-                            , filter.get("startDate"), filter.get("endDate")));
+                                , filter.get("startDate"), filter.get("endDate")));
                     else
                         whereList.add(String.format("sale_start_date >= '%s'", filter.get("startDate")));
                 }
@@ -99,45 +99,126 @@ public class ProductDAO {
                 for (String query : whereList) {
                     where += query + " and ";
                 }
-                where = where.substring(0, where.length()-4);
+                where = where.substring(0, where.length() - 4);
                 System.out.println("where : " + where);
             }
 
-        /* Execute Query */
-        String sql = "select * from vwProduct " + where;
-        rs = stat.executeQuery(sql);
+            /* Execute Query */
+            String sql = "select * from vwProduct " + where;
+            rs = stat.executeQuery(sql);
 
-        /* Return Result */
-        ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
+            /* Return Result */
+            ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
 
-        while (rs.next()) {
-            ProductDTO dto = new ProductDTO();
-            dto.setUpperCategory(rs.getString("upper_category"));
-            dto.setCategoryName(rs.getString("category_name"));
-            dto.setNamekr(rs.getString("name_kr"));
-            dto.setNameEn(rs.getString("name_en"));
-            dto.setSeqMenu(rs.getString("seq_menu"));
-            dto.setSizeName(rs.getString("size_name"));
-            dto.setRegDate(rs.getString("regdate"));
-            dto.setStartDate(rs.getString("sale_start_date"));
-            dto.setEndDate(rs.getString("sale_end_date"));
-            dto.setOpenLevel(rs.getString("open_level"));
-            dto.setCostPrice(rs.getInt("cost_price"));
-            dto.setSellingPrice(rs.getInt("selling_price"));
-            dto.setCostRate(rs.getDouble("cost_rate"));
+            while (rs.next()) {
+                ProductDTO dto = new ProductDTO();
+                dto.setSeqProduct(rs.getString("seq_product"));
+                dto.setUpperCategory(rs.getString("upper_category"));
+                dto.setCategoryName(rs.getString("category_name"));
+                dto.setNamekr(rs.getString("name_kr"));
+                dto.setNameEn(rs.getString("name_en"));
+                dto.setSeqMenu(rs.getString("seq_menu"));
+                dto.setSizeName(rs.getString("size_name"));
+                dto.setRegDate(rs.getString("regdate"));
+                dto.setStartDate(rs.getString("sale_start_date"));
+                dto.setEndDate(rs.getString("sale_end_date"));
+                dto.setOpenLevel(rs.getString("open_level"));
+                dto.setCostPrice(rs.getInt("cost_price"));
+                dto.setSellingPrice(rs.getInt("selling_price"));
+                dto.setCostRate(rs.getDouble("cost_rate"));
 
-            list.add(dto);
-        }
+                list.add(dto);
+            }
 
-        conn.close();
-        return list;
+            conn.close();
+            return list;
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("ProductDAO.list");
             e.printStackTrace();
         }
 
         return null;
+    }
+
+    /* detail.java > 제품 목록 하나 요청 */
+    public ProductDTO get(HashMap<String, String> map) {
+        try {
+            String sql = "select * from vwproduct " +
+                    "where seq_menu = ? and size_name = ? " +
+                    "order by seq_product desc";
+
+            pstat = conn.prepareStatement(sql);
+            pstat.setString(1, map.get("seqMenu"));
+            pstat.setString(2, map.get("size"));
+            rs = pstat.executeQuery();
+
+            if (rs.next()) {
+                ProductDTO dto = new ProductDTO();
+                dto.setSeqProduct(rs.getString("seq_product"));
+                dto.setUpperCategory(rs.getString("upper_category"));
+                dto.setCategoryName(rs.getString("category_name"));
+                dto.setNamekr(rs.getString("name_kr"));
+                dto.setNameEn(rs.getString("name_en"));
+                dto.setSeqMenu(rs.getString("seq_menu"));
+                dto.setSizeName(rs.getString("size_name"));
+                dto.setRegDate(rs.getString("regdate"));
+                dto.setStartDate(rs.getString("sale_start_date"));
+                dto.setEndDate(rs.getString("sale_end_date"));
+                dto.setOpenLevel(rs.getString("open_level"));
+                dto.setCostPrice(rs.getInt("cost_price"));
+                dto.setSellingPrice(rs.getInt("selling_price"));
+                dto.setCostRate(rs.getDouble("cost_rate"));
+
+                //conn.close();
+                return dto;
+            }
+
+        } catch (Exception e) {
+            System.out.println("ProductDAO.get");
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
+    /* detail.java > 제품 변경 내역 요청 */
+    public ArrayList<ProductDTO> getHistoryList(HashMap<String, String> map) {
+        try {
+            String sql = "select * from vwproduct " +
+                    "where seq_menu = ? and size_name = ? " +
+                    "order by seq_product desc";
+
+            pstat = conn.prepareStatement(sql);
+            pstat.setString(1, map.get("seqMenu"));
+            pstat.setString(2, map.get("size"));
+            rs = pstat.executeQuery();
+
+            ArrayList<ProductDTO> historyList = new ArrayList<ProductDTO>();
+            while (rs.next()) {
+                ProductDTO dto = new ProductDTO();
+                dto.setSeqProduct(rs.getString("seq_product"));
+                dto.setNamekr(rs.getString("name_kr"));
+                dto.setRegDate(rs.getString("regdate"));
+                dto.setStartDate(rs.getString("sale_start_date"));
+                dto.setEndDate(rs.getString("sale_end_date"));
+                dto.setOpenLevel(rs.getString("open_level"));
+
+                historyList.add(dto);
+            }
+
+            //conn.close();
+            return historyList;
+
+        } catch (Exception e) {
+            System.out.println("ProductDAO.get");
+            e.printStackTrace();
+        }
+
+        return null;
+
+
     }
 }
 

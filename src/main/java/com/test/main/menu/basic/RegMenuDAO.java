@@ -38,6 +38,7 @@ public class RegMenuDAO {
         return where;
     }
 
+    /* list.java > 메뉴리스트 요청 */
     public ArrayList<RegMenuDTO> list(HashMap<String, Object> filter) {
 
         try {
@@ -97,5 +98,31 @@ public class RegMenuDAO {
         return null;
     }
 
+    /* detail.java > 메뉴 목록 하나 요청 */
+    public RegMenuDTO get(String seqMenu) {
+
+        try {
+            String sql = "select * from vwRegMenu where seq_menu = ?";
+            pstat = conn.prepareStatement(sql);
+            pstat.setString(1, seqMenu);
+            rs = pstat.executeQuery();
+
+            if(rs.next()){
+                RegMenuDTO dto = new RegMenuDTO();
+                dto.setRegular(rs.getString("regular"));
+                dto.setLarge(rs.getString("large"));
+                dto.setOneSize(rs.getString("1-size"));
+                dto.setHaveProduct(rs.getString("have_product"));
+
+                conn.close();
+                return dto;
+            }
+
+        } catch (Exception e){
+            System.out.println("RegMenuDAO.get");
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

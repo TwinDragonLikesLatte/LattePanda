@@ -2,6 +2,7 @@ package com.test.main.menu.product;
 
 public class ProductDTO {
 
+    private String seqProduct;
     private String upperCategory;
     private String categoryName;
     private String namekr;
@@ -15,6 +16,14 @@ public class ProductDTO {
     private int costPrice;
     private int sellingPrice;
     private double costRate;
+
+    public String getSeqProduct() {
+        return seqProduct;
+    }
+
+    public void setSeqProduct(String seqProduct) {
+        this.seqProduct = seqProduct;
+    }
 
     public String getUpperCategory() {
         return upperCategory;

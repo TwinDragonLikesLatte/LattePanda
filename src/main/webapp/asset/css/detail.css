@@ -1,0 +1,136 @@
+.title,
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+#product-box{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+/* title */
+.product-left > div:first-child,
+.product-right > div:first-child {
+    border-bottom: var(--border);
+    margin-bottom: 20px;
+}
+
+/* Left box (메뉴이름, 이미지 등) */
+.product-left {
+    width: 350px;
+    margin-right: 50px;
+}
+
+.product-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-left img {
+    width : 350px;
+    height: 350px;
+    margin: 20px 0px;
+}
+
+.product-left div:last-child {
+    display: flex;
+    justify-content: right;
+}
+
+/* Right box(기본정보, 재료정보, 변경내역) */
+.product-right {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-right .size-box {
+    display: flex;
+}
+
+.product-right .size-box h2 {
+    margin-right: 20px;
+}
+
+/* 제품 기본정보 */
+.product-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-info > div:first-child{
+    width: 30%;
+}
+
+.product-info > div:last-child {
+    width: 60%;
+}
+
+.product-info-basic .table {
+    border-top: var(--border);
+    border-bottom: var(--border);
+    padding: 5px 10px;
+}
+
+.product-info-basic .table > tbody > tr > th {
+    padding: 13px 0px 13px 10px;
+    font-weight: bold;
+    border: none;
+}
+
+.product-info-basic .table td {
+    padding: 13px 10px 13px 0px;
+    text-align: right;
+    border: none;
+}
+
+.product-info-basic .table > tbody > tr:nth-child(6) > th,
+.product-info-basic .table > tbody > tr:nth-child(10) > th,
+.product-info-basic .table > tbody > tr:nth-child(6) > td,
+.product-info-basic .table > tbody > tr:nth-child(10) > td {
+    border-bottom: var(--border);
+}
+
+
+/* 제품 재료, 변경내역 */
+.product-info-extra {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-info-extra > div {
+    height: 50%;
+}
+
+.product-info-extra .table th,
+.product-info-extra .table td {
+    text-align: center;
+}
+
+.product-info-extra .table th {
+    position: sticky;
+    background-color: #E5E5E5;
+}
+
+.product-info-extra .product-ingredient .table th{
+    width: 25%;
+}
+
+.product-info-extra .table td {
+    background-color: var(--white);
+}
+
+.table-box {
+    height: 77%;
+    background-color: #C4C4C4;
+    overflow: auto;
+}
