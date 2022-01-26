@@ -4,7 +4,7 @@
 <head>
     <title>title</title>
     <%@ include file="/WEB-INF/inc/asset.jsp" %>
-    <link rel="stylesheet" href="/asset/css/detail.css">
+    <link rel="stylesheet" href="/asset/css/menu/detail.css">
 </head>
 <body>
 
