@@ -1,0 +1,170 @@
+input {
+    height: 30px;
+    padding: 0 10px;
+    border: var(--border);
+    border-radius: var(--radius);
+}
+
+input:focus {
+    outline-color: var(--purple_three);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    height: 31px;
+    margin-bottom: 14px;
+}
+
+.sub-title {
+    color: var(--black_main);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.modal-footer > button.btn,
+input.btn {
+    height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--purple_three);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 1074px;
+    height: 777px;
+    padding: 30px;
+    background-color: var(--white);
+    border: var(--border);
+    border-radius: var(--radius);
+}
+
+main > .glyphicon-remove {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: var(--black_sub2);
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+main > .glyphicon-remove:hover {
+    color: var(--purple_three);
+}
+
+.logo-h {
+    width: 230px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+.table > tbody > tr > td.gap {
+    height: 30px;
+    border: none;
+}
+
+.table > tbody > tr > th {
+    width: 120px;
+    height: 40px;
+    border: var(--border);
+    background-color: #e5e5e5;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+}
+
+.table > tbody > tr > th.sel {
+    background-color: var(--purple_three);
+    color: var(--white);
+}
+
+.table > tbody > tr > td {
+    height: 40px;
+    padding: 4px 8px;
+    border: var(--border);
+    text-align: center;
+    vertical-align: middle;
+}
+
+td > div {
+    display: flex;
+}
+
+td > div > input[type=text] {
+    width: 100%;
+    margin-right: 8px;
+}
+
+td > span {
+    display: block;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+}
+
+.btns > .btn {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+.modal {
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-dialog {
+    width: 300px;
+}
+
+.modal h5 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-body > form > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-body > form > div > input[type=password] {
+    width: 100%;
+    margin-right: 8px;
+}
+
+.glyphicon-exclamation-sign {
+    margin-right: 6px;
+}
+
+.error-pw {
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    color: var(--red);
+    font-size: 14px;
+}
