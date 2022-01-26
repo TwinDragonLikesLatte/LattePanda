@@ -28,8 +28,9 @@
                 <%-- 우측) 메뉴 정보 컬럼 --%>
                 <div class="product-right">
                     <div class="size-box">
-                        <h2>Regular</h2>
-                        <h2>Large</h2>
+                        <c:forEach items="${slist}" var="size">
+                            <h2>${size}</h2>
+                        </c:forEach>
                     </div>
 
                     <%-- 제품 정보 컨테이너 --%>
@@ -158,6 +159,15 @@
 </div>
 
 <script>
+
+    /* Default 사이즈 color 적용 */
+    $('.size-box h2').each((index, h2)=> {
+        let size = $(h2).text();
+        if(size == "${dto.sizeName}") {
+            $(h2).css('color', 'var(--purple_four)');
+        }
+    })
+
 
 </script>
 

@@ -34,17 +34,28 @@ public class Detail extends HttpServlet {
         String seqMenu = req.getParameter("seqmenu");
 
 
-        /* Select one data from *RegMenu* and Get the 'available size' */
+        /* Select one record from *RegMenu* and Get the 'available size' */
         RegMenuDAO menuDao = new RegMenuDAO();
         RegMenuDTO menuDto  = menuDao.get(seqMenu);
 
+        // - Default로 보여줄 페이지의 size 세팅
+        // - 첫페이지 세팅을 위한 select where 조건으로 사용
         String size = "";
         if(menuDto.getRegular().equals("Y")) size = "Regular";
         else if (menuDto.getLarge().equals("Y")) size = "Large";
         else if (menuDto.getOneSize().equals("Y")) size = "1-Size";
 
 
-        /* Select one data from *Product* */
+        /* Available size list */
+        // - 메뉴의 현재 가용 가능한 size list
+        // - list로 넘겨서 detail.jsp 상단 사이즈 탭 구성
+        ArrayList<String> slist = new ArrayList<String>();
+        if(menuDto.getRegular().equals("Y")) slist.add("Regular");
+        if(menuDto.getLarge().equals("Y")) slist.add("Large");
+        if(menuDto.getOneSize().equals("Y")) slist.add("1-Size");
+
+
+        /* Select one record from *Product* */
         HashMap<String, String> map =new HashMap<String, String>();
         map.put("seqMenu", seqMenu);
         map.put("size", size);
@@ -55,14 +66,9 @@ public class Detail extends HttpServlet {
 
         /* Recipe list */
         RecipeDAO recipeDao = new RecipeDAO();
-        ArrayList<RecipeDTO> rlist = recipeDao.list(dto.getSeqProduct());
-
-
-        System.out.println("/* 테스트 로그 */");
-        for(RecipeDTO rdto : rlist) {
-            System.out.println("getSeqProduct : " + rdto.getSeqProduct());
-            System.out.println("getNamekr : " + rdto.getName());
-        }
+        ArrayList<RecipeDTO> rlist = null;
+        if(dto != null)
+            rlist = recipeDao.list(dto.getSeqProduct());
 
 
         /* Product History list */
@@ -73,7 +79,7 @@ public class Detail extends HttpServlet {
         req.setAttribute("dto", dto);
         req.setAttribute("rlist", rlist);
         req.setAttribute("hlist", hlist);
-
+        req.setAttribute("slist", slist);
 
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/menu/basic/detail.jsp");
