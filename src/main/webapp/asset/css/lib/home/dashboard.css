@@ -1,4 +1,4 @@
-
+/* 화면구성 */
 .dashboard_content_container {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -25,8 +25,7 @@
 }
 
 
-/* 당일판매액 */
-
+/*[점장] 당일판매액 */
 .dashboard_content_font {
 	width: inherit;
 	height: 120px;
@@ -44,12 +43,13 @@
 	font-weight: 700px;
 }
 
+
+/* [점장] 월간 총 판매액 차트 */
 .dashboard_content_chart {
 	width: inherit;
 	height: 250px;
 	padding: 15px 20px;
 }
-
 
 .dashboard_content_chart > p {
 	font-weight: 700;
@@ -60,12 +60,12 @@
 	font-weight: 400;
 }
 
+
+/* [점장],[지역장] 공지사항 */
 .daily_sales{
 	width: 500px;
 }
 
-
-/* 공지사항 */
 .dashboard_notice {
 	width: inherit;
 	height: 370px;
@@ -84,16 +84,6 @@
 	color: var(--black_sub1);
 }
 
-.schedule {
-	width: inherit;
-	height: 370px;
-	overflow: auto;
-}
-
-.remain_product {
-	width: 500px;
-}
-
 .dash_notice_head {
 	color: var(--white);
 	font-weight: 700;
@@ -104,7 +94,20 @@
 	font-weight: 700;
 }
 
-/* 재고상황 */
+
+/* [점장] 스케줄 */
+.schedule {
+	width: inherit;
+	height: 370px;
+	overflow: auto;
+}
+
+
+/* [점장] 재고상황 */
+.remain_product {
+	width: 500px;
+}
+
 .dashboard_remain_product {
 	width: inherit;
 	height: 370px;
@@ -116,9 +119,7 @@
 }
 
 
-
-
-/*  월간 총 판매액 차트 */
+/* [점장] 월간 총 판매액 차트 */
 .dashboard_highcharts-figure {
     width: 450px;
 }
@@ -127,27 +128,29 @@
     height: 160px;
 }
 
-/* 그래프 */
+
+/* [점장] 당일 상품별 총 판매 비율 그래프 */
 .highcharts-figure2 {
     width: 500px;
 }
 
 #dashboard_graph {
 	height: 350px;
-
 }
 
 
+/* [지역장] 지역내 지점별 당일 판매 현황 그래프 */
 .dashboard_highcharts-figure3 {
     width: 500px;
 }
 
 #dashboard_graph2 {
 	height: 350px;
-    /* fill: var(--contents_background); */
 }
 
-.content_header {
+
+/* [지역장] 지역내 지점별 당일 판매 현황 -> 버튼 위치 고정 */
+.dashboard_content_header {
 	position: relative;
 	top:0;
 	left:0;
@@ -166,10 +169,14 @@
 	color: var(--black_sub1);
 }
 
+
+/* [지역장] 지점별 월간 총 판매액 차트 */
 #dashboard_container2 {
     height: 160px;
 }
 
+
+/* [지역장] 전지역 매출 현황 그래프 */
 #dashboard_container3 {
 	width: 1000px;
     height: 360px;
@@ -177,7 +184,6 @@
 
 #dashboard_graph3 {
 	height: 350px;
-    /* fill: var(--contents_background); */
 }
 
 
