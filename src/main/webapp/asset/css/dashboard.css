@@ -19,10 +19,11 @@
 	width: inherit;
 	height: 50px;
 	padding: 15px 20px;
-	background-color: #9988DD;
+	background-color: var(--purple_three);
 	font-weight: 700;
-	color: var(--black_sub1);
+	color: var(--white);
 }
+
 
 /* 당일판매액 */
 
@@ -92,8 +93,13 @@
 	width: 500px;
 }
 
+.dash_notice_head {
+	color: var(--white);
+	font-weight: 700;
+}
+
 .dash_notice_title {
-	color: #3F4150;
+	color: var(--black_sub1);
 	font-weight: 700;
 }
 
@@ -108,7 +114,10 @@
 	color: var(--black_sub1);
 }
 
-/* 월간판매액 */
+/* 스케줄 */
+.schedule {
+	overflow: auto;
+}
 
 
 
@@ -157,6 +166,7 @@
 .dashboard_button {
 	height: 30px;
 	border-radius: 4px;
+	color: var(--black_sub1);
 }
 
 #container2 {

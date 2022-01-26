@@ -41,14 +41,16 @@ public class DashBoard extends HttpServlet {
     	ArrayList<DailySellProdDTO> prod = dao.prod();
     	//[점장] 재고상황 
     	ArrayList<StockRemainDTO> stockremain = dao.stockremain();
-    	//[점장] 스태프 당일 근무표
+    	//[점장] 스태프 당일 근무표 21년 11월 1~3 까지밖에 데이터 없음 그냥 뷰 구성한거로 끝내기
     	ArrayList<StaffScheduleDTO> staffschedule = dao.staffschedule();
-    	
+    	//[점장] 직원 당일 근무표 데이터 없음 이름만 추가해놓음. 데이터 입력받아도 어떻게 넣어야 할지 모르겠음
+    	ArrayList<EmployeeScheduleDTO> employeeschedule = dao.employeeschedule();
     	req.setAttribute("total", total);
     	req.setAttribute("list", list);
     	req.setAttribute("prod", prod);
     	req.setAttribute("stockremain", stockremain);
     	req.setAttribute("staffschedule", staffschedule);
+    	req.setAttribute("employeeschedule", employeeschedule);
     	
     	}
     	

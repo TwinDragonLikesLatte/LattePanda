@@ -18,12 +18,7 @@
 				<!-- 점장화면 -->
 				<c:if test="${ seq_department > 300000}">
 				<%-- <c:if test="${empty id}"> --%>
-					<!-- <div>
-                버튼예제<br>
-                <input type="submit" class="btn btn-primary" value="등록하기">
-                <input type="button" class="btn btn-danger" value="취소하기">
-                <input type="button" class="btn btn-default" value="목록보기">
-            </div> -->
+				
 					<div class="content_container">
 						<div class="content_gird">
 							<div class="content_header">당일 총 판매액</div>
@@ -54,7 +49,7 @@
 						</div>
 						<div class="content_gird">
 							<div class="content_header">
-								<a class="dash_notice_title" href="/notice/board.do">공지사항</a>
+								<a class="dash_notice_head" href="/notice/board.do">공지사항</a>
 							</div>
 							<div class="dashboard_notice">
 								<table class="table table-bordered daily_sales">
@@ -93,6 +88,28 @@
 										<td>22</td>
 										<td>23</td>
 									</tr>
+									<c:forEach items="${employeeschedule}" var="dto">
+									<tr>
+										<td>${dto.name}</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									</c:forEach>
 									<c:forEach items="${staffschedule}" var="dto">
 									<tr>
 										<td>${dto.name}</td>
@@ -103,8 +120,8 @@
 										<td bgcolor="#FF7D7D"></td>
 										<td bgcolor="#FF7D7D"></td>
 										<td bgcolor="#FF7D7D"></td>
-										<td bgcolor="#FF7D7D"></td>
-										<td bgcolor="#FF7D7D"></td>
+										<td></td>
+										<td></td>
 										<td><%-- ${dto.hourfrom } --%></td>
 										<td></td>
 										<td></td>
@@ -127,8 +144,8 @@
 										<td bgcolor="#FF7D7D"></td>
 										<td bgcolor="#FF7D7D"></td>
 										<td bgcolor="#FF7D7D"></td>
-										<td bgcolor="#FF7D7D"></td>
-										<td bgcolor="#FF7D7D"></td>
+										<td></td>
+										<td></td>
 										<td></td>
 										<td></td>
 										<td></td>
@@ -144,8 +161,8 @@
 										<td></td>
 										<td></td>
 										<td></td>
-										<td bgcolor="#FF7D7D"></td>
-										<td bgcolor="#FF7D7D"></td>
+										<td></td>
+										<td></td>
 										<td bgcolor="#FF7D7D"></td>
 										<td bgcolor="#FF7D7D"></td>
 										<td bgcolor="#FF7D7D"></td>
@@ -188,14 +205,14 @@
 					<div class="content_container">
 						<div class="content_gird">
 							<div class="content_header">
-								지역내 지점별 월간 판매 현황
+								지역내 지점별 당일 판매 현황
 								<form method="GET" action="/home/dashboard.do"
 									class="dashboard-select">
 									<select name="store" class="dashboard_button">
 										<option value="10101">강남대로점</option>
 										<option value="10102">대치점</option>
 										<option value="10103">선릉점</option>
-									</select> <input type="submit" class="btn btn-primary" value="등록하기">
+									</select> <input type="submit" class="btn btn-primary" value="이동하기">
 								</form>
 							</div>
 							<div class="content_graph">
@@ -229,7 +246,7 @@
 							</div>
 						</div>
 						<div class="content_gird">
-							<div class="content_header">전지점 상품별 일일 판매량</div>
+							<div class="content_header">전지점 상품별 월간 판매량</div>
 							<div class="area_prod">
 								<figure class="highcharts-figure">
 									<div id="container3"></div>

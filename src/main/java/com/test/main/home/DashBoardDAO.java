@@ -35,7 +35,7 @@ public class DashBoardDAO {
 
 		try {
 
-			String sql = "SELECT SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE SEQ_STORE ='10101' AND ORDER_DATE = TO_DATE('20211101','YYYYMMDD')";
+			String sql = "SELECT SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE SEQ_STORE ='10101' AND ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD')";
 //			나중에 당일 판매량을 확인하고 싶다면 CURRNET_DATE로 변경해서 사용하기
 //			나중에 로그인 관련 값이 저장되면 거기서 SEQ_STORE에 해당하는 값 가져와 사용하기
 			rs = stat.executeQuery(sql);
@@ -85,7 +85,7 @@ public class DashBoardDAO {
 	public ArrayList<DailySellProdDTO> prod() {
 
 		try {
-			String sql = "SELECT NAME_KR, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE ='10101' AND ORDER_DATE = TO_DATE('20211101','YYYYMMDD') GROUP BY (NAME_KR)";
+			String sql = "SELECT NAME_KR, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE ='10101' AND ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD') GROUP BY (NAME_KR)";
 			ArrayList<DailySellProdDTO> prod = new ArrayList<DailySellProdDTO>();
 			rs = stat.executeQuery(sql);
 
@@ -141,7 +141,7 @@ public class DashBoardDAO {
 	public ArrayList<StockRemainDTO> stockremain() {
 		try {
 
-			String sql = "SELECT SEQ_STORE, NAME, QUANTITY, REGDATE FROM VWSTOCKREMAIN WHERE SEQ_STORE='10101' AND REGDATE = '2022-01-25' ORDER BY QUANTITY DESC";
+			String sql = "SELECT SEQ_STORE, NAME, QUANTITY, REGDATE FROM VWSTOCKREMAIN WHERE SEQ_STORE='10101' AND REGDATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD') ORDER BY QUANTITY DESC";
 			ArrayList<StockRemainDTO> stockremain = new ArrayList<StockRemainDTO>();
 			rs = stat.executeQuery(sql);
 
@@ -169,7 +169,7 @@ public class DashBoardDAO {
 	public ArrayList<AreaMonSellProdDTO> areamonsellprod() {
 		try {
 
-			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE ORDER_DATE BETWEEN TO_DATE('20211101','YYYYMMDD') AND TO_DATE('20211201','YYYYMMDD') GROUP BY (NAME_KR)";
+			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE ORDER_DATE BETWEEN to_char(add_months(CURRENT_DATE,-1),'yyyy-mm') || '-01' AND to_char(LAST_DAY(add_months(CURRENT_DATE,-1)),'yyyy-mm-dd') GROUP BY (NAME_KR)";
 			ArrayList<AreaMonSellProdDTO> areamonsellprod = new ArrayList<AreaMonSellProdDTO>();
 			rs = stat.executeQuery(sql);
 
@@ -195,7 +195,7 @@ public class DashBoardDAO {
 	public String areatotal(String store) {
 		try {
 
-			String sql = "SELECT SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE SEQ_STORE ="+store+" AND ORDER_DATE = TO_DATE('20211101','YYYYMMDD')";
+			String sql = "SELECT SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE SEQ_STORE ="+store+" AND ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD')";
 //			나중에 당일 판매량을 확인하고 싶다면 CURRNET_DATE로 변경해서 사용하기
 //			지역장에서 선택한 값에 따라 바뀌게 만들기
 			rs = stat.executeQuery(sql);
@@ -247,7 +247,7 @@ public class DashBoardDAO {
 	public ArrayList<AreaDailySellProdDTO> areaprod(String store) {
 		
 		try {
-			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE="+store+" AND ORDER_DATE = TO_DATE('20211101','YYYYMMDD') GROUP BY (NAME_KR)";
+			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE="+store+" AND ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD') GROUP BY (NAME_KR)";
 			//날짜 세션에서 받고 
 			//
 			
@@ -277,7 +277,7 @@ public class DashBoardDAO {
 	public ArrayList<AreaDalyAllTotalDTO> areaalltotal() {
 		
 		try {
-			String sql = "SELECT SEQ_STORE,SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE ORDER_DATE = TO_DATE('20211101','YYYYMMDD') GROUP BY (SEQ_STORE)";
+			String sql = "SELECT SEQ_STORE,SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD') GROUP BY (SEQ_STORE)";
 			//날짜 세션에서 받고 
 			//
 			
@@ -336,6 +336,34 @@ public class DashBoardDAO {
 		return null;
 	}
 
+	public ArrayList<EmployeeScheduleDTO> employeeschedule() {
+		try {
+			String sql = "SELECT * FROM VWEMPLOYEESCHEDULE WHERE SEQ_STORE = '10101'";
+			//날짜 세션에서 받고 
+			//지점 입력버튼으로 받고
+			
+			ArrayList<EmployeeScheduleDTO> employeeschedule = new ArrayList<EmployeeScheduleDTO>();
+			rs = stat.executeQuery(sql);
+
+			while (rs.next()) {
+				EmployeeScheduleDTO dto = new EmployeeScheduleDTO();
+
+				dto.setSeq_store(rs.getString("seq_store"));
+				dto.setName(rs.getString("name"));
+				
+
+				employeeschedule.add(dto);
+			}
+
+			return employeeschedule;
+
+		} catch (Exception e) {
+			System.out.println("DashBoardDAO.employeeschedule()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 	
 	public void close() {
 		try {
@@ -345,6 +373,7 @@ public class DashBoardDAO {
 			e.printStackTrace();
 		}
 	}
+
 
 
 }
