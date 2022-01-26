@@ -122,7 +122,7 @@ public class LoginDAO {
             pstat = conn.prepareStatement(sql);
             pstat.setString(1, id);
 
-            ResultSet rs = pstat.executeQuery();
+            rs = pstat.executeQuery();
 
             if (rs.next()) {
                 pstat.close();
@@ -148,7 +148,7 @@ public class LoginDAO {
             pstat.setString(2, dto.getName());
             pstat.setString(3, "%-" + dto.getSsn());
 
-            ResultSet rs = pstat.executeQuery();
+            rs = pstat.executeQuery();
 
             if (rs.next()) {
                 pstat.close();
@@ -173,7 +173,7 @@ public class LoginDAO {
             pstat.setString(1, dto.getSeqEmployee());
             pstat.setString(2, dto.getPassword());
 
-            ResultSet rs = pstat.executeQuery();
+            rs = pstat.executeQuery();
 
             if (rs.next()) {
                 pstat.close();

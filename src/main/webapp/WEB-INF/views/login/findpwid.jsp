@@ -23,13 +23,33 @@
         <%--        </c:if>--%>
         <form method="POST" action="/findpassword.do" autocomplete="off">
             <input type="text" name="id" placeholder="아이디">
-            <span class="errorid"></span>
+            <span class="error-id"></span>
             <div class="btns">
                 <input type="button" name="btn-prev" value="이전으로" class="btn btn-default">
                 <input type="submit" name="btn-next" value="다음으로" class="btn btn-primary">
             </div>
             <span class="enquiry">전산팀 문의</span>
         </form>
+
+        <div class="modal modal-enquiry" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">전산팀 문의</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>전산팀 문의번호 : 02-1234-5678<br><br>※ 아이디는 직원번호입니다.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <script>
@@ -47,7 +67,7 @@
             let error = '';
 
             if ($('input[name=id]').val() == '') {
-                $('.errorid').text('아이디를 입력해주세요.')
+                $('.error-id').text('아이디를 입력해주세요.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
 
@@ -69,9 +89,7 @@
 
         $('.enquiry').on({
             click: function() {
-                $('.modal').modal().css('display', 'flex');
-                $('.modal').find('.modal-title').text('전산팀 문의');
-                $('.modal').find('.modal-body').append('<p>전산팀 문의번호 : 02-1234-5678<br><br>※ 아이디는 직원번호입니다.</p>');
+                $('.modal-enquiry').modal().css('display', 'flex');
             }
         });
 

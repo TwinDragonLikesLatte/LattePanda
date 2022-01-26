@@ -23,15 +23,35 @@
         <%--        </c:if>--%>
         <form method="POST" action="/changepassword.do" autocomplete="off">
             <input type="password" name="pw" placeholder="새 비밀번호" maxlength="16">
-            <span class="errorpw"></span>
+            <span class="error-pw"></span>
             <input type="password" name="pwok" placeholder="새 비밀번호 확인" maxlength="16">
-            <span class="errorpwok"></span>
+            <span class="error-pwok"></span>
             <div class="btns">
                 <input type="submit" name="btn-next" value="비밀번호 변경" class="btn btn-primary">
             </div>
             <span class="enquiry">전산팀 문의</span>
             <input type="hidden" name=id value="${id}">
         </form>
+
+        <div class="modal modal-enquiry" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">전산팀 문의</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>전산팀 문의번호 : 02-1234-5678<br><br>※ 아이디는 직원번호입니다.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <script>
@@ -47,18 +67,18 @@
         $('form').submit(function() {
 
             if ($('input[name=pw]').val() == '') {
-                $('.errorpw').text('비밀번호를 입력해주세요.')
+                $('.error-pw').text('비밀번호를 입력해주세요.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
-                $('.errorpwok').css('display', 'none');
+                $('.error-pwok').css('display', 'none');
 
                 return false;
 
             } else if ($('input[name=pw]').val().length < 8) {
-                $('.errorpw').text('비밀번호는 8자 이상이어야 합니다.')
+                $('.error-pw').text('비밀번호는 8자 이상이어야 합니다.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
-                $('.errorpwok').css('display', 'none');
+                $('.error-pwok').css('display', 'none');
 
                 return false;
 
@@ -68,7 +88,7 @@
 
             if ($('input[name=pwok]').val() == '') {
 
-                $('.errorpwok').text('비밀번호 확인을 입력해주세요.')
+                $('.error-pwok').text('비밀번호 확인을 입력해주세요.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
 
@@ -76,14 +96,14 @@
 
             } else if ($('input[name=pwok]').val() != $('input[name=pw]').val()) {
 
-                $('.errorpwok').text('비밀번호가 일치하지 않습니다.')
+                $('.error-pwok').text('비밀번호가 일치하지 않습니다.')
                     .prepend('<span class="glyphicon glyphicon-exclamation-sign">')
                     .css('display', 'inline');
 
                 return false;
 
             } else {
-                $('.errorpwok').css('display', 'none');
+                $('.error-pwok').css('display', 'none');
             }
 
             return true;
@@ -100,8 +120,6 @@
         $('.enquiry').on({
             click: function() {
                 $('.modal').modal().css('display', 'flex');
-                $('.modal').find('.modal-title').text('전산팀 문의');
-                $('.modal').find('.modal-body').append('<p>전산팀 문의번호 : 02-1234-5678<br><br>※ 아이디는 직원번호입니다.</p>');
             }
         });
 
