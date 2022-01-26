@@ -36,7 +36,6 @@ public class DashBoardDAO {
 		try {
 
 			String sql = "SELECT SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE SEQ_STORE ='10101' AND ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD')";
-//			나중에 당일 판매량을 확인하고 싶다면 CURRNET_DATE로 변경해서 사용하기
 //			나중에 로그인 관련 값이 저장되면 거기서 SEQ_STORE에 해당하는 값 가져와 사용하기
 			rs = stat.executeQuery(sql);
 
@@ -58,7 +57,8 @@ public class DashBoardDAO {
 		try {
 
 			String sql = "SELECT * FROM VWMONTHLYTOTAL WHERE SEQ_STORE='10101' ORDER BY START_ORDER";
-
+//			나중에 로그인 관련 값이 저장되면 거기서 SEQ_STORE에 해당하는 값 가져와 사용하기
+			
 			ArrayList<MontlyTotalDTO> list = new ArrayList<MontlyTotalDTO>();
 
 			rs = stat.executeQuery(sql);
@@ -85,7 +85,9 @@ public class DashBoardDAO {
 	public ArrayList<DailySellProdDTO> prod() {
 
 		try {
-			String sql = "SELECT NAME_KR, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE ='10101' AND ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD') GROUP BY (NAME_KR)";
+			String sql = "SELECT NAME_KR, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE ='10101' AND ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD') GROUP BY (NAME_KR) ORDER BY SUM DESC";
+//			나중에 로그인 관련 값이 저장되면 거기서 SEQ_STORE에 해당하는 값 가져와 사용하기
+			
 			ArrayList<DailySellProdDTO> prod = new ArrayList<DailySellProdDTO>();
 			rs = stat.executeQuery(sql);
 
@@ -126,8 +128,6 @@ public class DashBoardDAO {
 
 				notice.add(dto);
 			}
-//			conn.close();
-//			stat.close();
 			return notice;
 
 		} catch (Exception e) {
@@ -142,6 +142,8 @@ public class DashBoardDAO {
 		try {
 
 			String sql = "SELECT SEQ_STORE, NAME, QUANTITY, REGDATE FROM VWSTOCKREMAIN WHERE SEQ_STORE='10101' AND REGDATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD') ORDER BY QUANTITY DESC";
+//			나중에 로그인 관련 값이 저장되면 거기서 SEQ_STORE에 해당하는 값 가져와 사용하기
+			
 			ArrayList<StockRemainDTO> stockremain = new ArrayList<StockRemainDTO>();
 			rs = stat.executeQuery(sql);
 
@@ -155,8 +157,6 @@ public class DashBoardDAO {
 
 				stockremain.add(dto);
 			}
-//			conn.close();
-//			stat.close();
 			return stockremain;
 
 		} catch (Exception e) {
@@ -169,7 +169,7 @@ public class DashBoardDAO {
 	public ArrayList<AreaMonSellProdDTO> areamonsellprod() {
 		try {
 
-			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE ORDER_DATE BETWEEN to_char(add_months(CURRENT_DATE,-1),'yyyy-mm') || '-01' AND to_char(LAST_DAY(add_months(CURRENT_DATE,-1)),'yyyy-mm-dd') GROUP BY (NAME_KR)";
+			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE ORDER_DATE BETWEEN to_char(add_months(CURRENT_DATE,-1),'yyyy-mm') || '-01' AND to_char(LAST_DAY(add_months(CURRENT_DATE,-1)),'yyyy-mm-dd') GROUP BY (NAME_KR) ORDER BY SUM DESC";
 			ArrayList<AreaMonSellProdDTO> areamonsellprod = new ArrayList<AreaMonSellProdDTO>();
 			rs = stat.executeQuery(sql);
 
@@ -181,8 +181,6 @@ public class DashBoardDAO {
 
 				areamonsellprod.add(dto);
 			}
-//			conn.close();
-//			stat.close();
 			return areamonsellprod;
 
 		} catch (Exception e) {
@@ -196,14 +194,11 @@ public class DashBoardDAO {
 		try {
 
 			String sql = "SELECT SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE SEQ_STORE ="+store+" AND ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD')";
-//			나중에 당일 판매량을 확인하고 싶다면 CURRNET_DATE로 변경해서 사용하기
-//			지역장에서 선택한 값에 따라 바뀌게 만들기
 			rs = stat.executeQuery(sql);
 
 			rs.next();
 
 			String areatotal = rs.getString("TOTAL");
-//			conn.close();
 			return areatotal;
 
 		} catch (Exception e) {
@@ -218,7 +213,6 @@ public class DashBoardDAO {
 		try {
 
 			String sql = "SELECT * FROM VWMONTHLYTOTAL WHERE SEQ_STORE="+store+" ORDER BY START_ORDER";
-//			지역장에서 선택한 값에 따라 바뀌게 만들기
 			ArrayList<AreaMontlyTotalDTO> areamontotal = new ArrayList<AreaMontlyTotalDTO>();
 
 			rs = stat.executeQuery(sql);
@@ -232,8 +226,6 @@ public class DashBoardDAO {
 
 				areamontotal.add(dto);
 			}
-//			conn.close();
-//			stat.close();
 			return areamontotal;
 
 		} catch (Exception e) {
@@ -245,11 +237,9 @@ public class DashBoardDAO {
 
 
 	public ArrayList<AreaDailySellProdDTO> areaprod(String store) {
-		
+
 		try {
-			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE="+store+" AND ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD') GROUP BY (NAME_KR)";
-			//날짜 세션에서 받고 
-			//
+			String sql = "SELECT NAME_KR AS NAME, SUM(COUNT) AS SUM FROM VWDAILYSELLING WHERE SEQ_STORE="+store+" AND ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD') GROUP BY (NAME_KR) ORDER BY SUM DESC";
 			
 			
 			ArrayList<AreaDailySellProdDTO> areaprod = new ArrayList<AreaDailySellProdDTO>();
@@ -263,8 +253,7 @@ public class DashBoardDAO {
 
 				areaprod.add(dto);
 			}
-//			conn.close();
-//			stat.close();
+			
 			return areaprod;
 
 		} catch (Exception e) {
@@ -278,8 +267,7 @@ public class DashBoardDAO {
 		
 		try {
 			String sql = "SELECT SEQ_STORE,SUM(TOTAL_SALE_PRICE) AS TOTAL FROM VWDAILYSELLING WHERE ORDER_DATE = TO_DATE(CURRENT_DATE, 'YY-MM-DD') GROUP BY (SEQ_STORE)";
-			//날짜 세션에서 받고 
-			//
+
 			
 			ArrayList<AreaDalyAllTotalDTO> areaalltotal = new ArrayList<AreaDalyAllTotalDTO>();
 			rs = stat.executeQuery(sql);
@@ -292,8 +280,7 @@ public class DashBoardDAO {
 
 				areaalltotal.add(dto);
 			}
-//			conn.close();
-//			stat.close();
+
 			return areaalltotal;
 
 		} catch (Exception e) {
@@ -309,8 +296,8 @@ public class DashBoardDAO {
 		
 		try {
 			String sql = "SELECT * FROM VWSTAFFSCHEDULE WHERE TO_DATE(START_TIME,'YY-MM-DD') = '20211101' AND SEQ_STORE ='10101'";
-			//날짜 세션에서 받고 
-			//지점 입력버튼으로 받고
+			//데이터 저장 추가되면 날짜 Current_date로 변경 
+//			나중에 로그인 관련 값이 저장되면 거기서 SEQ_STORE에 해당하는 값 가져와 사용하기
 			
 			ArrayList<StaffScheduleDTO> staffschedule = new ArrayList<StaffScheduleDTO>();
 			rs = stat.executeQuery(sql);
@@ -339,8 +326,8 @@ public class DashBoardDAO {
 	public ArrayList<EmployeeScheduleDTO> employeeschedule() {
 		try {
 			String sql = "SELECT * FROM VWEMPLOYEESCHEDULE WHERE SEQ_STORE = '10101'";
-			//날짜 세션에서 받고 
-			//지점 입력버튼으로 받고
+			//날짜 Current_date로 변경 
+//			나중에 로그인 관련 값이 저장되면 거기서 SEQ_STORE에 해당하는 값 가져와 사용하기
 			
 			ArrayList<EmployeeScheduleDTO> employeeschedule = new ArrayList<EmployeeScheduleDTO>();
 			rs = stat.executeQuery(sql);
