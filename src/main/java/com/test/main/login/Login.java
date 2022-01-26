@@ -69,7 +69,6 @@ public class Login extends HttpServlet {
 
                 if (req.getParameter("saveid") != null) {
 
-                    System.out.println("cookie");
                     Cookie cookie = new Cookie("id", result.getSeqEmployee());
                     cookie.setMaxAge(60 * 60 * 24 * 30);
                     cookie.setPath("/login.do");
@@ -80,6 +79,7 @@ public class Login extends HttpServlet {
 
         req.setAttribute("error", error);
 
+        dao.closeConn();
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
         dispatcher.forward(req, resp);
     }
