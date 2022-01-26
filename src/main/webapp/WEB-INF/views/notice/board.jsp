@@ -24,10 +24,10 @@
     	
     	.search {
     		padding: 5px;
-    		width : 800px;
+    		width : 710px;
     		border : 2px solid #BEBEBE;
     		position: relative;
-    		left : 250px;
+    		left : 200px;
     		top : 35px;
     		margin: 0px;
     	}
@@ -39,20 +39,26 @@
     		width : 500px;
     	}
     	
-    	#btnwrite { /* 안됨.. */
+ /*    	html > .content > .btns > .btn-primary { /* 안됨.. */
     		width: 100px;
     		positon: relative;
-    		left: 800px;
+    		left: 800px !important;
     		margin: 0px;
+    		backgorund-color: gold;
     		
+    	} */
+    	
+    	
+    	button, html input[type="button"] {
+    		color : black;
     	}
     	
     	.searchdate {
     		float : left;
-    		margin-right: 40px;
+    		margin-right: 30px;
     	}
     	
-    	.searchdate > input { height: 30px; widht: 140px; }
+    	.searchdate > input { height: 34px; width: 140px; }
     	
     	.form-control {
     		margin-right : 20px;
@@ -139,15 +145,15 @@
 					<td colspan="5">게시물이 없습니다.</td>
 				</tr>
 				</c:if>
-           </table>
-           <div class="btns" id="btnwrite">
-			
+           	</table>
+ 
 				<input type="button" value="글쓰기"
-					class="btn btn-primary"
+					class="btn btn-primary" id="btn"
 					onclick="location.href='/notice/add.do';">
-           <div class="pagebar">${pagebar}</div>
+
+
+           	<div class="pagebar">${pagebar}</div>
            
-           </div>
         </div>
     </main>
 

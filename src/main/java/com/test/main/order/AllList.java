@@ -129,8 +129,6 @@ public class AllList extends HttpServlet {
 		req.setAttribute("pagebar", pagebar);
 		req.setAttribute("nowPage", nowPage);
     	
-
-    	
     	
     	
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/order/alllist.jsp");

@@ -26,16 +26,32 @@
 </div>
 
 <script>
-<c:if test="${result == 1}">
+<c:if test="${resultorder == 1}">
 //성공
-location.href = '/order/allist.do';
+//alert('성공');
+location.href = '/order/alllist.do';
 </c:if>
 
-<c:if test="${result == 0}">
+/* <c:if test="${resultorder == 0}">
 //실패
-alert('failed');
+alert('주문실패 다시시도하세요.');
 history.back();
 </c:if>
+
+<c:if test="${resultdetail == 1}">
+//성공
+//alert('성공');
+location.href = '/order/alllist.do';
+</c:if>
+
+<c:if test="${resultdetail == 0}">
+//실패
+alert('주문실패 다시시도하세요.');
+history.back();
+</c:if>  */
+
+
+
 </script>
 
 </body>

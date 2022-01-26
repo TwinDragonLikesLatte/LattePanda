@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>주문관리: 진행중</title>
+    
     <style>
     
   /*   .table #table {
@@ -22,11 +23,11 @@
     
     
     .btnorder {
-    	width: 200px;
+    	width: 100px;
     	/* background-color : gold; */
     	position: relative;
     	
-    	left: 1300px;
+    	left: 1430px;
     	top: -12px;
     }
     
@@ -51,6 +52,8 @@
     	color: var(--black_main);
     }
     
+    
+   
     
     </style>
     <%@ include file="/WEB-INF/inc/asset.jsp" %>
@@ -87,17 +90,21 @@
 				</table>
 			</div>	
 
+				
 
 			<div class="btnorder">
-				<form method="GET" action="/order/buttonorder.do">
-							<input type="button" value="아메리카노" name="ame" class="btn btn-default">
-							<input type="button" value="라떼" name="latte" class="btn btn-default">
+				<form id="americano" method="POST" action="/order/buttonorder.do">
+							<input type="text" name="txtame" value='10101' hidden>
+							<input type="text" name="txtamedetail" value='P013' hidden>
+							<input type="submit" value="아메리카노" name="ame" class="btn btn-default">
 				</form>
-			</div>
+<!-- 				<form id="latte" method="POST" action="/order/buttonorder.do">
+							<input type="text" name="txtlatte" value='10101' hidden>
+							<input type="text" name="txtlattedetail" value='P017' hidden>
+							<input type="submit" value="카페라떼" name="ame" class="btn btn-default">
+				</form> -->
+			</div>				
 
-<%--       		<c:if test="${map.searchmode == 'y'}">
-			<div style="text-align:center;margin:10px;color:#777;">'${map.word}'(으)로 검색한 ${listall.size()}개의 주문이 있습니다.</div>
-			</c:if> --%>
 			<div>
    			<table class="table table-bordered"  id="table" >
    				<tr style="background-color : #504B71; color : var(--white);" >
@@ -110,15 +117,43 @@
    					<th style="text-align: center;">환불여부</th>
    				</tr>
       		<c:forEach items="${listall}" var="dto">
-      				<tr>
+      				<c:if test="${ dto.end_order == null }">
+      				<tr style="background-color: #C6DDC7;">
       					<td style="width: 100px; text-align: center;">${dto.detail}</td>
       					<td style="width: 300px;">${dto.name_kr}</td>
       					<td style="width: 300px; text-align: right;">${dto.total}원</td>
       					<td style="text-align: center;">${dto.start_order}</td>
       					<td style="text-align: center;">${dto.end_order}</td>
       					<td style="width: 100px; text-align: right;">${dto.count}</td>
-      					<td style="text-align: center;">${ dto.refund}</td>
+      					<td style="text-align: center;">${dto.refund}</td>
       				</tr>
+      				</c:if>
+      				
+      				<c:if test="${ dto.end_order != null }">
+      				<tr >
+      					<td style="width: 100px; text-align: center;">${dto.detail}</td>
+      					<td style="width: 300px;">${dto.name_kr}</td>
+      					<td style="width: 300px; text-align: right;">${dto.total}원</td>
+      					<td style="text-align: center;">${dto.start_order}</td>
+      					<td style="text-align: center;">${dto.end_order}</td>
+      					<td style="width: 100px; text-align: right;">${dto.count}</td>
+      					<td style="text-align: center;">${dto.refund}</td>
+      				</tr>
+      				</c:if>
+      				
+<%--       				<c:if test="${ dto.refund == 'Y' }">
+      				<tr style="background-color: var(--red);">
+      					<td style="width: 100px; text-align: center;">${dto.detail}</td>
+      					<td style="width: 300px;">${dto.name_kr}</td>
+      					<td style="width: 300px; text-align: right;">${dto.total}원</td>
+      					<td style="text-align: center;">${dto.start_order}</td>
+      					<td style="text-align: center;">${dto.end_order}</td>
+      					<td style="width: 100px; text-align: right;">${dto.count}</td>
+      					<td style="text-align: center;">${dto.refund}</td>
+      				</tr>
+      				</c:if> --%>
+
+
       		</c:forEach>
       		</table>
       		</div>
@@ -129,11 +164,15 @@
 </div>
 
 <script>
+
+
+
 <c:if test="${map.searchmode == 'y'}">
 //검색 상태를 유지
 $('select[name=column]').val('${map.column}');
 $('input[name=word]').val('${map.word}');
 </c:if>
+
 </script>
 
 </body>

@@ -12,22 +12,27 @@ import javax.servlet.http.HttpServletResponse;
 public class ButtonOrder extends HttpServlet { 
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		
-		
-		String ame = req.getParameter("ame");
+		//아메리카노
+		String txtame = req.getParameter("txtame");
+		String txtamedetail = req.getParameter("txtamedetail");
 		
 		
 		ListDAO dao = new ListDAO();
-		ListDTO
-		int result = dao.add();
+		ListDTO dto = new ListDTO();
 		
-		req.setAttribute("result", result);
+		//아메리카노
+		dto.setStart_order(txtame);
+		dto.setSeq_product(txtamedetail);
 		
 		
-		
-		
+		int resultorder = dao.addorder(dto);
+		req.setAttribute("resultorder", resultorder);
+
+		int resultdetail = dao.addorderdetail(dto);
+		req.setAttribute("resultdetail", resultdetail);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/order/buttonorder.jsp");
 		dispatcher.forward(req, resp);

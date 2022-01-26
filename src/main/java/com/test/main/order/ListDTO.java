@@ -18,10 +18,19 @@ public class ListDTO {
 	
 	public String refund; 		//환불
 	
+	public String seq_product;
+	
 	
 	
 	
 
+	public String getSeq_product() {
+		return seq_product;
+	}
+
+	public void setSeq_product(String seq_product) {
+		this.seq_product = seq_product;
+	}
 
 	public String getRefund() {
 		return refund;

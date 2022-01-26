@@ -48,9 +48,12 @@ public class ListDAO {
 			}
 			
 			
+			//원래 쿼리 -> 1주문 13개찍힘
+//			String sql = String.format("select * from ( select rownum as rnum, a.* from (select * from vwalllist %s order by start_order desc) a) where rnum between %s and %s", where, map.get("begin"), map.get("end"));
 			
-			String sql = String.format("select * from ( select rownum as rnum, a.* from (select * from vwalllist %s order by start_order desc) a) where rnum between %s and %s", where, map.get("begin"), map.get("end"));
-
+			
+			//수정쿼리 -> 1주문 2개 찍힘 -> view 문제:해결
+			String sql = String.format("select * from (select rownum as rnum, a.* from vwlisttest a %s) where rnum between %s and %s order by rnum asc", where, map.get("begin"), map.get("end"));
 		
 			
 		rs = stat.executeQuery(sql);
@@ -176,30 +179,52 @@ public class ListDAO {
 	}
 	
 	
-
 	
-	
-
-	
-	
-	// 버튼 클릭 주문 추가
-	public int add() {
+	// 버튼 클릭 주문 쿼리 2번 insert 필요
+	//1. tblorder 추가
+	public int addorder(ListDTO dto) {
 		
 		try {
 			
-			String sql = "insert into tblorder values (seqOrder.nextVal, 10101, default, null)";
+			String sql = "insert into tblorder values (seqOrder.nextVal, ?, default, null)";
 			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getStart_order());
+			
+			System.out.println("addorder");
 			return pstat.executeUpdate();
 			
-			
-
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("ListDAO.addorder()");
+			e.printStackTrace();
 		}
-		
 		return 0;
-		
 	}
+	
+	//2. tblorderdetail 추가
+	public int addorderdetail(ListDTO dto) {
+		
+		try {
+
+			String sql = "insert into tblorderdetail values (seqOrderDetail.nextVal, seqSameOrder.nextVal, ?, 1, 'N')";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, dto.getSeq_product());
+			
+			
+			System.out.println("addorderdetail");
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("ListDAO.adddetail()");
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	
+	
 	
 	
 	
