@@ -22,6 +22,7 @@
 	position: relative;
 	top: 0;
 	left: 0;
+	color: var(--black_sub1);
 }
 
 .store_button {
@@ -35,5 +36,14 @@
 
 #netprofit_container {
 	width: inherit;
-	margin-top: 25%;
+	margin-top: 20%;
+}
+
+.netprofit_total {
+	color: var(--black_sub1);
+	padding: 10px 10px;
+}
+
+.netprofit_content_grid {
+	border: var(--border);
 }

@@ -154,6 +154,12 @@ if (request.getAttribute("seq_position").equals("8")) {
 					<div class="netprofit_content_grid">
 						<div class="netprofit_content_header">선택 매장 지출 비율</div>
 						<div class="netprofit_content_graph">
+							<p class="netprofit_total">
+								총 매출액
+								<c:forEach items="${profitvalues}" var="dto">
+									<fmt:formatNumber value="${dto.sales}" pattern="#,###,###,###" />
+								</c:forEach>
+							</p>
 							<figure class="netprofit_highcharts-figure">
 								<div id="netprofit_container"></div>
 
@@ -208,10 +214,6 @@ if (request.getAttribute("seq_position").equals("8")) {
 		            name: '영업이익',
 		            y: ${dto.operatingprofit},
 	        	}, 
-	        	{
-		            name: '매출액',
-		            y: ${dto.sales},
-	        	},
 	        	{
 		            name: '매출원가',
 		            y: ${dto.cost_of_sales},

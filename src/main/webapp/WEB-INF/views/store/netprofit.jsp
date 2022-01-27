@@ -153,6 +153,12 @@
 					<div class="netprofit_content_grid">
 						<div class="netprofit_content_header">선택 매장 지출 비율</div>
 						<div class="netprofit_content_graph">
+						<p class="netprofit_total">
+								총 매출액
+								<c:forEach items="${profitvalues}" var="dto">
+									<fmt:formatNumber value="${dto.sales}" pattern="#,###,###,###" />
+								</c:forEach>
+							</p>
 							<figure class="netprofit_highcharts-figure">
 								<div id="netprofit_container"></div>
 									
@@ -178,7 +184,7 @@
 	    title: {
 	    	<c:forEach items="${profitvalues}" var="dto">
 	        text: '${dto.name}'
-	        </c:forEach>
+	        </c:forEach>,
 	    },
 	    tooltip: {
 	        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
