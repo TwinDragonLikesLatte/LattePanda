@@ -13,25 +13,29 @@ public class ButtonOrder extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		
 		
 		//아메리카노
 		String txtame = req.getParameter("txtame");
 		String txtamedetail = req.getParameter("txtamedetail");
-		
-		
-		ListDAO dao = new ListDAO();
 		ListDTO dto = new ListDTO();
-		
-		//아메리카노
+		ListDAO dao = new ListDAO();
 		dto.setStart_order(txtame);
 		dto.setSeq_product(txtamedetail);
+
 		
 		
-		int resultorder = dao.addorder(dto);
+		
+		
+		
+		
+		
+		//주문
+		int resultorder = dao.addorder(dto); //tblOrder
 		req.setAttribute("resultorder", resultorder);
 
-		int resultdetail = dao.addorderdetail(dto);
+		int resultdetail = dao.addorderdetail(dto);//tblOrderDetail
 		req.setAttribute("resultdetail", resultdetail);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/order/buttonorder.jsp");

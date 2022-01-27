@@ -33,7 +33,7 @@ public class ListDAO {
 	
 	}
 	
-	//vwallist 만들기
+	//전체주문
 	public ArrayList<ListDTO> listall(HashMap<String, String> map) {
 		
 		try {
@@ -47,12 +47,9 @@ public class ListDAO {
 			
 			}
 			
+
 			
-			//원래 쿼리 -> 1주문 13개찍힘
-//			String sql = String.format("select * from ( select rownum as rnum, a.* from (select * from vwalllist %s order by start_order desc) a) where rnum between %s and %s", where, map.get("begin"), map.get("end"));
-			
-			
-			//수정쿼리 -> 1주문 2개 찍힘 -> view 문제:해결
+			//수정쿼리 view 수정함
 			String sql = String.format("select * from (select rownum as rnum, a.* from vwlisttest a %s) where rnum between %s and %s order by rnum asc", where, map.get("begin"), map.get("end"));
 		
 			
@@ -64,6 +61,7 @@ public class ListDAO {
 			
 			ListDTO dto = new ListDTO();
 			
+			dto.setSeq_order(rs.getString("seq_order"));
 			dto.setDetail(rs.getString("detail"));
 			dto.setName_kr(rs.getString("name_kr"));
 			dto.setTotal(rs.getString("total"));
@@ -86,7 +84,33 @@ public class ListDAO {
 	}
 	
 	
-	//vwalllist 추가하기
+	//주문완료
+//	public int edit(ListDTO dto) {
+//
+//		try {
+//			
+//			
+//			String sql = "update tblorder set end_order = default where seq_order =?";
+//			pstat = conn.prepareStatement(sql);
+//			
+//			
+//			pstat.setString(1, dto.getEnd_order());
+//			
+//			return pstat.executeUpdate();
+//
+//		} catch (Exception e) {
+//			System.out.println("BoardDAO.edit()");
+//			e.printStackTrace();
+//		}
+//		
+//		return 0;
+//	}
+	
+	
+	
+	
+	
+	//진행중
 	public ArrayList<ListDTO> list() {
 		
 		try {
@@ -131,7 +155,7 @@ public class ListDAO {
 				
 				dto.setStart_order(rs.getString("start_order"));
 				dto.setName_kr(rs.getString("name_kr"));
-				dto.setSize_name(rs.getString("size_name"));
+				dto.setSeq_size(rs.getString("seq_size"));
 				dto.setTotal(rs.getString("total"));
 				dto.setCount(rs.getString("count"));
 				

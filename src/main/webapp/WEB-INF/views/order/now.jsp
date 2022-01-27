@@ -30,8 +30,8 @@
 					</tr>
 					<tr>
 						<td>
-						${dto.name_kr} ${dto.size_name} ${dto.count}<br>
-						${dto.name_kr} ${dto.size_name} <!--?????  -->
+						${dto.name_kr} ${dto.seq_size} ${dto.count}<br>
+						${dto.name_kr} ${dto.seq_size} <!--?????  -->
 						</td>
 					</tr>	
 					<tr>
