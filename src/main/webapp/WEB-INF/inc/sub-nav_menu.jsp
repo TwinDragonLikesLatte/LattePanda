@@ -9,7 +9,6 @@
         <li class="sub-menu"><a href="/menu/basic/list.do" class="">메뉴정보</a>
             <ul>
                 <li><a href="/menu/basic/list.do">메뉴조회</a></li>
-                <li><a href="/menu/basic/detail.do">상세조회</a></li>
                 <li><a href="/menu/basic/add.do">메뉴등록</a></li>
             </ul>
         </li>
