@@ -72,7 +72,7 @@ if (session.getAttribute("seq_position").equals("6")) {
 									<c:forEach items="${notice}" var="dto" end="9">
 										<tr>
 											<td><a class="dash_notice_title"
-												href="/notice/board.do?${dto.seq_notice}">${dto.title}</a></td>
+												href="/notice/view.do?seq=${dto.seq_notice}">${dto.title}</a></td>
 											<td><small>${dto.content}</small></td>
 										</tr>
 									</c:forEach>
@@ -292,7 +292,7 @@ if (session.getAttribute("seq_position").equals("6")) {
 									<c:forEach items="${notice}" var="dto" end="9">
 										<tr>
 											<td><a class="dash_notice_title"
-												href="/notice/board.do?${dto.seq_notice}">${dto.title}</a></td>
+												href="/notice/view.do?seq=${dto.seq_notice}">${dto.title}</a></td>
 											<td>${dto.content}</td>
 										</tr>
 									</c:forEach>

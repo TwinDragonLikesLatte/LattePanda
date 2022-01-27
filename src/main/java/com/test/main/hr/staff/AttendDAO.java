@@ -39,7 +39,7 @@ public class AttendDAO {
     public ArrayList<AttendDTO> getWeek(String seqStaff) {
 
         try {
-            String sql = "SELECT * FROM vwStaffAttend WHERE seq_staff = ?";
+            String sql = "SELECT * FROM vwThisWeekAttend WHERE seq_staff = ?";
 
             pstat = conn.prepareStatement(sql);
             pstat.setString(1, seqStaff);
@@ -49,7 +49,6 @@ public class AttendDAO {
             while(rs.next()) {
                 AttendDTO dto = new AttendDTO();
 
-                System.out.println(rs.getString("work_start"));
                 dto.setDay(rs.getString("day"));
                 dto.setWorkStart(rs.getString("work_start"));
                 dto.setRestStart(rs.getString("rest_start"));
