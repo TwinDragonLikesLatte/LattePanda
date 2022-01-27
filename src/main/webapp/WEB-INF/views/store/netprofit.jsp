@@ -17,6 +17,8 @@
 <head>
 <title>title</title>
 <%@ include file="/WEB-INF/inc/asset.jsp"%>
+	<link rel="stylesheet" href="/asset/css/store/store.css">
+	<script src="/asset/js/lib/highcharts.js"></script>
 </head>
 <body>
 
@@ -31,7 +33,7 @@
 						<div class="netprofit_content_header">전 매장 순수익별 순위</div>
 						<div class="netprofit_select">
 							<table class="table table-bordered storeprofit">
-								<tr class="active">
+								<tr>
 									<td>매장명</td>
 									<td>순이익</td>
 								</tr>
