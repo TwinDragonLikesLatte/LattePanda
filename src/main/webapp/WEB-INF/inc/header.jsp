@@ -25,9 +25,9 @@
                 </ul>
             </li>
             <li class="main-menu">
-                <a href="/stock/list.do">재고관리</a>
+                <a href="/stock/list/list.do">재고관리</a>
                 <ul class="nav-box">
-                    <li><a href="/stock/list.do">
+                    <li><a href="/stock/list/list.do">
                         <div></div>재고 조회
                     </a></li>
                     <li><a href="/stock/orderList.do">
