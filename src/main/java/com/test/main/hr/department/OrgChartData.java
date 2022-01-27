@@ -17,8 +17,6 @@ public class OrgChartData extends HttpServlet {
 
         String seqDepartment = req.getParameter("seq_department");
 
-        System.out.println(seqDepartment);
-
         DepartmentDAO dao = new DepartmentDAO();
 
         ArrayList<DepartmentDTO> list = dao.getList();

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.test.main.stock.StockDAO;
 import com.test.main.stock.StockDTO;
@@ -25,7 +26,8 @@ public class List extends HttpServlet {
     	//2. 반환값 전달 + JSP 호출
     	
     	//매장 번호
-    	String seq_store = "10101";
+        HttpSession session = req.getSession();
+        String seq_store = (String) session.getAttribute("seq_store");
     	
     	//1.
     	StockDAO dao = new StockDAO();

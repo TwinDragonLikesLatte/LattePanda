@@ -21,18 +21,21 @@ public class List extends HttpServlet {
 
         String seqDepartment = req.getParameter("seq_department");
 
-        if (seqDepartment.equals("all")) {
-            seqDepartment = "";
+        if (seqDepartment != null) {
+            if (seqDepartment.equals("all")) {
+                seqDepartment = "";
+            }
+
+            StaffDAO sDao = new StaffDAO();
+            ArrayList<StaffDTO> list = sDao.getList(seqDepartment);
+
+            req.setAttribute("list", list);
+
+            sDao.closeConn();
         }
-
-        StaffDAO sDao = new StaffDAO();
-        ArrayList<StaffDTO> list = sDao.getList(seqDepartment);
-
-        req.setAttribute("list", list);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/hr/staff/list.jsp");
 
-        sDao.closeConn();
         dispatcher.forward(req, resp);
     }
 }

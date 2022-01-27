@@ -1,0 +1,145 @@
+input.form-control:focus {
+    border-color: var(--purple_three);
+    box-shadow: none;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.sub-title {
+    color: var(--black_main);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.btn {
+    min-width: 80px;
+    height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+form {
+    border: var(--border);
+}
+
+table {
+    border-collapse: separate;
+}
+
+.input-group {
+    width: 200px;
+}
+
+.input-group > input.form-control {
+    width: 161px;
+}
+
+table input.form-control {
+    width: 200px;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th {
+    width: 100px;
+    height: 40px;
+    border-right: var(--border);
+    border-bottom: var(--border);
+    background-color: #e5e5e5;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+}
+
+.table > tbody > tr > td {
+    border-top: none;
+    border-right: var(--border);
+    border-bottom: var(--border);
+    background-color: #FFFFFF;
+}
+
+.table > thead > tr > th:last-child,
+.table > tbody > tr > th:last-child,
+.table > tbody > tr > td:last-child {
+    border-right: none;
+}
+
+.table > tbody > tr:last-child > th,
+.table > tbody > tr:last-child > td {
+    border-bottom: none;
+}
+
+.flex-box {
+    display: flex;
+    align-items: center;
+}
+
+.flex-box > span {
+    margin: 0 10px;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: calc(100% - 290px) 260px;
+    grid-template-rows: 200px calc(100% - 230px);
+    grid-gap: 30px;
+}
+
+.search {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.search form {
+    height: 154px;
+}
+
+.search td {
+    width: 517px;
+}
+
+.list {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.list form {
+    height: calc(100% - 46px);
+    background-color: #C4C4C4;
+    overflow-y: scroll;
+}
+
+.list thead {
+    position: sticky;
+    top:0;
+    left: 0;
+}
+
+/*40 130 130 170 250 200 100 210*/
+.list th:nth-child(1) { width: 40px; }
+.list th:nth-child(2),
+.list th:nth-child(3) { width: 130px; }
+.list th:nth-child(4) { width: 170px; }
+.list th:nth-child(5) { width: 250px; }
+.list th:nth-child(6) { width: 200px; }
+.list th:nth-child(7) { width: 100px; }
+.list th:nth-child(8) { width: 210px; }
+
+.list td {
+    text-align: center;
+}
+
+input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+.org-chart li.sel > span {
+    color: var(--purple_three);
+    font-weight: 700;
+}

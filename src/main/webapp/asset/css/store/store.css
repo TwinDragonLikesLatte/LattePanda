@@ -18,11 +18,27 @@
 	color: var(--white);
 }
 
+.netprofit_content_grid:first-child {
+	background-color: #C4C4C4;
+}
+
+.netprofit_select {
+	height: calc(100% - 50px);
+	overflow-y: scroll;
+}
+
 .storeprofit > tbody > tr > td {
 	position: relative;
 	top: 0;
 	left: 0;
+	width: 50%;
+	background-color: #FFFFFF;
 	color: var(--black_sub1);
+}
+
+.storeprofit > tbody > tr:first-child > td {
+	background-color: #e5e5e5;
+	font-weight: 700;
 }
 
 .store_button {
@@ -31,8 +47,6 @@
 	right: 10px;
 	height: 32px;
 }
-
-
 
 #netprofit_container {
 	width: inherit;

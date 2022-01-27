@@ -1,13 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"
 	pageEncoding="UTF-8"%>
 <%
-if (request.getAttribute("seq_position").equals("6")) {
+if (session.getAttribute("seq_position").equals("6")) {
 	response.sendRedirect("/notice/board.do");
-} else if (request.getAttribute("seq_position").equals("5")) {
-	response.sendRedirect("/notice/board.do");
-} else if (request.getAttribute("seq_position").equals("9")) {
+} else if (session.getAttribute("seq_position").equals("5")) {
 	response.sendRedirect("/notice/board.do");
 }
+
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -15,6 +14,8 @@ if (request.getAttribute("seq_position").equals("6")) {
 <head>
 <title>홈</title>
 <%@ include file="/WEB-INF/inc/asset.jsp"%>
+	<link rel="stylesheet" href="/asset/css/home/dashboard.css">
+	<script src="/asset/js/lib/highcharts.js"></script>
 </head>
 <body>
 
@@ -71,7 +72,7 @@ if (request.getAttribute("seq_position").equals("6")) {
 									<c:forEach items="${notice}" var="dto" end="9">
 										<tr>
 											<td><a class="dash_notice_title"
-												href="/notice/board.do?${dto.seq_notice}">${dto.title}</a></td>
+												href="/notice/view.do?seq=${dto.seq_notice}">${dto.title}</a></td>
 											<td><small>${dto.content}</small></td>
 										</tr>
 									</c:forEach>
@@ -291,7 +292,7 @@ if (request.getAttribute("seq_position").equals("6")) {
 									<c:forEach items="${notice}" var="dto" end="9">
 										<tr>
 											<td><a class="dash_notice_title"
-												href="/notice/board.do?${dto.seq_notice}">${dto.title}</a></td>
+												href="/notice/view.do?seq=${dto.seq_notice}">${dto.title}</a></td>
 											<td>${dto.content}</td>
 										</tr>
 									</c:forEach>

@@ -27,7 +27,7 @@ public class Attend extends HttpServlet {
 
             HashMap<String, Integer> timeCnt = aDao.getMonth(seqStaff);
 
-            if (timeCnt != null) {
+            if (timeCnt != null && week != null) {
                 int week_minute = 0;
                 int week_cnt = week.size();
 
@@ -60,7 +60,6 @@ public class Attend extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String seqStaff = req.getParameter("seq_staff");
-        System.out.println(seqStaff);
         String pw = req.getParameter("pw");
         String selected = req.getParameter("selected");
 

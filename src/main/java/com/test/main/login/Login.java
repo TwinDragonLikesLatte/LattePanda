@@ -22,8 +22,6 @@ public class Login extends HttpServlet {
         String id = req.getParameter("id");
         String pw = req.getParameter("pw");
 
-        System.out.println(id + pw);
-
         if(id == null) {
             doGet(req, resp);
         }
@@ -64,6 +62,7 @@ public class Login extends HttpServlet {
                 session.setAttribute("position", result.getPosition());
                 session.setAttribute("seq_department", result.getSeqDepartment());
                 session.setAttribute("seq_position", result.getSeqPosition());
+                session.setAttribute("seq_store", result.getSeqStore());
 
                 dao.resetLoginFail(result.getSeqEmployee());
 

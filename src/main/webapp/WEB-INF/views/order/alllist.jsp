@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <title>주문관리: 진행중</title>
@@ -86,18 +87,18 @@
 									class="form-control" required></td>
 								<td><input type="submit" value="검색하기"
 									class="btn btn-default"></td>
-								</form>
 							</tr>
 						</table>
+					</form>
 				</div>
 
 
 
 				<div class="btnorder">
 					<form id="americano" method="POST" action="/order/buttonorder.do">
-						<input type="text" name="txtame" value='10101' hidden> <input
-							type="text" name="txtamedetail" value='P013' hidden> <input
-							type="submit" value="아메리카노" name="ame" class="btn btn-default">
+						<input type="text" name="txtame" value="${seq_store}" hidden>
+						<input type="text" name="txtamedetail" value='P013' hidden>
+						<input type="submit" value="아메리카노" name="ame" class="btn btn-default">
 					</form>
 				</div>
 
@@ -120,7 +121,7 @@
 									<td style="width: 200px; text-align: center;">${dto.seq_order}</td>
 									<td style="width: 200px;">${dto.name_kr}</td>
 									<td style="width: 100px; text-align: center;">${dto.seq_size}</td>
-									<td style="width: 150px; text-align: right;">${dto.total}원</td>
+									<td style="width: 150px; text-align: right;"><fmt:formatNumber value="${dto.total}" pattern="#,###"/>원</td>
 									<td style="width: 250px; text-align: center;">${dto.start_order}</td>
 									<td style="width: 250px; text-align: center;">${dto.end_order}진행중</td>
 									<td style="width: 100px; text-align: right;">${dto.count}</td>
@@ -134,7 +135,7 @@
 									<td style="width: 200px; text-align: center;">${dto.seq_order}</td>
 									<td style="width: 200px;">${dto.name_kr}</td>
 									<td style="width: 100px; text-align: center;">${dto.seq_size}</td>
-									<td style="width: 150px; text-align: right;">${dto.total}원</td>
+									<td style="width: 150px; text-align: right;"><fmt:formatNumber value="${dto.total}" pattern="#,###"/>원</td>
 									<td style="width: 250px; text-align: center;">${dto.start_order}</td>
 									<td style="width: 250px; text-align: center;">${dto.end_order}</td>
 									<td style="width: 100px; text-align: right;">${dto.count}</td>

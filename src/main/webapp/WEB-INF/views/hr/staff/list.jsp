@@ -106,7 +106,9 @@
 
     $(function() {
         let seq_department = new URL(location.href).searchParams.get('seq_department');
-        $('span[data-seq_department='+seq_department+']').parent().addClass("sel");
+        if (seq_department != '') {
+            $('span[data-seq_department='+seq_department+']').parent().addClass("sel");
+        }
         $('.sel').parents().siblings('.glyphicon-folder-close')
             .addClass('glyphicon-folder-open')
             .removeClass('glyphicon-folder-close');

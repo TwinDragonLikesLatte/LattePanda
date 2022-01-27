@@ -13,6 +13,7 @@ public class LoginDTO {
     //접근권한
     private String seqDepartment;
     private String seqPosition;
+    private String seqStore;
 
     //계정잠금
     private String status; //퇴직일 경우 실패
@@ -22,6 +23,14 @@ public class LoginDTO {
 
     //비밀번호 찾기
     private String ssn;
+
+    public String getSeqStore() {
+        return seqStore;
+    }
+
+    public void setSeqStore(String seqStore) {
+        this.seqStore = seqStore;
+    }
 
     public String getSsn() {
         return ssn;

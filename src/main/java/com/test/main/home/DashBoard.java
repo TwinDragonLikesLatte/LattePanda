@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/home/dashboard.do")
 public class DashBoard extends HttpServlet {
@@ -27,25 +28,24 @@ public class DashBoard extends HttpServlet {
     	}
     	
     	//[세션에서 불러들일 값]
-    	//String seq_department = (String) session.getAttribut("seq_department");
-    	//String seq_position = (String) session.getAttribut("seq_position");
-    	//String seq_store = (String) session.getAttribut("seq_store");
+		HttpSession session = req.getSession();
+		String seq_department = (String) session.getAttribute("seq_department");
+    	String seq_position = (String) session.getAttribute("seq_position");
+    	String seq_store = (String) session.getAttribute("seq_store");
     	
 
     	DashBoardDAO dao = new DashBoardDAO();
     	
     	//position 점장(8), [(1),(2),(3),(4),(7) 지역장, 과장이상], 매니저(9), 사원(6), 대리(5)
     	//[로그인] 손윤희 - 세션에서 불러들이면 지울 코드
-    	String seq_department = "31010";
-    	String seq_position = "7";
-    	
+
     	//로그인에 필요한 세션값을 Int로 바꿔 If문에 사용한다.
     	int department = Integer.parseInt(seq_department);
     	int position = Integer.parseInt(seq_position);
-    	
+
     	//부서번호가 300000 이상 이며 점장 포지션일때
     	if (department > 300000 && position == 8) {
-    	
+
     	//세션값 중 seq_store 값을 통해 SQL문 수정 예정
     	//[점장] 당일 판매액
     	String total = dao.total();
