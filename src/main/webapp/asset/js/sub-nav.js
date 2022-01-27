@@ -11,8 +11,8 @@ for (let i = 0; i < document.querySelectorAll(".sub-menu li>a").length; i++) {
     let sub_menu_subtitle = (document.querySelectorAll(".sub-menu li>a")[i]);
     let href = sub_menu_subtitle.href.replace(location.origin, "").split("/");
 
-    if (location.pathname.split('/')[3] == (href[3])) {
+    if (href[3].includes(location.pathname.split('/')[3].split('?')[0])) {
         let d = document.querySelectorAll(".sub-menu li>a")[i];
         d.classList.add('here');
     }
-};
+}

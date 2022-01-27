@@ -34,7 +34,7 @@
             </div>
             <div class="option-box">
                 <label>
-                    <input type="checkbox" name="saveid">
+                    <input type="checkbox" name="save_id">
                     <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
                     <span>아이디 저장</span>
                 </label>
@@ -44,9 +44,27 @@
         </form>
     </main>
 
+    <div class="modal modal-enquiry" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">전산팀 문의</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>전산팀 문의번호 : 02-1234-5678<br><br>※ 아이디는 직원번호입니다.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-lock" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
@@ -90,13 +108,10 @@
             }
         });
 
-
-
         $(function() {
             if (getCookie('id') != null) {
                 $('input[name=id]').val(getCookie('id'));
-                $('input[name=saveid]').prop('checked', true);
-                $('input[name=saveid]').prop('checked', true);
+                $('input[name=save_id]').prop('checked', true);
                 $('.glyphicon-ok-circle').addClass('glyphicon-ok-sign').removeClass('glyphicon-ok-circle');
             }
         });
@@ -137,14 +152,12 @@
         });
 
         <c:if test="${lock == 'y'}">
-        $('.modal').modal().css('display', 'flex');
+        $('.modal-lock').modal().css('display', 'flex');
         </c:if>
 
         $('.enquiry').on({
            click: function() {
-               $('.modal').modal().css('display', 'flex');
-               $('.modal').find('.modal-title').text('전산팀 문의');
-               $('.modal').find('.modal-body').append('<p>전산팀 문의번호 : 02-1234-5678<br><br>※ 아이디는 직원번호입니다.</p>');
+               $('.modal-enquiry').modal().css('display', 'flex');
            }
         });
 
