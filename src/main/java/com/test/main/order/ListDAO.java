@@ -116,36 +116,11 @@ public class ListDAO {
 		try {
 
 			
-			String sql = "select rownum , a.* from (\r\n"
-					+ "select \r\n"
-					+ "    distinct(o.seq_order),\r\n"
-					+ "    to_char(o.start_order, 'yyyy-mm-dd hh24:mi:ss') as start_order ,\r\n"
-					+ "    m.name_kr,\r\n"
-					+ "    s.size_name,\r\n"
-					+ "    od.count,\r\n"
-					+ "    p.selling_price * od.count as total,\r\n"
-					+ "    s.name\r\n"
-					+ "        from tblorder o\r\n"
-					+ "            inner join tblorderdetail od \r\n"
-					+ "                on o.seq_order = od.seq_order\r\n"
-					+ "                    inner join tblproduct p\r\n"
-					+ "                        on p.seq_product = od.seq_product\r\n"
-					+ "                            inner join tblRegMenu rm\r\n"
-					+ "                                on rm.seq_category = p.seq_category\r\n"
-					+ "                                    inner join tblMenu m\r\n"
-					+ "                                        on m.seq_menu = rm.seq_menu\r\n"
-					+ "                                            inner join tblSize s\r\n"
-					+ "                                                on s.seq_size = rm.seq_size\r\n"
-					+ "                                                    inner join tblStore s\r\n"
-					+ "                                                        on s.seq_store = o.seq_store\r\n"
-					+ "--                                                    where o.end_order is null and od.refund = 'N' and o.seq_store = 10101\r\n"
-					+ "                                                    where o.start_order <= current_date and o.end_order < current_date and od.refund = 'N' and o.seq_store = 10101\r\n"
-					+ "                                                        order by start_order desc) a where rownum between 1 and 15";
+			String sql = "select * from (select rownum as rnum, a.* from (select * from vwlisttest order by start_order)a where end_order is null) order by rnum asc";
 					
 			
 			
 			rs = stat.executeQuery(sql);
-			//rs = stat.executeQuery(sqlmenu);
 			
 			ArrayList<ListDTO> list = new ArrayList<ListDTO>();
 			ArrayList<ListDTO> menu = new ArrayList<ListDTO>();
@@ -158,6 +133,8 @@ public class ListDAO {
 				dto.setSeq_size(rs.getString("seq_size"));
 				dto.setTotal(rs.getString("total"));
 				dto.setCount(rs.getString("count"));
+				dto.setRnum(rs.getString("rnum"));
+				
 				
 				list.add(dto);
 			}
