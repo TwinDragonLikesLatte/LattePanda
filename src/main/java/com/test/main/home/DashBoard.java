@@ -36,8 +36,8 @@ public class DashBoard extends HttpServlet {
     	
     	//position 점장(8), [(1),(2),(3),(4),(7) 지역장, 과장이상], 매니저(9), 사원(6), 대리(5)
     	//[로그인] 손윤희 - 세션에서 불러들이면 지울 코드
-    	String seq_department = "310101";
-    	String seq_position = "8";
+    	String seq_department = "31010";
+    	String seq_position = "7";
     	
     	//로그인에 필요한 세션값을 Int로 바꿔 If문에 사용한다.
     	int department = Integer.parseInt(seq_department);

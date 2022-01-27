@@ -172,7 +172,7 @@
 
 /* [지역장] 지점별 월간 총 판매액 차트 */
 #dashboard_container2 {
-    height: 160px;
+    height: 300px;
 }
 
 
@@ -187,3 +187,23 @@
 }
 
 
+/*[지역장] 당일판매액 */
+.dashboard_content_font_nm {
+	width: inherit;
+	height: 120px;
+	text-align: center;
+	color: var(--black_sub1);
+	margin-top: 25%;
+
+}
+.dashboard_content_font_nm > p {
+	margin: 30px;
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.dashboard_content_font_nm .areatotal_nm {
+	margin: 30px;
+	font-size: 30px;
+	font-weight: 900;
+}

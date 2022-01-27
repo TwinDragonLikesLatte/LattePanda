@@ -1,13 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"
 	pageEncoding="UTF-8"%>
 <%
-	if (request.getAttribute("seq_position").equals("6")) {
-		response.sendRedirect("/notice/board.do");	
-	} else if (request.getAttribute("seq_position").equals("5")) {
-		response.sendRedirect("/notice/board.do");	
-	} else if (request.getAttribute("seq_position").equals("9")) {
-		response.sendRedirect("/notice/board.do");	
-	}
+if (request.getAttribute("seq_position").equals("6")) {
+	response.sendRedirect("/notice/board.do");
+} else if (request.getAttribute("seq_position").equals("5")) {
+	response.sendRedirect("/notice/board.do");
+} else if (request.getAttribute("seq_position").equals("9")) {
+	response.sendRedirect("/notice/board.do");
+}
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -218,7 +218,7 @@
 					</div>
 
 				</c:if>
-				
+
 				<!-- 지역장화면 -->
 				<!-- DashBoard.java에서 보낸 세션값을 이용해 화면에 표시될 차트 구분 -->
 				<!-- 지점 이상의 부서번호는 300000 이하이며 부서의 점장 외 직급의 번호는 8 이하이다. -->
@@ -249,39 +249,33 @@
 						<!-- [지역장] 지점별 당일 총 판매액 섹션 -->
 						<div class="dashboard_content_gird">
 							<div class="dashboard_content_header">당일 총 판매액</div>
-							<div class="dashboard_content_font">
+							<div class="dashboard_content_font_nm">
 								<p>당일 판매액</p>
-								<p class="areatotal">
+								<p class="areatotal_nm">
 									<fmt:formatNumber value="${areatotal}" pattern="#,###,###,###" />
 									원
 								<p>
-							</div>
-							<!-- [지역장] 지점별 월간 총 판매액 차트 -->
-							<div class="dashboard_content_chart">
-								<p>
-									월간 총 판매액<small>단위(만원)</small>
-								</p>
-								<figure class="dashboard_highcharts-figure">
-									<div id="dashboard_container2"></div>
-								</figure>
 							</div>
 						</div>
 						<!-- [지역장] 전지역 매출 현황 섹션 -->
 						<!-- 다른 지점에 대한 매출값이 없어 확인 불가능 데이터 추가시 표시될 것으로 예상-->
 						<div class="dashboard_content_gird">
 							<div class="dashboard_content_header">전지역 매출 현황</div>
-							<!-- [지역장] 전지역 매출 현황 그래프 -->
-							<div class="dashboard_content_graph">
+							<div class="dashboard_content_chart">
+								<p>
+									월간 총 판매액<small>단위(원)</small>
+								</p>
 								<figure class="dashboard_highcharts-figure4">
-									<div id="dashboard_graph3"></div>
+									<div id="dashboard_container2"></div>
 								</figure>
 							</div>
+							
 						</div>
 						<!-- [지역장] 전지점 상품별 월간 판매량 섹션 -->
 						<div class="dashboard_content_gird">
 							<div class="dashboard_content_header">전지점 상품별 월간 판매량</div>
 							<div class="area_prod">
-							<!-- [지역장] 전지점 상품별 월간 판매량 차트 -->
+								<!-- [지역장] 전지점 상품별 월간 판매량 차트 -->
 								<figure class="dashboard_highcharts-figure">
 									<div id="dashboard_container3"></div>
 								</figure>
@@ -470,7 +464,7 @@
 	    xAxis: {
 	        categories: [
 	 		<c:forEach items="${areamontotal}" var="dto">
-	            '${dto.start_order}',
+	             '❚ ${dto.start_order}',
 	        </c:forEach>
 	        ],
 	        
@@ -490,54 +484,7 @@
 	        	]
 	    }]
 	});
-	
-	<!-- [지역장] 전지역 매출 현황 그래프 -->
-	Highcharts.chart('dashboard_graph3', {
-	    chart: {
-	        plotBackgroundColor: null,
-	        plotBorderWidth: null,
-	        plotShadow: false,
-	        type: 'pie',
-	        backgroundColor: '#f5f5f5'
-	    },
-	    title: {
-	        text: ''
-	    },
-	    tooltip: {
-	        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-	    },
-	    accessibility: {
-	        point: {
-	            valueSuffix: '%'
-	        }
-	    },
-	    plotOptions: {
-	        pie: {
-	            allowPointSelect: true,
-	            cursor: 'pointer',
-	            dataLabels: {
-	                enabled: false
-	            },
-	            showInLegend: true
-	        }
-	    },
-	    series: [{
-	        name: '판매량',
-	        colorByPoint: true,
-	        data: [
-	        	
-	        	<c:forEach items="${areaalltotal}" var="dto">
-				{
-					name: '${dto.seq_store}',
-			        y: ${dto.total}
-			    },
-        		</c:forEach>
-	            //sliced: true,
-	            //selected: true
-	            
-	        ]
-	    }]
-	});
+
 	
 	<!-- [지역장] 전지점 상품별 월간 판매량 차트 -->
 	Highcharts.chart('dashboard_container3', {
