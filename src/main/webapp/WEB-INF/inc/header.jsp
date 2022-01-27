@@ -16,7 +16,7 @@
                     <li><a href="/hr/employee/list.do">
                         <div></div>직원관리
                     </a></li>
-                    <li><a href="/hr/staff/list.do">
+                    <li><a href="/hr/staff/list.do?seq_department=${seq_department}">
                         <div></div>스태프관리
                     </a></li>
                     <li><a href="">
@@ -98,7 +98,7 @@
         <span>${department}</span>
         <span><strong>${name}</strong>님</span>
         <div class="thumb"><img src="/resources/images/img.jpeg"></div>
-        <div class="btns">
+        <div class="header-btns">
             <div></div>
             <input class="btn btn-default" type="button" value="점장 손윤희" data-seq_employee="20160006">
             <input class="btn btn-default" type="button" value="지역장 이민연" data-seq_employee="20120001">

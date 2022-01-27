@@ -22,7 +22,6 @@
                 <li><a href="/hr/staff/contract.do">근로계약</a></li>
                 <li><a href="/hr/staff/edu.do">안전보건교육</a></li>
                 <li><a href="/hr/staff/attend.do">근태입력</a></li>
-                <li><a href="/hr/staff/schedule.do">스케쥴관리</a></li>
                 <li><a href="/hr/staff/paystub.do">급여관리</a></li>
                 <li><a href="/hr/staff/resign.do">퇴사처리</a></li>
             </ul>
