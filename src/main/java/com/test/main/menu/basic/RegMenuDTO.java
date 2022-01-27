@@ -3,6 +3,7 @@ package com.test.main.menu.basic;
 public class RegMenuDTO {
 
     private String upperCategory;
+    private String seqCategory;
     private String categoryName;
     private String seqMenu;
     private String namekr;
@@ -11,6 +12,15 @@ public class RegMenuDTO {
     private String large;
     private String oneSize;
     private String haveProduct;
+
+
+    public String getSeqCategory() {
+        return seqCategory;
+    }
+
+    public void setSeqCategory(String seqCategory) {
+        this.seqCategory = seqCategory;
+    }
 
     public String getUpperCategory() {
         return upperCategory;

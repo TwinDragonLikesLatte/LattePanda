@@ -15,14 +15,14 @@ public class MenuDTO {
     private String oneSize;
     private String isSizeSell;
 
-    private ArrayList<String> menuSize;
+    private ArrayList<String> menuSizeList;
 
     public ArrayList<String> getMenuSize() {
-        return menuSize;
+        return menuSizeList;
     }
 
-    public void setMenuSize(ArrayList<String> menuSize) {
-        this.menuSize = menuSize;
+    public void setMenuSize(ArrayList<String> menuSizeList) {
+        this.menuSizeList = menuSizeList;
     }
 
     public String getLarge() {

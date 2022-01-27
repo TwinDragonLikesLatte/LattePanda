@@ -75,6 +75,7 @@ public class RegMenuDAO {
             while(rs.next()){
                 RegMenuDTO dto = new RegMenuDTO();
                 dto.setUpperCategory(rs.getString("upper_category"));
+                dto.setSeqCategory(rs.getString("seq_category"));
                 dto.setCategoryName(rs.getString("category_name"));
                 dto.setSeqMenu(rs.getString("seq_menu"));
                 dto.setNamekr(rs.getString("name_kr"));
@@ -109,6 +110,12 @@ public class RegMenuDAO {
 
             if(rs.next()){
                 RegMenuDTO dto = new RegMenuDTO();
+                dto.setUpperCategory(rs.getString("upper_category"));
+                dto.setSeqCategory(rs.getString("seq_category"));
+                dto.setCategoryName(rs.getString("category_name"));
+                dto.setSeqMenu(rs.getString("seq_menu"));
+                dto.setNamekr(rs.getString("name_kr"));
+                dto.setNameEn(rs.getString("name_en"));
                 dto.setRegular(rs.getString("regular"));
                 dto.setLarge(rs.getString("large"));
                 dto.setOneSize(rs.getString("1-size"));

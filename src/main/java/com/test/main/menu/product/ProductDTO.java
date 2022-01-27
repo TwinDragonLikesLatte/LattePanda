@@ -17,6 +17,16 @@ public class ProductDTO {
     private int sellingPrice;
     private double costRate;
 
+    private String seqCategory;     // 제품등록에 사용할 카테코리 코드
+
+    public String getSeqCategory() {
+        return seqCategory;
+    }
+
+    public void setSeqCategory(String seqCategory) {
+        this.seqCategory = seqCategory;
+    }
+
     public String getSeqProduct() {
         return seqProduct;
     }

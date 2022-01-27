@@ -4,11 +4,20 @@ public class RecipeDTO {
 
     private String seqProduct;
     private String seqMenu;
+    private String seqStock;
     private String name;
     private String unit;
     private String quantity;
     private String unitCost;
     private String onePrice;
+
+    public String getSeqStock() {
+        return seqStock;
+    }
+
+    public void setSeqStock(String seqStock) {
+        this.seqStock = seqStock;
+    }
 
     public String getSeqProduct() {
         return seqProduct;
