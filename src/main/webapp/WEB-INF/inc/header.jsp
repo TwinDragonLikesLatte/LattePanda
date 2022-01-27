@@ -2,7 +2,7 @@
 
 <!-- 상단 메뉴 -->
 <header class="top-menu">
-    <a class="logo" href="/home.do">
+    <a class="logo" href="/index.jsp">
         <img src="/resources/images/lattepanda_h.png" alt="라떼로고">
     </a>
     <nav class="nav-main">
@@ -13,10 +13,10 @@
             <li class="main-menu">
                 <a href="/hr/employee/list.do">인사관리</a>
                 <ul class="nav-box">
-                    <li><a href="">
+                    <li><a href="/hr/employee/list.do">
                         <div></div>직원관리
                     </a></li>
-                    <li><a href="">
+                    <li><a href="/hr/staff/list.do">
                         <div></div>스태프관리
                     </a></li>
                     <li><a href="">
@@ -30,19 +30,19 @@
                     <li><a href="/stock/list/list.do">
                         <div></div>재고 조회
                     </a></li>
-                    <li><a href="/stock/orderList.do">
+                    <li><a href="/stock/order/list.do">
                         <div></div>재고 발주
                     </a></li>
                 </ul>
             </li>
             <li class="main-menu">
-                <a href="">메뉴관리</a>
+                <a href="/menu/basic/list.do">메뉴관리</a>
                 <ul class="nav-box">
-                    <li><a href="">
+                    <li><a href="/menu/basic/list.do">
                         <div></div>메뉴정보
                     </a></li>
-                    <li><a href="">
-                        <div></div>판매제품관리
+                    <li><a href="/menu/product/list.do">
+                        <div></div>판매제품조회
                     </a></li>
                 </ul>
             </li>
@@ -69,16 +69,10 @@
                 </ul>
             </li>
             <li class="main-menu">
-                <a href="/store/netprofit.do">매장관리</a>
+                <a href="/store/netprofit/net.do">매장관리</a>
                 <ul class="nav-box">
-                    <li><a href="/store/netprofit.do">
+                    <li><a href="/store/netprofit/net.do">
                         <div></div>지점별 매출 상세
-                    </a></li>
-                    <li><a href="/store/goal.do">
-                        <div></div>지점별 목표설정
-                    </a></li>
-                    <li><a href="/store/rossrate.do">
-                        <div></div>지점별 로스율
                     </a></li>
                 </ul>
             </li>
@@ -101,11 +95,33 @@
 
     <!-- 프로필 -->
     <div class="profile">
-        <span>강남대로점</span>
-        <span><strong>이주빈</strong>님</span>
+        <span>${department}</span>
+        <span><strong>${name}</strong>님</span>
         <div class="thumb"><img src="/resources/images/img.jpeg"></div>
+        <div class="btns">
+            <div></div>
+            <input class="btn btn-default" type="button" value="점장 손윤희" data-seq_employee="20160006">
+            <input class="btn btn-default" type="button" value="지역장 이민연" data-seq_employee="20120001">
+            <input class="btn btn-default" type="button" value="과장 장민진" data-seq_employee="20140003">
+            <input class="btn btn-danger" type="button" value="로그아웃" data-seq_employee="logout">
+        </div>
     </div>
 </header>
 
 <script src="/asset/js/header.js"></script>
+<script>
 
+    $('.thumb').on({
+        click: function() {
+            $('.btns').css('display', 'flex');
+        }
+    });
+
+    $('.btn').on({
+       click: function() {
+           // alert($(this).data('seq_employee'));
+           location.href = '/loginbtn.do?seq_employee=' + $(this).data('seq_employee');
+       }
+    });
+
+</script>

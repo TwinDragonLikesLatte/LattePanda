@@ -57,6 +57,7 @@ public class LoginDAO {
                 result.setPosition(rs.getString("position"));
                 result.setSeqDepartment(rs.getString("seq_department"));
                 result.setSeqPosition(rs.getString("seq_position"));
+                result.setSeqStore(rs.getString("seq_store"));
                 result.setStatus(rs.getString("status"));
                 result.setIsLock(rs.getString("is_lock"));
                 result.setLoginFail(rs.getInt("login_fail"));
