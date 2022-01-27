@@ -1,0 +1,153 @@
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu-table {
+    height: 65%;
+    overflow: auto;
+    background-color: #C4C4C4;
+}
+
+.product-table {
+    height : 60%;
+}
+
+.table th,
+.table td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table th {
+    position: sticky;
+    top : -1px;
+    background-color: #E5E5E5;
+}
+
+.table td {
+    background-color: var(--white);
+}
+
+.menu-table tbody input[type="button"] {
+    font-size: 12px;
+    height: 22px;
+    padding-top: 1px;
+    padding-bottom: 0px;
+    font-weight: 400;
+}
+
+
+#menu-filter {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin : 15px 0px;
+}
+
+#menu-filter h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin : 15px 0px;
+}
+
+#menu-filter > div {
+    margin-bottom: 15px;
+}
+
+#menu-filter div > span:first-child {
+/*#menu-filter div > div > span:first-child{*/
+    display: inline-block;
+    width: 120px;
+    font-weight: bold;
+}
+
+#menu-filter div > div span:first-child {
+    width : 190px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 4px;
+}
+input[type="date"] + span {
+    font-size: 16px;
+    display: inline-block;
+    margin: 0px 7px;
+}
+
+#menu-filter input[type="date"] {
+    margin-bottom: 15px;
+}
+
+#menu-filter div:nth-child(5) {
+    margin-bottom: 5px;
+}
+
+.form-control input[type="checkbox"] + span {
+    margin-right: 12px;
+}
+
+#menu-filter div:last-child div {
+    display: flex;
+}
+
+#menu-filter div:last-child {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-btn {
+    display: flex;
+    justify-content: right;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+
+/* product list */
+.product-filter-box {
+    height: 265px;
+}
+
+
+/* menu add */
+.btns {
+    text-align: right;
+}
+
+.plus-btn {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 15px;
+    margin-right: 5px;
+
+}
+
+.plus-btn > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color : var(--black_sub2);
+    background-color: var(--white);
+    font-weight: 400;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid var(--black_sub2);
+    padding-left: 1px;
+    padding-bottom: 1px;
+    cursor: pointer;
+}
+
+.plus-btn > span:hover{
+    background-color: #E5E5E5;
+}
+
+.menu-add-table {
+    height: 80%;
+    margin-bottom: 15px;
+}
+
+
+
