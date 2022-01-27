@@ -1,4 +1,7 @@
-package com.test.main.stock;
+package com.test.main.stock.list;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -6,9 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
+
+import com.test.main.stock.StockDAO;
+import com.test.main.stock.StockDTO;
 
 @WebServlet("/stock/list/list.do")
 public class List extends HttpServlet {

@@ -1,4 +1,4 @@
-package com.test.main.stock;
+package com.test.main.stock.list;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.test.main.stock.StockDAO;
+import com.test.main.stock.StockDTO;
 
 @WebServlet("/stock/list/editok.do")
 public class EditOk extends HttpServlet {

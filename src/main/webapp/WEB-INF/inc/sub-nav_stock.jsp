@@ -12,9 +12,9 @@
                 <li><a href="/stock/list/edit.do">재고정보입력</a></li>
             </ul>
         </li>
-        <li class="sub-menu"><a href="/stock/orderlist.do" class="">재고발주</a>
+        <li class="sub-menu"><a href="/stock/order/list.do" class="">재고발주</a>
             <ul>
-                <li><a href="">발주정보조회</a></li>
+                <li><a href="/stock/order/list.do">발주정보조회</a></li>
                 <li><a href="">발주정보입력</a></li>
                 <li><a href="">발주확인서출력</a></li>
             </ul>

@@ -13,6 +13,7 @@ table{
 	vertical-align: middle;
 	overflow: auto;
 	overflow-x:hidden;
+	background-color: var(--white);
 }
 
 .table > thead > tr > th {vertical-align: middle; text-align: center; height: 20px;}
