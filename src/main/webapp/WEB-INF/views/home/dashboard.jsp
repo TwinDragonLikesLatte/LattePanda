@@ -15,6 +15,8 @@ if (request.getAttribute("seq_position").equals("6")) {
 <head>
 <title>홈</title>
 <%@ include file="/WEB-INF/inc/asset.jsp"%>
+	<link rel="stylesheet" href="/asset/css/home/dashboard.css">
+	<script src="/asset/js/lib/highcharts.js"></script>
 </head>
 <body>
 
