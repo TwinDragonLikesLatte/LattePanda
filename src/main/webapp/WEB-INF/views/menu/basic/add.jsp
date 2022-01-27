@@ -18,8 +18,9 @@
             <h1 class="title">메뉴등록</h1>
 
             <%-- 레코드 추가 버튼 --%>
-            <div class="plus-btn">
-                <span class="glyphicon glyphicon-plus"></span>
+            <div class="btns top">
+                <input type="button" class="btn btn-danger remove" value="-">
+                <input type="button" class="btn btn-default add" value="+">
             </div>
 
             <%-- 메뉴등록 폼 --%>
@@ -28,7 +29,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th><input type="checkbox" name="sel" value="add-sel"></th>
+                            <th><input type="checkbox" name="sel" value="add-sel" class="chk-box"></th>
                             <th>상위 카테고리</th>
                             <th>하위 카테고리</th>
                             <th>메뉴코드</th>
@@ -42,6 +43,7 @@
 
                         <tboady>
                         <tr>
+                            <%-- 체크 박스--%>
                             <td><input type="checkbox" name="sel" value="add-sel" class="chk-box"></td>
 
                             <%-- 상위 카테고리 select --%>
@@ -108,7 +110,6 @@
                     <input type="button" value="목록으로"
                            class="btn btn-default"
                            onclick="location.href='/menu/basic/list.do';">
-                    <input type="button" class="btn btn-danger remove-btn" value="삭제하기">
                     <input type="submit" value="등록하기" class="btn btn-primary">
                 </div>
             </form>
@@ -122,19 +123,74 @@
 
 <script>
 
-    /* + 버튼 누를 경우 행 추가*/
-    $('.plus-btn').click(()=>{
-        $('.table tbody').append(
+    /* 메뉴 카테고리 리스트 사전 저장 (JSTL > JS) */
+    const categoryList = [
+        <c:forEach items="${category}" var="cate">
+        {
+            seqCategory : "${cate.seqCategory}",
+            categoryName : "${cate.categoryName}",
+            upperCategory : "${cate.upperCategory}"
+        },
+        </c:forEach>
+    ]
+
+    /* 상위 카테고리 select box 리스트 */
+    function markUpperCate() {
+        let tmp = "";
+        categoryList.forEach(cate => {
+            if(cate.upperCategory == "")
+                tmp += '<option value="' + cate.seqCategory + '">' + cate.categoryName + '</option>';
+        })
+        return tmp;
+
+    }
+
+    /* 하위 카테고리 select box 리스트 */
+    function makeCategory() {
+        let tmp = "";
+        categoryList.forEach(cate => {
+            if(cate.upperCategory !== "")
+                tmp += '<option value="' + cate.seqCategory + '">' + cate.categoryName + '</option>';
+            if(cate.categoryName == '굿즈')
+                tmp += '<option value="' + cate.seqCategory + '">' + cate.categoryName + '</option>';
+        })
+        return tmp;
+    }
+
+
+    /* 체크 박스 전체 선택 or 해제 */
+    $('thead input').click(()=>{
+        if($('thead input').is(':checked')){
+            $('.chk-box').prop('checked', true);
+        }
+        else $('.chk-box').prop('checked', false);
+
+    });
+
+
+    /* 메뉴등록 레코드 삭제 */
+    $('.remove').click(()=>{
+        $('.menu-add-table tr td:first-child .chk-box').each(function(){
+            if($(this).is(':checked')){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
+
+
+    /* 메뉴등록 레코드 추가 */
+    $('.add').click(()=>{
+        $('.menu-add-table tbody').append(
             '<tr>' +
-            '<td><input type="checkbox" name="sel" value="add-sel" class="chk-box"></td>' +
+                '<td><input type="checkbox" name="sel" value="add-sel" class="chk-box"></td>' +
             '<td>' +
                 '<select name="upper-category" class="form-control">' +
-                    '<option value="Y">ㅠㅠ</option>' +
+                    markUpperCate() +
                 '</select>' +
             '</td>' +
             '<td>' +
                 '<select name="upper-category" class="form-control">' +
-                    '<option value="Y">ㅠㅠ</option>' +
+                    makeCategory() +
                 '</select>' +
             '</td>' +
             '<td><input type="text" name="seq-menu" class="form-control" required></td>' +
@@ -148,40 +204,18 @@
             '</td>' +
             '<td>' +
                 '<select name="large" class="form-control"> ' +
-                '<option value="Y">Y</option>' +
-                '<option value="N">N</option>' +
+                    '<option value="Y">Y</option>' +
+                    '<option value="N">N</option>' +
                 '</select>' +
             '</td>' +
             '<td>' +
                 '<select name="1-size" class="form-control"> ' +
-                '<option value="Y">Y</option>' +
-                '<option value="N">N</option>' +
+                    '<option value="Y">Y</option>' +
+                    '<option value="N">N</option>' +
                 '</select>' +
             '</td>' +
             '</tr>'
-
         );
-    });
-
-
-    /* 체크 박스 전체 선택 or 해제 */
-    $('thead input').click(()=>{
-        if($('thead input').is(':checked')){
-            $('.chk-box').prop('checked', true);
-        }
-        else $('.chk-box').prop('checked', false);
-
-    });
-
-
-    /* check box 선택 레코드 삭제 */
-    //$('.table tbody').children().children().children('.chk-box').prop('checked', true)
-    // 자괴감 들어서 못 하겠네ㅠ
-    // 삭제하기 버튼 > tbody 의 children을 돌면서 첫번재 자식이 check된 것을 찾아 해당 레코드를 삭제한다.
-    $('.remove-btn').click(()=>{
-        if($('tbody .chk-box').is(':checked')){
-            console.log(event.srcElement);
-        }
     });
 
 

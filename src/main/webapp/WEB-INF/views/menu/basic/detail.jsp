@@ -22,11 +22,18 @@
                 <div class="product-left">
                     <div><h2>${dto.namekr} <small>${dto.nameEn}</small></h2></div>
                     <img src="/resources/images/${dto.seqMenu}.jpg">
-                    <div><input type="button" class="btn btn-default" value="신규 판매제품등록"></div>
+                    <div>
+                        <input type="button"
+                               class="btn btn-default"
+                               value="신규 판매제품등록"
+                               onclick="location.href='/menu/basic/addproduct.do?seqmenu=${dto.seqMenu}&sizename=${dto.sizeName}';">
+                    </div>
                 </div>
 
                 <%-- 우측) 메뉴 정보 컬럼 --%>
                 <div class="product-right">
+
+                    <%-- 상단 메뉴별 판매 사이즈 탭 --%>
                     <div class="size-box">
                         <c:forEach items="${slist}" var="size">
                             <h2>${size}</h2>
@@ -82,11 +89,11 @@
 
                                 <tr>
                                     <th>판매가</th>
-                                    <td>${dto.costPrice} 원</td>
+                                    <td>${dto.sellingPrice} 원</td>
                                 </tr>
                                 <tr>
                                     <th>원가</th>
-                                    <td>${dto.sellingPrice} 원</td>
+                                    <td>${dto.costPrice} 원</td>
                                 </tr>
                                 <tr>
                                     <th>마진율</th>
@@ -102,12 +109,15 @@
                                 <h3>재료정보</h3>
                                 <div class="table-box">
                                 <table class="table table-bordered">
+                                    <thead>
                                     <tr>
                                         <th>재료명</th>
                                         <th>수량</th>
                                         <th>단위가격(원)</th>
                                         <th>1인분가격(원)</th>
                                     </tr>
+                                    </thead>
+                                    <tbody>
                                     <c:forEach items="${rlist}" var="rdto">
                                     <tr>
                                         <td>${rdto.name}(${rdto.unit})</td>
@@ -116,6 +126,7 @@
                                         <td>${rdto.onePrice}</td>
                                     </tr>
                                     </c:forEach>
+                                    </tbody>
                                 </table>
                                 </div>
                             </div>
@@ -124,6 +135,7 @@
                                 <h3>메뉴변경내역</h3>
                                 <div class="table-box">
                                     <table class="table table-bordered">
+                                        <thead>
                                         <tr>
                                             <th>등록일</th>
                                             <th>제품코드</th>
@@ -132,7 +144,8 @@
                                             <th>판매종료일</th>
                                             <th>상태</th>
                                         </tr>
-
+                                        </thead>
+                                        <tbody>
                                         <c:forEach items="${hlist}" var="hdto">
                                         <tr>
                                             <td>${hdto.regDate}</td>
@@ -143,7 +156,7 @@
                                             <td>${hdto.openLevel}</td>
                                         </tr>
                                         </c:forEach>
-
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

@@ -5,7 +5,7 @@
 
 .menu-table {
     height: 65%;
-    overflow: auto;
+    overflow-y: scroll;
     background-color: #C4C4C4;
 }
 
@@ -19,10 +19,12 @@
     vertical-align: middle;
 }
 
+
 .table th {
     position: sticky;
     top : -1px;
     background-color: #E5E5E5;
+    font-weight: 700;
 }
 
 .table td {
@@ -64,6 +66,10 @@
 
 #menu-filter div > div span:first-child {
     width : 190px;
+}
+
+label > span {
+    font-weight: 400;
 }
 
 input[type="radio"],
@@ -116,38 +122,23 @@ input[type="date"] + span {
     text-align: right;
 }
 
-.plus-btn {
-    display: flex;
-    justify-content: right;
-    margin-bottom: 15px;
-    margin-right: 5px;
-
-}
-
-.plus-btn > span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color : var(--black_sub2);
-    background-color: var(--white);
-    font-weight: 400;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: 1px solid var(--black_sub2);
-    padding-left: 1px;
-    padding-bottom: 1px;
-    cursor: pointer;
-}
-
-.plus-btn > span:hover{
-    background-color: #E5E5E5;
+.btns.top {
+    margin-bottom: 5px;
 }
 
 .menu-add-table {
     height: 80%;
     margin-bottom: 15px;
 }
+table tr > th:first-child,
+table tr > td:first-child {
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 3px;
+}
 
-
-
+table tr > th > input[type=checkbox],
+table tr > td > input[type=checkbox] {
+    width: 15px;
+    height: 15px;
+}

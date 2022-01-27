@@ -3,6 +3,7 @@ package com.test.main.menu.product;
 import com.test.main.util.DBUtil;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -219,6 +220,58 @@ public class ProductDAO {
         return null;
 
 
+    }
+
+    /* AddOkProduct.java > 신규 제품코드 요청 */
+    public String getNewSeq() {
+
+        try {
+            String sql = "select concat('P', Lpad(max(substr(seq_product,2))+1,3,'0')) as new_seq_product from tblproduct";
+            rs = stat.executeQuery(sql);
+
+            if(rs.next())
+                return rs.getString("new_seq_product");
+
+        } catch (Exception e){
+            System.out.println("ProductDAO.getNewSeq");
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /* AddOkProduct.java > 제품 등록 */
+    public int add(ProductDTO pdto) {
+
+        try{
+            String sql = "insert into tblproduct(" +
+                            "seq_product, seq_category, seq_menu, seq_size, " +
+                            "cost_price, selling_price, cost_rate, " +
+                            "regdate, sale_start_date, sale_end_date, " +
+                            "seq_open_grade, pic_path) " +
+                        "values (?, ?, ?, ?, ?, ?, ROUND(?,3), current_date, TO_DATE(?, 'YYYY-MM-DD'), TO_DATE(?, 'YYYY-MM-DD'), default, null)";
+
+
+            pstat = conn.prepareStatement(sql);
+            pstat.setString(1, pdto.getSeqProduct());
+            pstat.setString(2, pdto.getSeqCategory());
+            pstat.setString(3, pdto.getSeqMenu());
+            pstat.setString(4, pdto.getSizeName());
+            pstat.setInt(5, pdto.getCostPrice());
+            pstat.setInt(6, pdto.getSellingPrice());
+            pstat.setDouble(7, pdto.getCostRate());
+            pstat.setString(8, pdto.getStartDate());
+            pstat.setString(9, pdto.getEndDate());
+
+            return pstat.executeUpdate();
+
+
+        }catch (Exception e){
+            System.out.println("ProductDAO.add");
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 }
 
