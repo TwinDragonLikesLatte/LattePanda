@@ -30,7 +30,7 @@
                     <li><a href="/stock/list/list.do">
                         <div></div>재고 조회
                     </a></li>
-                    <li><a href="/stock/orderList.do">
+                    <li><a href="/stock/order/list.do">
                         <div></div>재고 발주
                     </a></li>
                 </ul>

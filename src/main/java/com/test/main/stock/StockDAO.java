@@ -63,7 +63,9 @@ public class StockDAO {
 				dto.setUnit(rs.getString("unit"));
 
 				dto.setSeq_store(rs.getString("seq_store"));
-				
+				dto.setOrder_cost(rs.getInt("order_cost"));
+				dto.setOrder_unit(rs.getString("order_unit"));
+				dto.setOrder_unit_quantity(rs.getString("order_unit_quantity"));
 				
 				dto.setPre_quantity(rs.getInt("pre_quantity"));
 				dto.setQuantity(rs.getInt("quantity"));
@@ -79,9 +81,6 @@ public class StockDAO {
 				list.add(dto);
 				
 			}
-			
-		
-			
 			
 			return list;
 
@@ -146,13 +145,77 @@ public class StockDAO {
 		
 		return 0;
 	}
-	
-	
-	
-	
-	
+	public String getSeqStockOrder(String seq_store) {
+		
+		try {
 
-	
-	
+			String sql = "select seq_stock_order from tblstockorder where seq_store = ? and to_date(regdate, 'yyyy-mm-dd') = to_date(CURRENT_DATE, 'yyyy-mm-dd')";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq_store);
+			
+			rs = pstat.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getString("seq_stock_order");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("StockDAO.getSeqStockOrder()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	public ArrayList<StockDTO> orderlist(String seq_store, String seq_stock_order, ArrayList<StockDTO> list) {
+		
+		try {
+
+			String sql = "select seq_stock, quantity, seq_stock_order_record from tblStockorderrecord where seq_stock_order = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq_stock_order);
+			
+			rs = pstat.executeQuery();
+			int i = 0;
+			while(rs.next()) {
+				StockDTO dto = new StockDTO();
+				dto = list.get(i);
+				dto.setQuantity_order(rs.getInt("quantity"));
+				dto.setSeq_stock_order_record(rs.getString("seq_stock_order_record"));
+				
+				
+				list.set(i, dto);
+				i++;
+			}
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println("StockDAO.orderlist()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	public int editorder(StockDTO dto) {
+		
+		String sql = "update tblStockorderrecord set quantity = ? where seq_stock_order_record = ?";
+		try {
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setInt(1, dto.getQuantity_order());
+			pstat.setInt(2, Integer.parseInt(dto.getSeq_stock_order_record()));
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("StockDAO.editorder()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}	
+
 
 }

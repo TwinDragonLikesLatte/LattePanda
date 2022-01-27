@@ -15,8 +15,8 @@
         <li class="sub-menu"><a href="/stock/order/list.do" class="">재고발주</a>
             <ul>
                 <li><a href="/stock/order/list.do">발주정보조회</a></li>
-                <li><a href="">발주정보입력</a></li>
-                <li><a href="">발주확인서출력</a></li>
+                <li><a href="/stock/order/edit.do">발주정보입력</a></li>
+                <li><a href="/stock/order/print.do">발주확인서발급</a></li>
             </ul>
         </li>
     </ul>
