@@ -23,26 +23,26 @@
 
                 <div>
                     <span>전체보기</span>
-                    <input type="radio" name="all" checked><span>전체 메뉴 보기</span>
+                    <label for="all"><input type="radio" name="all" id="all"checked><span>전체 메뉴 보기</span></label>
                 </div>
 
                 <div>
                     <span>카테고리</span>
-                    <input type="checkbox" name="category" value="커피"><span>커피</span>
-                    <input type="checkbox" name="category" value="블렌디드"><span>블렌디드</span>
-                    <input type="checkbox" name="category" value="티"><span>티</span>
-                    <input type="checkbox" name="category" value="에이드"><span>에이드</span>
-                    <input type="checkbox" name="category" value="병음료"><span>병음료</span>
-                    <input type="checkbox" name="category" value="아이스크림"><span>아이스크림</span>
-                    <input type="checkbox" name="category" value="케익"><span>케익</span>
-                    <input type="checkbox" name="category" value="굿즈"><span>굿즈</span>
+                    <label for="COF"><input type="checkbox" name="category" id="COF" value="커피"><span>커피</span></label>
+                    <label for="BLD"><input type="checkbox" name="category" id="BLD" value="블렌디드"><span>블렌디드</span></label>
+                    <label for="TEA"><input type="checkbox" name="category" id="TEA" value="티"><span>티</span></label>
+                    <label for="AID"><input type="checkbox" name="category" id="AID" value="에이드"><span>에이드</span></label>
+                    <label for="BOT"><input type="checkbox" name="category" id="BOT" value="병음료"><span>병음료</span></label>
+                    <label for="ICC"><input type="checkbox" name="category" id="ICC" value="아이스크림"><span>아이스크림</span></label>
+                    <label for="CAK"><input type="checkbox" name="category" id="CAK" value="케익"><span>케익</span></label>
+                    <label for="GOODS"><input type="checkbox" name="category" id="GOODS" value="굿즈"><span>굿즈</span></label>
                 </div>
 
                 <div>
                     <span>메뉴공개등급</span>
-                    <input type="checkbox" name="open-level" value="판매예정"><span>판매예정</span>
-                    <input type="checkbox" name="open-level" value="판매중"><span>판매중</span>
-                    <input type="checkbox" name="open-level" value="단종"><span>단종</span>
+                    <label for="openlv1"><input type="checkbox" name="open-level" id="openlv1" value="판매예정"><span>판매예정</span></label>
+                    <label for="openlv2"><input type="checkbox" name="open-level" id="openlv2" value="판매중"><span>판매중</span></label>
+                    <label for="openlv3"><input type="checkbox" name="open-level" id="openlv3" value="단종"><span>단종</span></label>
                 </div>
 
                 <div>
