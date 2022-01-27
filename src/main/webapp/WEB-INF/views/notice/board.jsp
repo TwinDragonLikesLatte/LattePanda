@@ -66,26 +66,45 @@ div.content>div {
 	height: 34px;
 }
 
+.search {
+	background-color: #FFFFFF;
+}
+
 .search>form input[type=text] {
 	width: 400px;
 	margin: 0 10px;
 }
 
 .searchdate {
-	float: left;
+	display: flex;
 	margin-right: 30px;
+	text-align: center;
 }
 
 .searchdate>input {
-	height: 34px;
 	width: 145px;
-	
 }
 
-.form-control {
-	margin-right: 20px;
+.searchdate > span {
+	margin: 0 10px;
+	vertical-align: middle;
 }
 
+table > tbody > tr > td {
+	background-color: #FFFFFF;
+}
+
+table > tbody > tr:hover > td {
+	background-color: #e5e5e5;
+}
+
+table > tbody > tr > td > a {
+	color: var(--black_sub1);
+}
+
+table > tbody > tr > td > a:hover {
+	color: var(--purple_three);
+}
 
 /* 페이징 */
 .pagebar .pagination>li>a {
@@ -136,8 +155,9 @@ div.content>div {
 						<form method="GET" action="/notice/board.do">
 
 							<div name="calendar" class="searchdate">
-								<input type="date" name="startDate" value="regdate"><span> - </span><input
-									type="date" name="enddate" value="regdate">
+								<input class="form-control" type="date" name="startDate" value="regdate">
+								<span>-</span>
+								<input class="form-control" type="date" name="enddate" value="regdate">
 							</div>
 							<table>
 								<tr>
