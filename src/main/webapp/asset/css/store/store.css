@@ -1,0 +1,49 @@
+.netprofit_content_container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 850px;
+	gap: 20px 5px;
+}
+
+.netprofit_content_grid {
+	border: 1px solid var(- -black_sub2);
+}
+
+.netprofit_content_header {
+	width: inherit;
+	height: 50px;
+	padding: 15px 20px;
+	background-color: var(--purple_three);
+	font-weight: 700;
+	color: var(--white);
+}
+
+.storeprofit > tbody > tr > td {
+	position: relative;
+	top: 0;
+	left: 0;
+	color: var(--black_sub1);
+}
+
+.store_button {
+	position: absolute;
+	top: 2px;
+	right: 10px;
+	height: 32px;
+}
+
+
+
+#netprofit_container {
+	width: inherit;
+	margin-top: 20%;
+}
+
+.netprofit_total {
+	color: var(--black_sub1);
+	padding: 10px 10px;
+}
+
+.netprofit_content_grid {
+	border: var(--border);
+}
