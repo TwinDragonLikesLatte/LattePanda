@@ -105,7 +105,7 @@ if (session.getAttribute("seq_position").equals("6")) {
 										<td>22</td>
 										<td>23</td>
 									</tr>
-									<c:forEach items="${employeeschedule}" var="dto">
+									<%-- <c:forEach items="${employeeschedule}" var="dto">
 										<tr>
 											<td>${dto.name}</td>
 											<td></td>
@@ -126,7 +126,7 @@ if (session.getAttribute("seq_position").equals("6")) {
 											<td></td>
 											<td></td>
 										</tr>
-									</c:forEach>
+									</c:forEach> --%>
 									<c:forEach items="${staffschedule}" var="dto">
 										<tr>
 											<td>${dto.name}</td>
