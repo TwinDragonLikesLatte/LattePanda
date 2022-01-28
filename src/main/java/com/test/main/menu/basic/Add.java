@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * '메뉴등록' 서블릿
+ * @author 최선희
+ */
 @WebServlet("/menu/basic/add.do")
 public class Add extends HttpServlet {
 

@@ -8,7 +8,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+/**
+ * 제품 DAO 클래스
+ * @author 최선희
+ */
 public class ProductDAO {
 
     private Connection conn;
@@ -16,6 +19,9 @@ public class ProductDAO {
     private PreparedStatement pstat;
     private ResultSet rs;
 
+    /**
+     * ProductDAO 생성자
+     */
     public ProductDAO() {
 
         try {
@@ -27,7 +33,11 @@ public class ProductDAO {
         }
     }
 
-    /* 카테고리 필터 쿼리 생성 메소드 */
+    /**
+     * 카테고리 필터 query 생성 메소드
+     * @param cateList 카테고리 리스트
+     * @return 카테고리 where query절
+     */
     public String makeWhereCategory(String[] cateList) {
         String where = "category_name in (";
 
@@ -40,7 +50,11 @@ public class ProductDAO {
         return where;
     }
 
-    /* 메뉴공개등급 필터 쿼리 생성 메소드 */
+    /**
+     * 메뉴공개등급 필터 query 생성 메소드
+     * @param olList 메뉴공개등급 리스트
+     * @return 메뉴공개등급 where query 절
+     */
     public String makeWhereOpenLevel(String[] olList) {
         String where = "open_level in (";
 
@@ -53,7 +67,13 @@ public class ProductDAO {
         return where;
     }
 
-    /* 판매제품조회 */
+
+    /**
+     * 판매제품 리스트를 반환하는 메소드
+     * List.java > 판매제품 리스트 요청
+     * @param filter 검색 조건 HashMap
+     * @return 판매제품 리스트
+     */
     public ArrayList<ProductDTO> list(HashMap<String, Object> filter) {
 
         try {
@@ -101,7 +121,6 @@ public class ProductDAO {
                     where += query + " and ";
                 }
                 where = where.substring(0, where.length() - 4);
-                System.out.println("where : " + where);
             }
 
             /* Execute Query */
@@ -142,7 +161,13 @@ public class ProductDAO {
         return null;
     }
 
-    /* detail.java > 제품 목록 하나 요청 */
+
+    /**
+     * 판매제품 레코드 하나를 반환하는 메소드
+     * Detail.java > 제품 목록 하나 요청
+     * @param map 메뉴코드, 요청 사이즈가 담긴 HashMap
+     * @return 제품DTO
+     */
     public ProductDTO get(HashMap<String, String> map) {
         try {
             String sql = "select * from vwproduct " +
@@ -183,8 +208,12 @@ public class ProductDAO {
         return null;
     }
 
-
-    /* detail.java > 제품 변경 내역 요청 */
+    /**
+     * 메뉴코드, 요청 사이즈에 맞는 판매제품 리스트를 반환하는 메소드
+     * Detail.java > 판매제품 리스트 요청
+     * @param map 메뉴코드, 요청 사이즈가 담긴 HashMap
+     * @return 판매제품 리스트
+     */
     public ArrayList<ProductDTO> getHistoryList(HashMap<String, String> map) {
         try {
             String sql = "select * from vwproduct " +
@@ -218,11 +247,14 @@ public class ProductDAO {
         }
 
         return null;
-
-
     }
 
-    /* AddOkProduct.java > 신규 제품코드 요청 */
+
+    /**
+     * 판매등록할 신규 제품코드 값을 반환하는 메소드
+     * AddOkProduct.java > 신규 제품코드 요청
+     * @return 신규 제품코드
+     */
     public String getNewSeq() {
 
         try {
@@ -240,7 +272,13 @@ public class ProductDAO {
         return null;
     }
 
-    /* AddOkProduct.java > 제품 등록 */
+
+    /**
+     * DB에 판매제품을 INSERT하는 메소드
+     * AddOkProduct.java > 제품 등록
+     * @param pdto 등록할 신규 제품 DTO
+     * @return INSERT 결과값 반환
+     */
     public int add(ProductDTO pdto) {
 
         try{

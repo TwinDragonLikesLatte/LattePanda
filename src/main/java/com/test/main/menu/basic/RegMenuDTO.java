@@ -1,5 +1,9 @@
 package com.test.main.menu.basic;
 
+/**
+ * 등록메뉴 DTO
+ * @author 최선희
+ */
 public class RegMenuDTO {
 
     private String upperCategory;

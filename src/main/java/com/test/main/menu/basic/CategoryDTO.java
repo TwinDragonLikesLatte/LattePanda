@@ -1,5 +1,9 @@
 package com.test.main.menu.basic;
 
+/**
+ * 메뉴 카테고리 DTO
+ * @author 최선희
+ */
 public class CategoryDTO {
 
     private String seqCategory;

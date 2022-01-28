@@ -9,6 +9,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * 레시피 DAO 클래스
+ * @author 최선희
+ */
 public class RecipeDAO {
 
     private Connection conn;
@@ -16,6 +20,9 @@ public class RecipeDAO {
     private PreparedStatement pstat;
     private ResultSet rs;
 
+    /**
+     * RecipeDAO 생성자
+     */
     public RecipeDAO() {
 
         try {
@@ -27,7 +34,12 @@ public class RecipeDAO {
         }
     }
 
-    /* detail.java > 제품 레시피 내역 요청 */
+    /**
+     * 레시피 리스트(재료정보)를 반환하는 메소드
+     * Detail.java > 제품 레시피 리스트 요청
+     * @param seqProduct 제품코드
+     * @return 레시피 리스트
+     */
     public ArrayList<RecipeDTO> list(String seqProduct) {
 
         try {
@@ -63,8 +75,12 @@ public class RecipeDAO {
         return null;
     }
 
-
-    /* AddOkProduct.java > 제품 레시피 등록 */
+    /**
+     * DB에 레시피를 INSERT하는 메소드
+     * AddOkProduct.java > 제품 레시피 등록
+     * @param recipeMap 저장할 레시피 HashMap
+     * @return INSERT 결과값 반환
+     */
     public int add(HashMap<String, Object> recipeMap) {
 
         try{

@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * '신규 판매제품등록' 서블릿
+ * @author 최선희
+ */
 @WebServlet("/menu/basic/addproduct.do")
 public class AddProduct extends HttpServlet {
 
@@ -49,7 +53,7 @@ public class AddProduct extends HttpServlet {
         if(dto.getOneSize().equals("Y")) slist.add("1-Size");
 
 
-        /* An product for recipe list */
+        /* One product for recipe list */
         HashMap<String, String> map =new HashMap<String, String>();
         map.put("seqMenu", seqMenu);
         map.put("size", sizeName);

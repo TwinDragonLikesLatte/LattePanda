@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * '신규 판매제품등록' 처리 서블릿
+ * @author 최선희
+ */
 @WebServlet("/menu/basic/addokproduct.do")
 public class AddOkProduct extends HttpServlet {
 

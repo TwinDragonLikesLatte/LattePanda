@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * '상세조회' 서블릿
+ * @author 최선희
+ */
 @WebServlet("/menu/basic/detail.do")
 public class Detail extends HttpServlet {
 
