@@ -113,11 +113,11 @@
 
     $('.thumb').on({
         click: function() {
-            $('.btns').css('display', 'flex');
+            $('.header-btns').css('display', 'flex');
         }
     });
 
-    $('.btn').on({
+    $('.header-btns').children('.btn').on({
        click: function() {
            // alert($(this).data('seq_employee'));
            location.href = '/loginbtn.do?seq_employee=' + $(this).data('seq_employee');

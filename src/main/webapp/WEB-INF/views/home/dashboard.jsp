@@ -139,9 +139,7 @@ if (session.getAttribute("seq_position").equals("6")) {
 												<td bgcolor="#FF7D7D"></td>
 												<td></td>
 												<td></td>
-												<td>
-													<%-- ${dto.hourfrom } --%>
-												</td>
+												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
