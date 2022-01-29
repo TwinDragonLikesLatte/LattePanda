@@ -20,9 +20,13 @@ public class DBUtil {
 	public static Connection open() {
 
         Connection conn = null;
-        String url = "jdbc:oracle:thin:@db202201141741_medium?TNS_ADMIN=D:/class/server/Wallet_DB202201141741";
-        String path = url.split("TNS_ADMIN=")[1] + "/login.txt";
-
+        //String url = "jdbc:oracle:thin:@db202201141741_medium?TNS_ADMIN=D:/class/server/Wallet_DB202201141741";
+        // String path = url.split("TNS_ADMIN=")[1] + "/login.txt";
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";
+        String id = "hr";
+        String pw = "java1234";
+        
+        
 		try {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");

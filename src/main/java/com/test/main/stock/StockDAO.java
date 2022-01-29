@@ -22,6 +22,9 @@ public class StockDAO {
 	private ResultSet rs;
 	private ResultSet rs2;
 	
+	/**
+	 * DB 접속
+	 */
 	public StockDAO() {
 
 		try {
@@ -92,6 +95,9 @@ public class StockDAO {
 		return null;
 	}
 	
+	/**
+	 * DB 연결 해제
+	 */
 	public void close() {
 		
 		try {
@@ -103,6 +109,12 @@ public class StockDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * 재고 정보 수정
+	 * @param dto StockDTO
+	 * @return 수정 성공(1) / 실패(0)
+	 */
 	public int edit(StockDTO dto) {
 		
 		String sql = "update tblStockrecord set quantity = ?, waste = ?, etc = ? where seq_store = ? and seq_stock = ? and to_date(regdate, 'yyyy-mm-dd') = to_date(CURRENT_DATE, 'yyyy-mm-dd')";
@@ -126,6 +138,11 @@ public class StockDAO {
 		return 0;
 		
 	}
+	/**
+	 * 현재 재고 수량 수정
+	 * @param dto StockDTO
+	 * @return 수정 성공(1) / 실패(0)
+	 */
 	public int editCheck(StockDTO dto) {
 		
 		try {
@@ -145,6 +162,11 @@ public class StockDAO {
 		
 		return 0;
 	}
+	/**
+	 * 발주 주문 번호 조회
+	 * @param seq_store 매장 번호
+	 * @return String seq_stock_order 매장 주문 번호
+	 */
 	public String getSeqStockOrder(String seq_store) {
 		
 		try {
@@ -167,6 +189,13 @@ public class StockDAO {
 		
 		return null;
 	}
+	/**
+	 * 발주 정보 조회
+	 * @param seq_store 매장 번호
+	 * @param seq_stock_order 발주 번호
+	 * @param list 발주 정보 리스트
+	 * @return ArrayList StockDTO
+	 */
 	public ArrayList<StockDTO> orderlist(String seq_store, String seq_stock_order, ArrayList<StockDTO> list) {
 		
 		try {
@@ -197,6 +226,11 @@ public class StockDAO {
 		
 		return null;
 	}
+	/**
+	 * 발주 주문 정보 수정
+	 * @param dto StockDTO
+	 * @return 수정 성공(1) / 실패(0)
+	 */
 	public int editorder(StockDTO dto) {
 		
 		String sql = "update tblStockorderrecord set quantity = ? where seq_stock_order_record = ?";

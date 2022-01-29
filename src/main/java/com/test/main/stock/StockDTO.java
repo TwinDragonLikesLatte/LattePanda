@@ -1,7 +1,14 @@
 package com.test.main.stock;
 
+/**
+ * 재고 정보 클래스
+ * 
+ * @author 임호혁
+ * 
+ */
 public class StockDTO {
 
+	
 	private String seq_stock;				//재고 번호
 	private String name;					//재고 이름
 	private String types;					//재고 종류
@@ -36,6 +43,7 @@ public class StockDTO {
 	public String getSeq_stock_order_record() {
 		return seq_stock_order_record;
 	}
+	
 	public void setSeq_stock_order_record(String seq_stock_order_record) {
 		this.seq_stock_order_record = seq_stock_order_record;
 	}
@@ -88,6 +96,7 @@ public class StockDTO {
 	public void setOrder_unit(String order_unit) {
 		this.order_unit = order_unit;
 	}
+
 	public int getOrder_cost() {
 		return order_cost;
 	}
