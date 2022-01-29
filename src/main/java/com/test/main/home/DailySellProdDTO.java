@@ -1,6 +1,10 @@
 
 package com.test.main.home;
-
+/**
+ * 점장 당일 판매 상품 DTO
+ * @author kujun-kang
+ *
+ */
 public class DailySellProdDTO {
 
 	private String name_kr;

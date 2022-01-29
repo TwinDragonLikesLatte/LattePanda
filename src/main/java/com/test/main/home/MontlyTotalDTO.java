@@ -1,6 +1,10 @@
 
 package com.test.main.home;
-
+/**
+ * 점장 월간판매액 DTO
+ * @author kujun-kang
+ *
+ */
 public class MontlyTotalDTO {
 	
 	private String seq_store;

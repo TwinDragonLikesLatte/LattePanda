@@ -1,6 +1,10 @@
 
 package com.test.main.store;
-
+/**
+ * 선택된 매장의 월간회계 데이터와 순이익, 영업이익 데이터를 가져오는 DTO
+ * @author kujun-kang
+ *
+ */
 public class ProfitValuesDTO {
 	
 	private String year_month;

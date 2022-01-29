@@ -1,6 +1,10 @@
 
 package com.test.main.home;
-
+/**
+ * 지역장 월간 총판매액 DTO
+ * @author kujun-kang
+ *
+ */
 public class AreaMontlyTotalDTO {
 	private String seq_store;
 	private String start_order;

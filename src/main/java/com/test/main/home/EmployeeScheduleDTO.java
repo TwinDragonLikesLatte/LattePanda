@@ -1,6 +1,10 @@
 
 package com.test.main.home;
-
+/**
+ * 직원 근무일정 DTO
+ * @author kujun-kang
+ *
+ */
 public class EmployeeScheduleDTO {
 	private String seq_store;
 	private String name;

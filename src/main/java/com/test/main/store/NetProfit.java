@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.test.main.home.MontlyTotalDTO;
-
+/**
+ * 매장관리 순이익 서블릿
+ * @author kujun-kang
+ *
+ */
 @WebServlet("/store/netprofit/net.do")
 public class NetProfit extends HttpServlet {
 

@@ -9,14 +9,20 @@ import java.util.ArrayList;
 
 import com.test.main.home.MontlyTotalDTO;
 import com.test.main.util.DBUtil;
-
+/**
+ * 매장관리 DAO 클래스
+ * @author kujun-kang
+ *
+ */
 public class StoreDAO {
 
 	private Connection conn;
 	private Statement stat;
 	private PreparedStatement pstat;
 	private ResultSet rs;
-
+	/**
+	 * StoreDAO 생성자
+	 */
 	public StoreDAO() {
 		try {
 
@@ -28,7 +34,10 @@ public class StoreDAO {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * 전지점 순이익 데이터를 높은 순서부터 가져오는 메소드
+	 * @return
+	 */
 	public ArrayList<StoreProfitDTO> storeprofit() {
 		try {
 
@@ -65,7 +74,11 @@ public class StoreDAO {
 		return null;
 	}
 
-
+	/**
+	 * 선택된 매장의 월간회계, 순이익, 영업이익 데이터를 가져오는 메소드
+	 * @param store
+	 * @return
+	 */
 	public ArrayList<ProfitValuesDTO> profitvalues(String store) {
 		try {
 
@@ -101,7 +114,9 @@ public class StoreDAO {
 		}
 		return null;
 	}
-
+	/**
+	 * DB Connection Close 메소드
+	 */
 	public void close() {
 		try {
 			conn.close();

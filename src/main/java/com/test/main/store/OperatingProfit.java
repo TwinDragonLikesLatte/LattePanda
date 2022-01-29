@@ -10,7 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * 매장관리 영업이익 서블
+ * @author kujun-kang
+ *
+ */
 @WebServlet("/store/netprofit/operating.do") // 주소를 적는 부분이고 앞에 code까지 들어가있는 상태이다. do 부분만 적는데 앞에 가상주소가 있으면 그것도 적어준다.
 public class OperatingProfit extends HttpServlet { // HttpServlet 상속 받고
 

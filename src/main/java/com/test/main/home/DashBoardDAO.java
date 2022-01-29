@@ -9,14 +9,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.test.main.util.DBUtil;
-
+/**
+ * 대시보드 DAO 클래스
+ * @author kujun-kang
+ *
+ */
 public class DashBoardDAO {
 
 	private Connection conn;
 	private Statement stat;
 	private PreparedStatement pstat;
 	private ResultSet rs;
-
+/**
+ * DashBoardDAO 생성자
+ */
 	public DashBoardDAO() {
 
 		try {
@@ -30,7 +36,10 @@ public class DashBoardDAO {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * 일일 총 판매액을 데이터를 가져오는 메소드
+	 * @return
+	 */
 	public String total() {
 
 		try {
@@ -51,7 +60,10 @@ public class DashBoardDAO {
 
 		return null;
 	}
-
+	/**
+	 * 대시보드 점장화면에 월간 판매액 데이터를 가져오는 메소드
+	 * @return
+	 */
 	public ArrayList<MontlyTotalDTO> list() {
 
 		try {
@@ -81,7 +93,10 @@ public class DashBoardDAO {
 
 		return null;
 	}
-
+	/**
+	 * 대시보드 점장화면에 당일 상품별 판매량 데이터를 가져오는 메소드
+	 * @return
+	 */
 	public ArrayList<DailySellProdDTO> prod() {
 
 		try {
@@ -108,7 +123,10 @@ public class DashBoardDAO {
 
 		return null;
 	}
-
+	/**
+	 * 대시보드 점장화면에 공지사항 데이터를 가져오는 메소드
+	 * @return
+	 */
 	public ArrayList<NoticeDTO> notice() {
 
 		try {
@@ -137,7 +155,10 @@ public class DashBoardDAO {
 
 		return null;
 	}
-
+	/**
+	 * 대시보드 점장화면에 재고현황 데이터 중 실 재고량을 가져오는 메소드
+	 * @return
+	 */
 	public ArrayList<StockRemainDTO> stockremain() {
 		try {
 
@@ -165,7 +186,10 @@ public class DashBoardDAO {
 		}
 		return null;
 	}
-
+	/**
+	 * 대시보드 지역장화면에 지역내 전지점 월간 매출 현황 중 상품별 판매량 데이터를 가져오는 메소드
+	 * @return
+	 */
 	public ArrayList<AreaMonSellProdDTO> areamonsellprod() {
 		try {
 
@@ -189,7 +213,11 @@ public class DashBoardDAO {
 		}
 		return null;
 	}
-
+	/**
+	 * 대시보드 지역장화면에 해당 지점의 당일 판매액 데이터를 가져오는 데이터
+	 * @param store 버튼에서 받아온 seq_store
+	 * @return
+	 */
 	public String areatotal(String store) {
 		try {
 
@@ -208,7 +236,11 @@ public class DashBoardDAO {
 
 		return null;
 	}
-
+	/**
+	 * 대시보드 지역장화면에 선택된 지점의 월간 판매액 데이터를 가져오는 메소드
+	 * @param store 버튼에서 받아온 seq_store
+	 * @return
+	 */
 	public ArrayList<AreaMontlyTotalDTO> areamontotal(String store) {
 		try {
 
@@ -235,7 +267,11 @@ public class DashBoardDAO {
 		return null;
 	}
 
-
+	/**
+	 * 대시보드 지역장화면에 지역내 전지점별 당일 판매된 상품별 갯수 데이터를 가져오는 메소드 
+	 * @param store
+	 * @return
+	 */
 	public ArrayList<AreaDailySellProdDTO> areaprod(String store) {
 
 		try {
@@ -262,7 +298,10 @@ public class DashBoardDAO {
 		}
 		return null;
 	}
-
+	/**
+	 * 대시보드 지역장화면에 전지역 당일 매출 데이터를 가져오는 메소드
+	 * @return
+	 */
 	public ArrayList<AreaDalyAllTotalDTO> areaalltotal() {
 		
 		try {
@@ -291,7 +330,10 @@ public class DashBoardDAO {
 		return null;
 	}
 	
-	
+	/**
+	 * 대시보드 점장화면에 스태프 근무일정 데이터를 가져오는 메소드
+	 * @return
+	 */
 	public ArrayList<StaffScheduleDTO> staffschedule() {
 		
 		try {
@@ -322,7 +364,10 @@ public class DashBoardDAO {
 		
 		return null;
 	}
-
+	/**
+	 * 대시보드 점장화면에 직원 근무 일정 데이터를 가져오는 메소드 
+	 * @return
+	 */
 	public ArrayList<EmployeeScheduleDTO> employeeschedule() {
 		try {
 			String sql = "SELECT * FROM VWEMPLOYEESCHEDULE WHERE SEQ_STORE = '10101'";
@@ -351,7 +396,9 @@ public class DashBoardDAO {
 		
 		return null;
 	}
-	
+	/**
+	 * DB Connection Close 메소드
+	 */
 	public void close() {
 		try {
 			conn.close();

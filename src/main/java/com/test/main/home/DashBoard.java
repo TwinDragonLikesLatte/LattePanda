@@ -11,7 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * 대시보드 서블릿
+ * @author kujun-kang
+ *
+ */
 @WebServlet("/home/dashboard.do")
 public class DashBoard extends HttpServlet {
 
