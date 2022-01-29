@@ -59,17 +59,16 @@ public class Login extends HttpServlet {
 
                 session.setAttribute("id", result.getSeqEmployee());
                 session.setAttribute("name", result.getName());
-                session.setAttribute("picpath", result.getPicPath());
+                session.setAttribute("pic_path", result.getPicPath());
                 session.setAttribute("department", result.getDepartment());
                 session.setAttribute("position", result.getPosition());
-                session.setAttribute("seqdepartment", result.getSeqDepartment());
-                session.setAttribute("seqposition", result.getSeqPosition());
+                session.setAttribute("seq_department", result.getSeqDepartment());
+                session.setAttribute("seq_position", result.getSeqPosition());
 
                 dao.resetLoginFail(result.getSeqEmployee());
 
-                if (req.getParameter("saveid") != null) {
+                if (req.getParameter("save_id") != null) {
 
-                    System.out.println("cookie");
                     Cookie cookie = new Cookie("id", result.getSeqEmployee());
                     cookie.setMaxAge(60 * 60 * 24 * 30);
                     cookie.setPath("/login.do");
@@ -80,6 +79,7 @@ public class Login extends HttpServlet {
 
         req.setAttribute("error", error);
 
+        dao.closeConn();
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
         dispatcher.forward(req, resp);
     }
