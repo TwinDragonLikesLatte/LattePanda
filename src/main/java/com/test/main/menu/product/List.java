@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * '판매제품조회' 서블릿
+ * @author 최선희
+ */
 @WebServlet("/menu/product/list.do")
 public class List extends HttpServlet {
 
@@ -34,7 +38,7 @@ public class List extends HttpServlet {
          * */
 
 
-        /* Filter values */
+        /* Query String (Filter values) */
         String all = req.getParameter("all");                           // 전체조회
         String[] category = req.getParameterValues("category");         // 카테고리 조회
         String[] openLevel = req.getParameterValues("open-level");      // 메뉴공개등급 조회

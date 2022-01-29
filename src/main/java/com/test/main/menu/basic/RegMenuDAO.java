@@ -9,6 +9,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * 등록메뉴 DAO 클래스
+ * @author 최선희
+ */
 public class RegMenuDAO {
 
     private Connection conn;
@@ -16,6 +20,9 @@ public class RegMenuDAO {
     private PreparedStatement pstat;
     private ResultSet rs;
 
+    /**
+     * RegMenuDAO 생성자
+     */
     public RegMenuDAO() {
 
         try {
@@ -27,6 +34,11 @@ public class RegMenuDAO {
         }
     }
 
+    /**
+     * 카테고리 필터 query 생성 메소드
+     * @param cateList 카테고리 리스트
+     * @return 카테고리 where query절
+     */
     public String makeWhereCategory(String[] cateList){
         String where = "category_name in (";
 
@@ -38,7 +50,13 @@ public class RegMenuDAO {
         return where;
     }
 
-    /* list.java > 메뉴리스트 요청 */
+
+    /**
+     * 등록된 메뉴 리스트를 반환하는 메소드
+     * List.java > 메뉴 리스트 요청
+     * @param filter 검색 조건 HashMap
+     * @return 등록메뉴 리스트
+     */
     public ArrayList<RegMenuDTO> list(HashMap<String, Object> filter) {
 
         try {
@@ -99,7 +117,13 @@ public class RegMenuDAO {
         return null;
     }
 
-    /* detail.java > 메뉴 목록 하나 요청 */
+
+    /**
+     * 등록메뉴 레코드 하나를 반환하는 메소드
+     * detail.java > 메뉴 목록 하나 요청
+     * @param seqMenu 메뉴코드
+     * @return 등록메뉴DTO
+     */
     public RegMenuDTO get(String seqMenu) {
 
         try {

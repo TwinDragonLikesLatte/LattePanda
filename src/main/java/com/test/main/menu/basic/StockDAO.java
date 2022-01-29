@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * 재고 DAO 클래스
+ * @author 최선희
+ */
 public class StockDAO {
 
     private Connection conn;
@@ -15,6 +19,9 @@ public class StockDAO {
     private PreparedStatement pstat;
     private ResultSet rs;
 
+    /**
+     * StockDAO 생성자
+     */
     public StockDAO() {
 
         try {
@@ -26,7 +33,11 @@ public class StockDAO {
         }
     }
 
-    /* AddProduct.java > 재료 리스트 반환 */
+    /**
+     * 재고(재료) 리스트를 반환하는 메소드
+     * AddProduct.java > 재료 리스트 요청
+     * @return 재고 리스트
+     */
     public ArrayList<StockDTO> list() {
 
         try {

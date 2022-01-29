@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * 메뉴 카테고리 DAO 클래스
+ * @author 최선희
+ */
 public class CategoryDAO {
 
     private Connection conn;
@@ -15,6 +19,9 @@ public class CategoryDAO {
     private PreparedStatement pstat;
     private ResultSet rs;
 
+    /**
+     * CategoryDAO 생성자
+     */
     public CategoryDAO() {
 
         try {
@@ -26,7 +33,10 @@ public class CategoryDAO {
         }
     }
 
-    /* 카테고리 목록 반환 메소드 */
+    /**
+     * 메뉴 카테고리 리스트를 반환하는 메소드
+     * @return 메뉴 카테고리 리스트
+     */
     public ArrayList<CategoryDTO> list() {
 
         try {

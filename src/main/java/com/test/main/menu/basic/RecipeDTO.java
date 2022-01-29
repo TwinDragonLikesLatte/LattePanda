@@ -1,5 +1,9 @@
 package com.test.main.menu.basic;
 
+/**
+ * 레시피 DTO
+ * @author 최선희
+ */
 public class RecipeDTO {
 
     private String seqProduct;

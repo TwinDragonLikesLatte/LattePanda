@@ -1,5 +1,9 @@
 package com.test.main.menu.product;
 
+/**
+ * 제품 DTO
+ * @author 최선희
+ */
 public class ProductDTO {
 
     private String seqProduct;

@@ -1,5 +1,9 @@
 package com.test.main.menu.basic;
 
+/**
+ * 재고 DTO
+ * @author 최선희
+ */
 public class StockDTO {
 
     private String seqStock;

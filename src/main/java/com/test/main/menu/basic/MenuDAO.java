@@ -7,6 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/**
+ * 메뉴 DAO 클래스
+ * @author 최선희
+ */
 public class MenuDAO {
 
     private Connection conn;
@@ -14,6 +18,9 @@ public class MenuDAO {
     private PreparedStatement pstat;
     private ResultSet rs;
 
+    /**
+     * MenuDAO 생성자
+     */
     public MenuDAO() {
 
         try {
@@ -25,7 +32,12 @@ public class MenuDAO {
         }
     }
 
-    /* AddOk.java > 메뉴등록 */
+    /**
+     * DB에 메뉴를 INSERT하는 메소드
+     * AddOk.java > 메뉴등록 요청
+     * @param menuDto 등록할 메뉴 DTO
+     * @return INSERT 결과값 반환
+     */
     public int add(MenuDTO menuDto) {
 
         try {

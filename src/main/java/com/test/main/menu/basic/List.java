@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * '메뉴조회' 서블릿
+ * @author 최선희
+ */
 @WebServlet("/menu/basic/list.do")
 public class List extends HttpServlet {
 
@@ -30,7 +34,8 @@ public class List extends HttpServlet {
         * 4) 카테고리 + 이름   > list.do?category=커피&category=아이스크림&search=아이스
         * */
 
-        /* Filter values */
+        
+        /* Query String (Filter values) */
         String all = req.getParameter("all");
         String[] category = req.getParameterValues("category");
         String search = req.getParameter("search");

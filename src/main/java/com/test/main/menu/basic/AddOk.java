@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * '메뉴등록' 처리 서블릿
+ * @author 최선희
+ */
 @WebServlet("/menu/basic/addok.do")
 public class AddOk extends HttpServlet {
 
@@ -35,15 +39,6 @@ public class AddOk extends HttpServlet {
         String regular = req.getParameter("regular");
         String large = req.getParameter("large");
         String oneSize = req.getParameter("1-size");
-
-        System.out.println("/* 테스트 로그 */");
-        System.out.println("seqCategory : " + seqCategory);
-        System.out.println("seqMenu : " + seqMenu);
-        System.out.println("nameKr : " + nameKr);
-        System.out.println("nameEn : " + nameEn);
-        System.out.println("regular : " + regular);
-        System.out.println("large : " + large);
-        System.out.println("oneSize : " + oneSize);
 
 
         /* DB insert */

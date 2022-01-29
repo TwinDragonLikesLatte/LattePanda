@@ -3,6 +3,10 @@ package com.test.main.menu.basic;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * 메뉴 DTO
+ * @author 최선희
+ */
 public class MenuDTO {
 
     private String seqMenu;
