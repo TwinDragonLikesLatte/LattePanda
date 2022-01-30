@@ -8,13 +8,21 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * 스태프 월 급여조회 관련 기능을 수행하기 위한 DAO 클래스
+ * @author 조진욱
+ */
 public class PaystubDAO {
     
     private Connection conn;
     private Statement stat;
     private PreparedStatement pstat;
     private ResultSet rs;
-    
+
+    /**
+     * DAO 생성자
+     * @author 조진욱
+     */
     public PaystubDAO() {
     
         try {
@@ -24,9 +32,14 @@ public class PaystubDAO {
             e.printStackTrace();
         }
     }
-    
+
+    /**
+     * Connection 종료 메서드
+     * 서블릿 내에서 DAO 사용 종료 후 호출
+     * @author 조진욱
+     */
     public void closeConn() {
-    
+
         try {
             conn.close();
         } catch (Exception e) {
@@ -35,9 +48,12 @@ public class PaystubDAO {
         }
     }
 
-
+    /**
+     * 스태프 월 급여조회 목록을 반환하는 메서드
+     * @param seqStore 매장번호
+     * @return 월 급여조회 목록
+     */
     public ArrayList<PaystubDTO> getList(String seqStore) {
-
 
         try {
             System.out.println(seqStore);
@@ -82,8 +98,6 @@ public class PaystubDAO {
             System.out.println("PaystubDAO.getList()");
             e.printStackTrace();
         }
-
-        
         
         return null;
     }

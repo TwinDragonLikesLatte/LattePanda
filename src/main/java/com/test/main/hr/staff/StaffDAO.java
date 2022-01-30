@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * 스태프 관리 기능을 수행하기 위한 DAO 클래스
+ * @author 조진욱
+ */
 public class StaffDAO {
 
     private Connection conn;
@@ -15,6 +19,10 @@ public class StaffDAO {
     private PreparedStatement pstat;
     private ResultSet rs;
 
+    /**
+     * DAO 생성자
+     * @author 조진욱
+     */
     public StaffDAO() {
 
         try {
@@ -25,6 +33,11 @@ public class StaffDAO {
         }
     }
 
+    /**
+     * Connction 종료 메서드
+     * 서블릿 내에서 DAO 사용 종료 후 호출
+     * @author 조진욱
+     */
     public void closeConn() {
 
         try {
@@ -35,7 +48,11 @@ public class StaffDAO {
         }
     }
 
-
+    /**
+     * 스태프목록을 반환하는 메서드
+     * @param seqDepartment 부서번호
+     * @return 스태프목록
+     */
     public ArrayList<StaffDTO> getList(String seqDepartment) {
 
         String whereDepartment = "";
@@ -88,7 +105,12 @@ public class StaffDAO {
         return null;
     }
 
-    public StaffDTO getStaffMin(String seqStaff) {
+    /**
+     * 스태프 정보를 반환하는 메서드
+     * @param seqStaff 스태프번호
+     * @return 스태프 정보
+     */
+    public StaffDTO getStaff(String seqStaff) {
 
         try {
             String sql = "SELECT * FROM vwStaffList WHERE NOT status = '퇴직' AND seq_staff = ? ";

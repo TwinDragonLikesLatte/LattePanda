@@ -20,7 +20,7 @@ public class Attend extends HttpServlet {
 
         if (seqStaff != null) {
             StaffDAO sDao = new StaffDAO();
-            StaffDTO staff = sDao.getStaffMin(seqStaff);
+            StaffDTO staff = sDao.getStaff(seqStaff);
 
             AttendDAO aDao = new AttendDAO();
             ArrayList<AttendDTO> week = aDao.getWeek(seqStaff);

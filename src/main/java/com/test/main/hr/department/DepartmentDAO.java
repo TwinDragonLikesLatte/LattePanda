@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * 부서 관련 기능을 수행하기 위한 DAO 클래스
+ * @author 조진욱
+ */
 public class DepartmentDAO {
 
     private Connection conn;
@@ -15,6 +19,10 @@ public class DepartmentDAO {
     private PreparedStatement pstat;
     private ResultSet rs;
 
+    /**
+     * DAO 생성자
+     * @author 조진욱
+     */
     public DepartmentDAO() {
 
         try {
@@ -25,6 +33,11 @@ public class DepartmentDAO {
         }
     }
 
+    /**
+     * Connection 종료 메서드
+     * 서블릿 내에서 DAO 사용 종료 후 호출
+     * @author 조진욱
+     */
     public void closeConn() {
 
         try {
@@ -35,6 +48,11 @@ public class DepartmentDAO {
         }
     }
 
+    /**
+     * 부서목록을 반환하는 메서드
+     * @return 부서목록
+     * @author 조진욱
+     */
     public ArrayList<DepartmentDTO> getList() {
 
         try {
@@ -60,8 +78,6 @@ public class DepartmentDAO {
             System.out.println("DepartmentDAO.getList()");
             e.printStackTrace();
         }
-
-
 
         return null;
     }

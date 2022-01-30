@@ -9,6 +9,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * 스태프 근태입력 기능을 수행하기 위한 DAO 클래스
+ * @author 조진욱
+ */
 public class AttendDAO {
 
     private Connection conn;
@@ -16,6 +20,10 @@ public class AttendDAO {
     private PreparedStatement pstat;
     private ResultSet rs;
 
+    /**
+     * DAO 생성자
+     * @author 조진욱
+     */
     public AttendDAO() {
 
         try {
@@ -26,6 +34,11 @@ public class AttendDAO {
         }
     }
 
+    /**
+     * Connction 종료 메서드
+     * 서블릿 내에서 DAO 사용 종료 후 호출
+     * @author 조진욱
+     */
     public void closeConn() {
 
         try {
@@ -36,6 +49,11 @@ public class AttendDAO {
         }
     }
 
+    /**
+     * 주 근태 상세 목록을 반환하는 메서드
+     * @param seqStaff 스태프번호
+     * @return 주 근태 상세 목록
+     */
     public ArrayList<AttendDTO> getWeek(String seqStaff) {
 
         try {
@@ -70,6 +88,11 @@ public class AttendDAO {
         return null;
     }
 
+    /**
+     * 월 근무일수, 근무시간을 반환하는 메서드
+     * @param seqStaff 스태프번호
+     * @return 월 근무일수, 근무시간
+     */
     public HashMap<String, Integer> getMonth(String seqStaff) {
         
         try {
@@ -96,6 +119,11 @@ public class AttendDAO {
         return null;
     }
 
+    /**
+     * 스태프 근태입력 메서드
+     * @param map 스태프번호, 근태종류
+     * @return 성공할 경우 1
+     */
     public int stampAttend(HashMap<String, String> map) {
         
         try {
@@ -124,6 +152,11 @@ public class AttendDAO {
         return 0;
     }
 
+    /**
+     * 스태프 비밀번호 일치 확인 메서드
+     * @param map 스태프번호, 비밀번호
+     * @return 성공할 경우 true
+     */
     public Boolean pwValid(HashMap<String, String> map) {
 
         try {
