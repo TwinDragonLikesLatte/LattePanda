@@ -12,7 +12,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * 
+ * @author JH LEE
+ * 공지사항의 메인페이지
+ */
 @WebServlet("/notice/board.do")
 public class Board extends HttpServlet {
 
@@ -23,10 +27,6 @@ public class Board extends HttpServlet {
 		String column = req.getParameter("column");
 		String word = req.getParameter("word");
 		String searchmode = "n";
-//		String searchdate = "n";
-//		
-//		String startdate = req.getParameter("startdate");
-//		String enddate = req.getParameter("enddate");
 		
 		
 		if ((column == null && word == null) 
@@ -35,17 +35,6 @@ public class Board extends HttpServlet {
 		} else {
 			searchmode = "y";
 		}
-		
-		
-//		if (startdate == null && enddate == null)	{
-//			searchdate = "n";
-//		} else if (startdate == null && enddate != null) {
-//			searchdate = "n";
-//		} else if (startdate != null && enddate != null) {
-//			searchdate = "y";
-//		} else {
-//			searchdate = "n";
-//		}
     	
 		//DTO > HashMap
 		HashMap<String,String> map = new HashMap<String,String>();
@@ -53,11 +42,7 @@ public class Board extends HttpServlet {
 		map.put("word", word);
 		map.put("searchmode", searchmode);
 		
-//		map.put("startdate", startdate);
-//		map.put("enddate", enddate);
 		
-		
-    	
     	//페이징
 		int nowPage = 0;		//현재 페이지 번호
 		int totalCount = 0;
@@ -69,8 +54,6 @@ public class Board extends HttpServlet {
 		int loop = 0;
 		int blockSize = 10;
 		
-		//board.do > board.do?page=1
-		//board.do?page=3
 		
 		String page = req.getParameter("page");
 		
@@ -110,31 +93,21 @@ public class Board extends HttpServlet {
 		
 		
 		//페이지 바
-
 		totalCount = dao.getTotalCount(map);
 		totalPage = (int)Math.ceil((double)totalCount / pageSize);
 		
 		String pagebar = "";
 
-		
 		loop = 1; //루프변수(while)
 		n = ((nowPage - 1) / blockSize) * blockSize + 1; //페이지 번호
 		
-		
-		
 		pagebar += "<nav><ul class=\"pagination\">";
-		
 		
 		if (n == 1) {
 			pagebar += String.format("<li class='disabled'><a href='#!' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
 		} else {
 			pagebar += String.format("<li><a href='/notice/board.do?page=%d' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>", n-1);
 		}
-		
-		
-		
-
-		
 		
 		while (!(loop > blockSize || n > totalPage)) {
 			
@@ -147,8 +120,6 @@ public class Board extends HttpServlet {
 			loop++;
 			n++;
 		}
-		
-
 		
 		if (n > totalPage) {
 			pagebar += String.format("<li class='disabled'><a href='#!' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
