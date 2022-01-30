@@ -7,7 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * 공지사항 삭제 서블릿
+ * @author JH LEE
+ *
+ */
 @WebServlet("/notice/del.do")
 public class Del extends HttpServlet {
 
