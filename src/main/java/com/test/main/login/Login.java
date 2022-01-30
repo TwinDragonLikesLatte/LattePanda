@@ -31,28 +31,28 @@ public class Login extends HttpServlet {
         LoginDTO result = dao.login(id);
         String error = "";
 
-        if (result == null) {
+        if (result == null) {  //입력된 아이디와 일치하는 계정이 존재하지 않는 경우
             error = "존재하지 않는 아이디입니다.";
 
-        } else {
-            if (result.getStatus().equals("퇴직")) {
+        } else {  //입력된 아이디와 일치하는 계정이 존재하는 경우
+            if (result.getStatus().equals("퇴직")) {  //계정이 퇴직인 경우
                 error = "퇴직하여 이용이 정지된 사용자입니다.";
 
-            } else if (result.getIsLock().equals("y")) {
+            } else if (result.getIsLock().equals("y")) {  //계정이 잠겨있는 경우
                 req.setAttribute("lock", result.getIsLock());
 
-            } else if (!result.getPassword().equals(pw)) {
-                if (result.getLoginFail() == 4) {
+            } else if (!result.getPassword().equals(pw)) {  //비밀번호가 일치하지 않는 경우
+                if (result.getLoginFail() == 4) {  //이전 로그인 실패 횟수가 4회가 넘은 경우 계정 잠금
                     req.setAttribute("lock", "y");
 
-                } else {
+                } else {  //이전 로그인 실패 횟수가 4회 미만인 경우 현재 실패 횟수와 계정 잠금 안내를 출력
                     error = String.format("올바르지 않은 비밀번호입니다.<br><b>5회 이상 실패시 계정이 잠깁니다. (현재:%d회)</b>",
                             result.getLoginFail() + 1);
                 }
 
                 dao.addLoginFail(id);
 
-            } else {
+            } else {  //로그인에 성공한 경우
                 HttpSession session = req.getSession();
 
                 session.setAttribute("id", result.getSeqEmployee());
@@ -66,7 +66,7 @@ public class Login extends HttpServlet {
 
                 dao.resetLoginFail(result.getSeqEmployee());
 
-                if (req.getParameter("save_id") != null) {
+                if (req.getParameter("save_id") != null) {  //아이디 저장 기능이 체크되어 있는 경우
 
                     Cookie cookie = new Cookie("id", result.getSeqEmployee());
                     cookie.setMaxAge(60 * 60 * 24 * 30);

@@ -7,6 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/**
+ * 로그인 기능을 수행하기 위한 DAO 클래스
+ * @author 조진욱
+ */
 public class LoginDAO {
 
     private Connection conn;
@@ -14,6 +18,10 @@ public class LoginDAO {
     private PreparedStatement pstat;
     private ResultSet rs;
 
+    /**
+     * DAO 생성자
+     * @author 조진욱
+     */
     public LoginDAO() {
 
         try {
@@ -24,6 +32,11 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * Connection 종료 메서드
+     * 서블릿 내에서 DAO 사용 종료 후 호출
+     * @author 조진욱
+     */
     public void closeConn() {
 
         try {
@@ -34,6 +47,12 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * 로그인 메서드
+     * @param id 직원번호
+     * @return LoginDTO
+     * @author 조진욱
+     */
     public LoginDTO login(String id) {
 
         try {
@@ -77,6 +96,11 @@ public class LoginDAO {
         return null;
     }
 
+    /**
+     * DB 내 로그인 실패 카운트 추가 메서드
+     * @param seqEmployee 직원번호
+     * @author 조진욱
+     */
     public void addLoginFail(String seqEmployee) {
 
         try {
@@ -96,6 +120,11 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * DB 내 로그인 실패 카운트 초기화 메서드
+     * @param seqEmployee 직원번호
+     * @author 조진욱
+     */
     public void resetLoginFail(String seqEmployee) {
 
         try {
@@ -114,6 +143,12 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * 아이디(직원번호)로 계정을 조회하는 메서드
+     * @param id 아이디(직원번호)
+     * @return 아이디(직원번호)
+     * @author 조진욱
+     */
     public String findById(String id) {
 
         try {
@@ -138,6 +173,13 @@ public class LoginDAO {
         return null;
     }
 
+    /**
+     * 직원번호, 이름, 주민등록번호로 회원을 찾는 메서드
+     * 직원번호, 이름, 주민등록번호 필요
+     * @param dto LoginDTO
+     * @return 아이디(직원번호)
+     * @author 조진욱
+     */
     public String findByPersonal(LoginDTO dto) {
 
         try {
@@ -164,6 +206,13 @@ public class LoginDAO {
         return null;
     }
 
+    /**
+     * 변경할 비밀번호가 기존 비밀번호와 동일한지 확인하는 메서드
+     * 직원번호, 비밀번호 필요
+     * @param dto LoginDTO
+     * @return 동일할 경우 true
+     * @author 조진욱
+     */
     public boolean isPwSame(LoginDTO dto) {
 
         try {
@@ -189,6 +238,12 @@ public class LoginDAO {
         return false;
     }
 
+    /**
+     * 해당 직원의 비밀번호를 변경하는 메서드
+     * 직원번호, 비밀번호 필요
+     * @param dto LoginDTO
+     * @return 성공할 경우 1
+     */
     public int changePw(LoginDTO dto) {
 
         try {

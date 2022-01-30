@@ -39,17 +39,17 @@ public class FindPassword extends HttpServlet {
 
             String result = dao.findByPersonal(dto);
 
-            if (result != null) {
+            if (result != null) {  //성공할 경우 비밀번호 변경 화면으로 이동
                 req.setAttribute("id", id);
                 dispatcher = req.getRequestDispatcher("/WEB-INF/views/login/changepw.jsp");
 
-            } else {
+            } else {  //실패할 경우 에러메세지와 함께 비밀번호 찾기 초기 화면으로 이동
                 req.setAttribute("id", id);
                 req.setAttribute("error", "정보가 일치하지 않습니다.");
                 dispatcher = req.getRequestDispatcher("/WEB-INF/views/login/findpwid.jsp");
             }
 
-        } else {  //아이디 입력 후
+        } else {  //아이디 입력 후 이름, 주민등록번호 입력 화면으로 이동
             String result = dao.findById(id);
 
             req.setAttribute("id", id);

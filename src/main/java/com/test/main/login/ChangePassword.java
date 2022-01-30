@@ -32,12 +32,12 @@ public class ChangePassword extends HttpServlet {
         dto.setSeqEmployee(id);
         dto.setPassword(pw);
 
-        if (dao.isPwSame(dto)) {
+        if (dao.isPwSame(dto)) {  //비밀번호가 이전 비밀번호와 같을 경우
             req.setAttribute("error", "이전 비밀번호와 같습니다.");
             req.setAttribute("id", id);
             dispatcher = req.getRequestDispatcher("/WEB-INF/views/login/changepw.jsp");
 
-        } else {
+        } else {  //비밀번호가 이전 비밀번호와 같지 않을 경우
             int result = dao.changePw(dto);
             dispatcher = req.getRequestDispatcher("/WEB-INF/views/login/changepwok.jsp");
         }
