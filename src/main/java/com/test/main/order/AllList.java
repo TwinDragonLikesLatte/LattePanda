@@ -14,7 +14,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-
+/**
+ * 주문관리 전체주문 리스트
+ * @author JH LEE
+ *
+ */
 @WebServlet("/order/alllist.do")
 public class AllList extends HttpServlet {
 

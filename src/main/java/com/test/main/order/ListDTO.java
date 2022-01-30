@@ -1,5 +1,10 @@
 package com.test.main.order;
 
+/**
+ * 데이터 Getter/Setter
+ * @author JH LEE
+ *
+ */
 public class ListDTO {
 	
 	public String seq_order;

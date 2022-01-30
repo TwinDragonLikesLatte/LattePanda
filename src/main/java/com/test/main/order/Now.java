@@ -13,7 +13,11 @@ import com.test.main.notice.BoardDTO;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+/**
+ * 진행중 주문의 서블릿
+ * @author JH LEE
+ *
+ */
 @WebServlet("/order/now.do")
 public class Now extends HttpServlet {
 
