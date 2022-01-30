@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 공지사항 글쓰기
+ * @author JH LEE
+ *
+ */
 @WebServlet("/notice/add.do") 
 public class Add extends HttpServlet { 
 
