@@ -1,5 +1,10 @@
 package com.test.main.notice;
 
+/**
+ * 데이터 보관
+ * @author JH LEE
+ *
+ */
 public class BoardDTO {
 	
 	public String seq_notice;
