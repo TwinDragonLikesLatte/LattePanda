@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 공지사항 글쓰기 버튼 클릭 후
+ * @author JH LEE
+ *
+ */
 @WebServlet("/notice/addok.do")
 public class AddOk extends HttpServlet {
 
