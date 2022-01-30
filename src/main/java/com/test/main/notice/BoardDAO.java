@@ -8,7 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import org.w3c.dom.bootstrap.DOMImplementationRegistry;
 import com.test.main.util.DBUtil;
-
+/**
+ * 공지사항 CRUD 및 페이징, 검색 처리
+ * @author JH LEE
+ *
+ */
 public class BoardDAO {
 	
 	private Connection conn;
@@ -18,7 +22,9 @@ public class BoardDAO {
 	
 	
 	
-	
+	/**
+	 * 데이터베이스 연결
+	 */
 	public BoardDAO() {
 
 		try {
@@ -35,7 +41,11 @@ public class BoardDAO {
 	}
 	
 	
-	//글작성 (쿼리 되는데 에러남)
+	/**
+	 * 글작성(등록)하는 메소드
+	 * @param dto
+	 * @return 입력한 글
+	 */
 	public int add(BoardDTO dto) {
 		
 		try {
@@ -59,7 +69,11 @@ public class BoardDAO {
 	}
 	
 	
-	
+	/**
+	 * 공지사항의 모든 글을 불러오는 메소드
+	 * @param map
+	 * @return 공지사항의 전체 글 정보
+	 */
 	public ArrayList<BoardDTO> list(HashMap<String, String> map) {
 		
 		try {
@@ -73,16 +87,6 @@ public class BoardDAO {
 								, map.get("name"));
 			}
 			
-//			//기간 검색
-//			if (map.get("searchdate").equals("y")) {
-//				where = String.format("where %s between '%%%s%%' and '%%%s%%'"
-//						, map.get("date")
-//						, map.get("startdate")
-//						, map.get("enddate"));
-//			}
-			
-
-		
 			
 			String sql = String.format("select * from (select rownum as rnum, a.* from (select * from vwnotice %s order by seq_notice desc)a ) where rnum between %s and %s order by seq_notice desc", where, map.get("begin"), map.get("end"));
 			
@@ -116,8 +120,11 @@ public class BoardDAO {
 	
 	
 	
-	
-	//view 서블릿 -> 글 레코드
+	/**
+	 * view 서블릿에서 글 레코드를 반환해주는 메소드
+	 * @param seq
+	 * @return 해당 seq를 가진 레코드
+	 */
 	public BoardDTO get(String seq) {
 		try {
 
@@ -150,7 +157,11 @@ public class BoardDAO {
 		return null;
 	}
 	
-	//수정
+	/**
+	 * 글 수정 메소드
+	 * @param dto
+	 * @return
+	 */
 	public int edit(BoardDTO dto) {
 
 		try {
@@ -172,7 +183,11 @@ public class BoardDAO {
 		return 0;
 	}
 
-	//삭제
+	/**
+	 * 글 삭제 메소드
+	 * @param seq
+	 * @return
+	 */
 	public int del(String seq) {
 		
 		try {
@@ -195,8 +210,11 @@ public class BoardDAO {
 	}
 	
 	
-	
-	//Board 서블릿 게시물 개수
+	/**
+	 * Board 서블릿의 전체 게시물 개수
+	 * @param map
+	 * @return 모든 게시물 개수
+	 */
 	public int getTotalCount(HashMap<String, String> map) {
 		
 		try {
@@ -228,14 +246,8 @@ public class BoardDAO {
 		
 		return 0;
 		
-		
 	}
 
-	
-	//주문추가
-	
-
-	
 	
 	
 }
