@@ -1,6 +1,10 @@
 
 package com.test.main.home;
-
+/**
+ * 재고현황 DTO
+ * @author kujun-kang
+ *
+ */
 public class StockRemainDTO {
 	private String seq_store;
 	private String name;

@@ -1,6 +1,10 @@
 
 package com.test.main.home;
-
+/**
+ * 공지사항 DTO
+ * @author kujun-kang
+ *
+ */
 public class NoticeDTO {
 	private int seq_notice;
 	private String seq_department;

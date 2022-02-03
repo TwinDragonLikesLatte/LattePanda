@@ -1,6 +1,11 @@
 
 package com.test.main.home;
 
+/**
+ * 지역장 당일 총판매액 DTO
+ * @author kujun-kang
+ *
+ */
 public class AreaDalyAllTotalDTO {
 	private String seq_store;
 	private String total;
