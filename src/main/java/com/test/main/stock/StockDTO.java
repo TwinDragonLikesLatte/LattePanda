@@ -1,14 +1,21 @@
 package com.test.main.stock;
 
+/**
+ * 재고 정보 클래스
+ * 
+ * @author 임호혁
+ * 
+ */
 public class StockDTO {
 
+	
 	private String seq_stock;				//재고 번호
 	private String name;					//재고 이름
 	private String types;					//재고 종류
 	private String unit;					//단위
-	private int unit_cost;				//단가
+	private int unit_cost;					//단가
 	private String order_unit;				//발주단위
-	private int order_cost;				//발주단가
+	private int order_cost;					//발주단가
 	private String order_unit_quantity;		//발주단위량
 	
 	
@@ -23,11 +30,38 @@ public class StockDTO {
 	private int waste;						//폐기량
 	private String etc;						//비고
 	
+	//StockOrder, StockOrderRecord
+	private String seq_stock_order;			//발주 고유 번호
+	private int quantity_order;
+	
+	private String seq_stock_order_record;
 	
 	
 	
+	
+	
+	public String getSeq_stock_order_record() {
+		return seq_stock_order_record;
+	}
+	
+	public void setSeq_stock_order_record(String seq_stock_order_record) {
+		this.seq_stock_order_record = seq_stock_order_record;
+	}
+	
+	public int getQuantity_order() {
+		return quantity_order;
+	}
+	public void setQuantity_order(int quantity_order) {
+		this.quantity_order = quantity_order;
+	}
 	public String getSeq_stock() {
 		return seq_stock;
+	}
+	public String getSeq_stock_order() {
+		return seq_stock_order;
+	}
+	public void setSeq_stock_order(String seq_stock_order) {
+		this.seq_stock_order = seq_stock_order;
 	}
 	public void setSeq_stock(String seq_stock) {
 		this.seq_stock = seq_stock;
@@ -62,6 +96,7 @@ public class StockDTO {
 	public void setOrder_unit(String order_unit) {
 		this.order_unit = order_unit;
 	}
+
 	public int getOrder_cost() {
 		return order_cost;
 	}

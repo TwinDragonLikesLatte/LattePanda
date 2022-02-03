@@ -34,7 +34,7 @@ public class Edit extends HttpServlet {
     	
     	ArrayList<StockDTO> list = dao.list(seq_store);
     	
-    	HttpSession session = req.getSession();
+    	//HttpSession session = req.getSession();
     	
     	req.setAttribute("list", list);
     	

@@ -22,6 +22,9 @@ public class StockDAO {
 	private ResultSet rs;
 	private ResultSet rs2;
 	
+	/**
+	 * DB 접속
+	 */
 	public StockDAO() {
 
 		try {
@@ -63,7 +66,9 @@ public class StockDAO {
 				dto.setUnit(rs.getString("unit"));
 
 				dto.setSeq_store(rs.getString("seq_store"));
-				
+				dto.setOrder_cost(rs.getInt("order_cost"));
+				dto.setOrder_unit(rs.getString("order_unit"));
+				dto.setOrder_unit_quantity(rs.getString("order_unit_quantity"));
 				
 				dto.setPre_quantity(rs.getInt("pre_quantity"));
 				dto.setQuantity(rs.getInt("quantity"));
@@ -80,9 +85,6 @@ public class StockDAO {
 				
 			}
 			
-		
-			
-			
 			return list;
 
 		} catch (Exception e) {
@@ -93,6 +95,9 @@ public class StockDAO {
 		return null;
 	}
 	
+	/**
+	 * DB 연결 해제
+	 */
 	public void close() {
 		
 		try {
@@ -104,6 +109,12 @@ public class StockDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * 재고 정보 수정
+	 * @param dto StockDTO
+	 * @return 수정 성공(1) / 실패(0)
+	 */
 	public int edit(StockDTO dto) {
 		
 		String sql = "update tblStockrecord set quantity = ?, waste = ?, etc = ? where seq_store = ? and seq_stock = ? and to_date(regdate, 'yyyy-mm-dd') = to_date(CURRENT_DATE, 'yyyy-mm-dd')";
@@ -127,6 +138,11 @@ public class StockDAO {
 		return 0;
 		
 	}
+	/**
+	 * 현재 재고 수량 수정
+	 * @param dto StockDTO
+	 * @return 수정 성공(1) / 실패(0)
+	 */
 	public int editCheck(StockDTO dto) {
 		
 		try {
@@ -146,13 +162,94 @@ public class StockDAO {
 		
 		return 0;
 	}
-	
-	
-	
-	
-	
+	/**
+	 * 발주 주문 번호 조회
+	 * @param seq_store 매장 번호
+	 * @return String seq_stock_order 매장 주문 번호
+	 */
+	public String getSeqStockOrder(String seq_store) {
+		
+		try {
 
-	
-	
+			String sql = "select seq_stock_order from tblstockorder where seq_store = ? and to_date(regdate, 'yyyy-mm-dd') = to_date(CURRENT_DATE, 'yyyy-mm-dd')";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq_store);
+			
+			rs = pstat.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getString("seq_stock_order");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("StockDAO.getSeqStockOrder()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	/**
+	 * 발주 정보 조회
+	 * @param seq_store 매장 번호
+	 * @param seq_stock_order 발주 번호
+	 * @param list 발주 정보 리스트
+	 * @return ArrayList StockDTO
+	 */
+	public ArrayList<StockDTO> orderlist(String seq_store, String seq_stock_order, ArrayList<StockDTO> list) {
+		
+		try {
+
+			String sql = "select seq_stock, quantity, seq_stock_order_record from tblStockorderrecord where seq_stock_order = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq_stock_order);
+			
+			rs = pstat.executeQuery();
+			int i = 0;
+			while(rs.next()) {
+				StockDTO dto = new StockDTO();
+				dto = list.get(i);
+				dto.setQuantity_order(rs.getInt("quantity"));
+				dto.setSeq_stock_order_record(rs.getString("seq_stock_order_record"));
+				
+				
+				list.set(i, dto);
+				i++;
+			}
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println("StockDAO.orderlist()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	/**
+	 * 발주 주문 정보 수정
+	 * @param dto StockDTO
+	 * @return 수정 성공(1) / 실패(0)
+	 */
+	public int editorder(StockDTO dto) {
+		
+		String sql = "update tblStockorderrecord set quantity = ? where seq_stock_order_record = ?";
+		try {
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setInt(1, dto.getQuantity_order());
+			pstat.setInt(2, Integer.parseInt(dto.getSeq_stock_order_record()));
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("StockDAO.editorder()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}	
+
 
 }
