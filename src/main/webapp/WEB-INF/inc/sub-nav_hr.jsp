@@ -15,12 +15,14 @@
                 <li><a href="/hr/employee/resign.do">퇴사처리</a></li>
             </ul>
         </li>
-        <li class="sub-menu"><a href="/hr/staff/list.do">스태프관리</a>
+        <li class="sub-menu"><a href="/hr/staff/list.do?seq_department=${seq_department}">스태프관리</a>
             <ul>
-                <li><a href="/hr/staff/list.do">직원조회</a></li>
+                <li><a href="/hr/staff/list.do?seq_department=${seq_department}">스태프조회</a></li>
                 <li><a href="/hr/staff/add.do">신규등록</a></li>
                 <li><a href="/hr/staff/contract.do">근로계약</a></li>
-                <li><a href="/hr/staff/appointment.do">인사발령</a></li>
+                <li><a href="/hr/staff/edu.do">안전보건교육</a></li>
+                <li><a href="/hr/staff/attend.do">근태입력</a></li>
+                <li><a href="/hr/staff/paystub.do">급여관리</a></li>
                 <li><a href="/hr/staff/resign.do">퇴사처리</a></li>
             </ul>
         </li>

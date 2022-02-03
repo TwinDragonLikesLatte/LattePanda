@@ -1,0 +1,167 @@
+input {
+    border: var(--border);
+}
+
+input:focus {
+    outline: none;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--purple_three);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 550px;
+    height: 670px;
+    background-color: var(--white);
+    border: var(--border);
+    border-radius: var(--radius);
+}
+
+.logo-h {
+    width: 230px;
+    height: auto;
+    margin-top: 120px;
+    margin-bottom: 10px;
+}
+
+.error {
+    margin-bottom: 20px;
+    color: var(--red);
+    font-size: 16px;
+    text-align: center;
+}
+
+.login-box {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.login-box > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box > div > div {
+    position: relative;
+}
+
+.login-box > div > div > input {
+    width: 260px;
+    height: 50px;
+    padding-left: 30px;
+    font-size: 16px;
+}
+
+.login-box > div > div:first-child > input {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+}
+
+.login-box > div > div:last-child > input {
+    height: 51px;
+    margin-top: -2px;
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+}
+
+.login-box > div > div > span {
+    display: none;
+    position: absolute;
+    right: 16px;
+    top: 18px;
+    color: var(--black_sub2);
+    cursor: pointer;
+}
+
+.login-box > input {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.option-box {
+    color: var(--black_sub2);
+}
+
+.option-box > * {
+    height: 20px;
+    color: var(--black_sub2);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.option-box > label:hover,
+.option-box > a:hover,
+.option-box > span:hover {
+    color: var(--purple_three);
+    cursor: pointer;
+}
+
+.option-box > label {
+    padding-right: 18px;
+}
+
+.option-box .glyphicon {
+    position: relative;
+    top: 4px;
+    margin-right: 6px;
+    font-size: 20px;
+}
+
+.option-box input:checked + .glyphicon {
+    color: var(--purple_three);
+}
+
+.option-box input {
+    display: none;
+}
+
+.option-box > a {
+    padding: 0 18px;
+    border-left: var(--border);
+    border-right: var(--border);
+    text-decoration: none;
+}
+
+.option-box > span {
+    padding-left: 18px;
+}
+
+.modal {
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-dialog {
+    width: 360px;
+}
+
+.modal h5 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+p {
+    margin: 0;
+}
+
+.modal-footer > .btn {
+    min-width: 60px;
+    height: 30px;
+    padding: 5px 4px;
+}
