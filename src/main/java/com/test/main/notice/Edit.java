@@ -7,7 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * 공지사항 수정
+ * @author JH LEE
+ *
+ */
 @WebServlet("/notice/edit.do")
 public class Edit extends HttpServlet {
 

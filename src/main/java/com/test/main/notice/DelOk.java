@@ -7,7 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * 공지사항 삭제 확인
+ * @author JH LEE
+ *
+ */
 @WebServlet("/notice/delok.do") 
 public class DelOk extends HttpServlet { 
 
@@ -22,7 +26,6 @@ public class DelOk extends HttpServlet {
 		BoardDAO dao = new BoardDAO();
 		
 		
-		//????????????????????????????????????????
 		int result = dao.del(seq); //1,0
 		//4.
 		req.setAttribute("result", result);
