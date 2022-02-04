@@ -36,7 +36,7 @@ public class StoreDAO {
 	}
 	/**
 	 * 전지점 순이익 데이터를 높은 순서부터 가져오는 메소드
-	 * @return
+	 * @return 순이익데이터 쿼리절
 	 */
 	public ArrayList<StoreProfitDTO> storeprofit() {
 		try {
@@ -77,7 +77,7 @@ public class StoreDAO {
 	/**
 	 * 선택된 매장의 월간회계, 순이익, 영업이익 데이터를 가져오는 메소드
 	 * @param store
-	 * @return
+	 * @return 입력받은 store에 따른 전체 월간회계 데이터 쿼리절
 	 */
 	public ArrayList<ProfitValuesDTO> profitvalues(String store) {
 		try {
