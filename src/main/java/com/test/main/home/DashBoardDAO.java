@@ -38,7 +38,7 @@ public class DashBoardDAO {
 	}
 	/**
 	 * 일일 총 판매액을 데이터를 가져오는 메소드
-	 * @return
+	 * @return 일일 총 판매액 쿼리절
 	 */
 	public String total() {
 
@@ -62,7 +62,7 @@ public class DashBoardDAO {
 	}
 	/**
 	 * 대시보드 점장화면에 월간 판매액 데이터를 가져오는 메소드
-	 * @return
+	 * @return 월간 판매액 쿼리절
 	 */
 	public ArrayList<MontlyTotalDTO> list() {
 
@@ -95,7 +95,7 @@ public class DashBoardDAO {
 	}
 	/**
 	 * 대시보드 점장화면에 당일 상품별 판매량 데이터를 가져오는 메소드
-	 * @return
+	 * @return 해당 지점 당일 상품별 판매량 쿼리절
 	 */
 	public ArrayList<DailySellProdDTO> prod() {
 
@@ -125,7 +125,7 @@ public class DashBoardDAO {
 	}
 	/**
 	 * 대시보드 점장화면에 공지사항 데이터를 가져오는 메소드
-	 * @return
+	 * @return 공지사항 쿼리절
 	 */
 	public ArrayList<NoticeDTO> notice() {
 
@@ -157,7 +157,7 @@ public class DashBoardDAO {
 	}
 	/**
 	 * 대시보드 점장화면에 재고현황 데이터 중 실 재고량을 가져오는 메소드
-	 * @return
+	 * @return 재고현황 실 재고량 쿼리절
 	 */
 	public ArrayList<StockRemainDTO> stockremain() {
 		try {
@@ -188,7 +188,7 @@ public class DashBoardDAO {
 	}
 	/**
 	 * 대시보드 지역장화면에 지역내 전지점 월간 매출 현황 중 상품별 판매량 데이터를 가져오는 메소드
-	 * @return
+	 * @return 지역내 지점별 상품별 판매량 쿼리절
 	 */
 	public ArrayList<AreaMonSellProdDTO> areamonsellprod() {
 		try {
@@ -216,7 +216,7 @@ public class DashBoardDAO {
 	/**
 	 * 대시보드 지역장화면에 해당 지점의 당일 판매액 데이터를 가져오는 데이터
 	 * @param store 버튼에서 받아온 seq_store
-	 * @return
+	 * @return 당일 판매액 데이터 쿼리절
 	 */
 	public String areatotal(String store) {
 		try {
@@ -239,7 +239,7 @@ public class DashBoardDAO {
 	/**
 	 * 대시보드 지역장화면에 선택된 지점의 월간 판매액 데이터를 가져오는 메소드
 	 * @param store 버튼에서 받아온 seq_store
-	 * @return
+	 * @return 월간 판매액 데이터 쿼리절
 	 */
 	public ArrayList<AreaMontlyTotalDTO> areamontotal(String store) {
 		try {
@@ -270,7 +270,7 @@ public class DashBoardDAO {
 	/**
 	 * 대시보드 지역장화면에 지역내 전지점별 당일 판매된 상품별 갯수 데이터를 가져오는 메소드 
 	 * @param store
-	 * @return
+	 * @return 지점별 당일 판매된 상품별 개수 데이터 쿼리절
 	 */
 	public ArrayList<AreaDailySellProdDTO> areaprod(String store) {
 
@@ -300,7 +300,7 @@ public class DashBoardDAO {
 	}
 	/**
 	 * 대시보드 지역장화면에 전지역 당일 매출 데이터를 가져오는 메소드
-	 * @return
+	 * @return 당일 매출 데이터 쿼리절
 	 */
 	public ArrayList<AreaDalyAllTotalDTO> areaalltotal() {
 		
@@ -332,7 +332,7 @@ public class DashBoardDAO {
 	
 	/**
 	 * 대시보드 점장화면에 스태프 근무일정 데이터를 가져오는 메소드
-	 * @return
+	 * @return 스태프 근무일정 데이터 쿼리절
 	 */
 	public ArrayList<StaffScheduleDTO> staffschedule() {
 		
@@ -366,7 +366,7 @@ public class DashBoardDAO {
 	}
 	/**
 	 * 대시보드 점장화면에 직원 근무 일정 데이터를 가져오는 메소드 
-	 * @return
+	 * @return 직원근무일정 데이터 쿼리절
 	 */
 	public ArrayList<EmployeeScheduleDTO> employeeschedule() {
 		try {

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /**
- * 매장관리 영업이익 서블
+ * 매장관리 영업이익 서블릿
  * @author kujun-kang
  *
  */
