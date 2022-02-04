@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /**
- * 버튼 클릭시 아메리카노 주문 서블릿
+ * 버튼 클릭시 아메리카노 주문
  * @author JH LEE
  *
  */
@@ -28,6 +28,11 @@ public class ButtonOrder extends HttpServlet {
 		dto.setStart_order(txtame);
 		dto.setSeq_product(txtamedetail);
 
+		
+		
+		
+		
+		
 		
 		
 		//주문

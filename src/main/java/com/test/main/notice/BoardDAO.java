@@ -160,7 +160,7 @@ public class BoardDAO {
 	/**
 	 * 글 수정 메소드
 	 * @param dto
-	 * @return
+	 * @return 수정 성공시 1, 실패시 0
 	 */
 	public int edit(BoardDTO dto) {
 
@@ -186,7 +186,7 @@ public class BoardDAO {
 	/**
 	 * 글 삭제 메소드
 	 * @param seq
-	 * @return
+	 * @return 삭제 성공시 1, 실패시 0
 	 */
 	public int del(String seq) {
 		
