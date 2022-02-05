@@ -21,7 +21,7 @@
 					<table class="table" style="width: 900px;">
 						<tr>
 							<th>제목</th>
-							<td><input type="text" name="subject" class="form-control"
+							<td><input type="text" name="title" class="form-control"
 								required></td>
 						</tr>
 						<tr>

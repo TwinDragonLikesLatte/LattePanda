@@ -28,12 +28,8 @@ public class AddOk extends HttpServlet {
 		BoardDAO dao = new BoardDAO();
 		BoardDTO dto = new BoardDTO();
 		
-		
-//		dto.setId(session.getAttribute("id").toString());
 		dto.setTitle(title);
 		dto.setContent(content);
-//		dto.setUserip(req.getRemoteAddr());
-		
 		
 		
 		int result = dao.add(dto); //1, 0
