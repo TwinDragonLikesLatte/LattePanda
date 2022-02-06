@@ -296,7 +296,7 @@
 
     /* '판매가' 변경에 따른 > '마진율' 변경 */
     $('.selling-price').on("propertychange change keyup paste input", function() {
-        $('.cost-rate').text( 1 - (totalOneCost() / $(this).val()).toFixed(2));
+        $('.cost-rate').text( 1 - (totalOneCost() / $(this).val()).toFixed(3));
     });
 
 
@@ -318,7 +318,8 @@
     function costRate() {
         let costPrice = totalOneCost();
         let sellingPrice = $('.selling-price').val();
-        return 1 - (costPrice / sellingPrice);
+        let costRate = 1 - (costPrice / sellingPrice);
+        return costRate.toFixed(3);
     }
 
 
