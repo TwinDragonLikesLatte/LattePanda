@@ -25,6 +25,8 @@ public class DashBoard extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	resp.setCharacterEncoding("UTF-8");
     	String store = req.getParameter("store");
+
+		System.out.println(req.getSession().getAttribute("seq_department"));
     	
     	//[dashboard.jsp [지역장] 지점 선택시 들어오는 값에 대한 기본값 설정]
     	if(store == null) {
