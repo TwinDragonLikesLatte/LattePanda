@@ -1,7 +1,6 @@
 package com.test.main.hr.employee;
 
-import com.test.main.hr.staff.StaffDAO;
-import com.test.main.hr.staff.StaffDTO;
+import com.test.main.access.AccessController;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +16,10 @@ public class List extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        AccessController ac = new AccessController();
+        ac.checkAccessible(req, resp);
+
         String seqDepartment = req.getParameter("seq_department");
 
         if (seqDepartment == null) {

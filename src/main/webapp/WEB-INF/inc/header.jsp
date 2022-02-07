@@ -1,3 +1,4 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!-- 상단 메뉴 -->
@@ -16,12 +17,14 @@
                     <li><a href="/hr/employee/list.do">
                         <div></div>직원관리
                     </a></li>
+                    <c:if test="${fn:indexOf(seq_department, '22') == '0' || fn:indexOf(seq_department, '3') == '0'}">
                     <li><a href="/hr/staff/list.do?seq_department=${seq_department}">
                         <div></div>스태프관리
                     </a></li>
                     <li><a href="">
                         <div></div>스케줄관리
                     </a></li>
+                    </c:if>
                 </ul>
             </li>
             <li class="main-menu">
@@ -100,9 +103,11 @@
         <div class="thumb"><img src="/resources/images/img.jpeg"></div>
         <div class="header-btns">
             <div></div>
-            <input class="btn btn-default" type="button" value="점장 손윤희" data-seq_employee="20160006">
-            <input class="btn btn-default" type="button" value="지역장 이민연" data-seq_employee="20120001">
-            <input class="btn btn-default" type="button" value="과장 장민진" data-seq_employee="20140003">
+            <input class="btn btn-default" type="button" value="강남대로점장 손윤희" data-seq_employee="20160006">
+            <input class="btn btn-default" type="button" value="강남대로 매니저 백지연" data-seq_employee="20200010">
+            <input class="btn btn-default" type="button" value="강남지역장 이민연" data-seq_employee="20120001">
+            <input class="btn btn-default" type="button" value="연구기획과장 장민진" data-seq_employee="20140003">
+            <input class="btn btn-default" type="button" value="인사과장 권상성" data-seq_employee="20140002">
             <input class="btn btn-danger" type="button" value="로그아웃" data-seq_employee="logout">
         </div>
     </div>
