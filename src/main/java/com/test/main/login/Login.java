@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 @WebServlet("/login.do")
 public class Login extends HttpServlet {
@@ -29,6 +30,7 @@ public class Login extends HttpServlet {
         LoginDAO dao = new LoginDAO();
 
         LoginDTO result = dao.login(id);
+        SHA256 sha256 = new SHA256();
         String error = "";
 
         if (result == null) {  //입력된 아이디와 일치하는 계정이 존재하지 않는 경우
@@ -41,8 +43,8 @@ public class Login extends HttpServlet {
             } else if (result.getIsLock().equals("y")) {  //계정이 잠겨있는 경우
                 req.setAttribute("lock", result.getIsLock());
 
-            } else if (!result.getPassword().equals(pw)) {  //비밀번호가 일치하지 않는 경우
-                if (result.getLoginFail() == 4) {  //이전 로그인 실패 횟수가 4회가 넘은 경우 계정 잠금
+            } else if (!result.getPassword().equals(sha256.encrypt(pw))) {  //비밀번호가 일치하지 않는 경우
+                if (result.getLoginFail() == 4) {  //이전 로그인 실패 횟수가 4회가 넘은 경우 계정 잠금, 잠금 로직은 DB에 트리거로 구현
                     req.setAttribute("lock", "y");
 
                 } else {  //이전 로그인 실패 횟수가 4회 미만인 경우 현재 실패 횟수와 계정 잠금 안내를 출력
