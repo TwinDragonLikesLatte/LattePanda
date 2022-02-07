@@ -266,4 +266,31 @@ public class LoginDAO {
 
         return 0;
     }
+
+    public SecurityDTO getSecurity(String id) {
+
+        try {
+
+            String sql = "SELECT * FROM tblEmplSecurity WHERE seq_employee = ?";
+
+            pstat = conn.prepareStatement(sql);
+            pstat.setString(1, id);
+
+            rs = pstat.executeQuery();
+
+            if (rs.next()) {
+                SecurityDTO dto = new SecurityDTO();
+                dto.setSalt(rs.getString("salt"));
+                dto.setStretch(rs.getInt("stretch"));
+                pstat.close();
+                return dto;
+            }
+
+        } catch (Exception e) {
+            System.out.println("LoginDAO.getSalt()");
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
